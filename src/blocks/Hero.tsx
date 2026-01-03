@@ -7,18 +7,18 @@ const Hero = () => {
 
   const slides = [
     {
-      image: 'https://picsum.photos/seed/house1/1920/600',
+      image: 'https://res.cloudinary.com/dqj2gwlpf/image/upload/v1767459350/2021_09_28_12_28_44_thomson-c-1024x682-1_ojqhoh.jpg',
       title: 'Welcome to Union Marketing',
       subtitle: 'Your trusted real estate partner',
       link: '#about'
     },
     {
-      image: 'https://picsum.photos/seed/house2/1920/600',
+      image: 'https://res.cloudinary.com/dqj2gwlpf/image/upload/v1767459319/Untitled-design-4_ui8y7s.png',
       title: 'Find Your Dream Home',
       subtitle: 'Expert guidance every step of the way'
     },
     {
-      image: 'https://picsum.photos/seed/house3/1920/600',
+      image: 'https://res.cloudinary.com/dqj2gwlpf/image/upload/v1767459181/%E8%9E%A2%E5%B9%95%E6%88%AA%E5%9C%96-2025-03-16-%E4%B8%8B%E5%8D%8811.44.45_xocjxm.png',
       title: 'Professional Real Estate Services',
       subtitle: 'Building innovative solutions for a better tomorrow',
       link: '#contact'
@@ -59,7 +59,7 @@ const Hero = () => {
             index === currentSlide ? 'opacity-100' : 'opacity-0'
           }`}
         >
-          <div className="absolute inset-0 bg-black/40"></div>
+          <div className="absolute inset-0 bg-black/50"></div>
         </div>
       ))}
 
@@ -83,30 +83,44 @@ const Hero = () => {
         </svg>
       </button>
 
+      {/* conditional button with link */}
       <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-4 z-10">
-        <h1 className="text-4xl font-bold text-white mb-4 drop-shadow-2xl">
+        <h1 
+          key={`title-${currentSlide}`}
+          className="font-serif text-4xl font-bold text-white mb-4 drop-shadow-2xl animate-[slideDownFadeIn_0.8s_ease-out]"
+        >
           {slides[currentSlide].title}
         </h1>
-        <p className="text-xl text-white mb-8 drop-shadow-lg">
+        <p 
+          key={`subtitle-${currentSlide}`}
+          className="font-light text-lg text-white mb-8 drop-shadow-lg animate-[slideDownFadeIn_0.8s_ease-out]"
+        >
           {slides[currentSlide].subtitle}
         </p>
         {slides[currentSlide].link && (
           <a 
+            key={`button-${currentSlide}`}
             href={slides[currentSlide].link}
-            className="bg-yellow-400 text-gray-900 px-8 py-3 rounded-lg font-bold hover:bg-yellow-300 transition"
+            className="relative border border-yellow-400 text-white px-6 py-3 rounded-lg font-bold overflow-hidden group inline-block animate-[slideDownFadeIn_0.8s_ease-out]"
           >
-            MORE INFORMATION
+            <span className="relative z-10 transition-all duration-300 ease-in-out group-hover:opacity-0">
+              MORE INFORMATION
+            </span>
+            <span className="absolute inset-0 flex items-center justify-center translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-in-out text-white">
+              CHECK NOW →
+            </span>
           </a>
         )}
       </div>
 
-      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex gap-3 z-10">
+        {/* Slide Indicators */}
+      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex gap-2 z-10">
         {slides.map((_, index) => (
           <button
             key={index}
             onClick={() => setCurrentSlide(index)}
-            className={`h-3 rounded-full transition-all ${
-              index === currentSlide ? 'w-8 bg-yellow-400' : 'w-3 bg-white/50'
+            className={`h-2 rounded-full transition-all ${
+              index === currentSlide ? 'w-6 bg-yellow-400' : 'w-2 bg-white/50'
             }`}
           />
         ))}

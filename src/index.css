@@ -1,4 +1,7 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
+
 @import "tailwindcss";
+
 
 :root {
   font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
@@ -18,3 +21,27 @@
 
 }
 
+@theme{
+  --font-base: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  --font-roboto: "Roboto", sans-serif; 
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideDownFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

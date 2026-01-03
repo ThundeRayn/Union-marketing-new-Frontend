@@ -16,21 +16,34 @@ const Navbar = () => {
 
           {/* Navigation Links & Sign In - Right Side */}
           <div className="hidden md:flex items-center space-x-8">
-            <a href="#about" className="text-(--text-inverse) hover:text-(--color-primary) transition text-lg">
+            <a href="#about" className="relative text-(--text-inverse) hover:text-(--color-primary) text-lg group">
               ABOUT
+              <span className="absolute left-0 bottom-0 w-0 h-0.5 bg-yellow-400 transition-all duration-300 ease-in-out group-hover:w-full"></span>
             </a>
-            <a href="#services" className="text-(--text-inverse) hover:text-(--color-primary) transition text-lg">
+            <a href="#services" className="relative text-(--text-inverse) hover:text-(--color-primary) text-lg group">
               SERVICES
+              <span className="absolute left-0 bottom-0 w-0 h-0.5 bg-yellow-400 transition-all duration-300 ease-in-out group-hover:w-full"></span>
             </a>
-            <a href="#services" className="text-(--text-inverse) hover:text-(--color-primary) transition text-lg">
+            <a href="#services" className="relative text-(--text-inverse) hover:text-(--color-primary) text-lg group">
               EVENT
+              <span className="absolute left-0 bottom-0 w-0 h-0.5 bg-yellow-400 transition-all duration-300 ease-in-out group-hover:w-full"></span>
             </a>
-            <a href="#contact" className="text-(--text-inverse) hover:text-(--color-primary) transition text-lg">
+            <a href="#contact" className="relative text-(--text-inverse) hover:text-(--color-primary) text-lg group">
               CONTACT
+              <span className="absolute left-0 bottom-0 w-0 h-0.5 bg-yellow-400 transition-all duration-300 ease-in-out group-hover:w-full"></span>
             </a>
-            <button className="bg-(--color-primary) text-(--text-inverse) px-6 py-2 rounded-lg hover:bg-yellow-500 transition">
-              SIGN IN
+
+            <a href="#">
+            <button 
+              className="relative border border-yellow-400 text-(--text-inverse) px-5 py-2 rounded-md overflow-hidden group">
+              <span className="relative z-10 transition-all duration-300 ease-in-out group-hover:opacity-0">
+                BROKER PORTAL
+              </span>
+              <span className="absolute inset-0 flex items-center justify-center translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-in-out text-(--text-inverse)">
+                LOGIN
+              </span>
             </button>
+            </a>
           </div>
 
           {/* Mobile Menu Button */}

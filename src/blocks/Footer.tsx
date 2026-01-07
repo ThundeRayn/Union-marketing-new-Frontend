@@ -9,7 +9,7 @@ const Footer = () => {
               <img 
                 src="/Union-icon.png" 
                 alt="Union Logo" 
-                className="h-22 mb-4 transition-transform duration-300 ease-in-out hover:translate-x-2"
+                className="h-16 md:h-22 w-auto max-w-full object-contain transition-transform duration-300 ease-in-out hover:translate-x-2"
               />
             </a>
             {/* <p className="text-gray-400 text-sm pl-20">

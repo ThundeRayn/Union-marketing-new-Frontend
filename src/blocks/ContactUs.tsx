@@ -1,10 +1,38 @@
 
 import { Button } from "@/components/ui/button"
+import { Input } from "@/components/ui/input"
+import { Textarea } from "@/components/ui/textarea"
+import { NativeSelect } from "@/components/ui/native-select"
+import { useState } from "react"
 
 const ContactUs = () => {
+  const [showNotification, setShowNotification] = useState(false)
+
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault()
+    
+    // Show notification
+    setShowNotification(true)
+    
+    // Hide notification after 3 seconds
+    setTimeout(() => {
+      setShowNotification(false)
+    }, 3000)
+    
+    // Reset form
+    e.currentTarget.reset()
+  }
+
   return (
     <div className="py-20 px-7 bg-gray-50">
       <div className="max-w-7xl mx-auto">
+        {/* Notification */}
+        {showNotification && (
+          <div className="fixed top-8 left-1/2 -translate-x-1/2 z-50 bg-green-500 text-white px-6 py-3 rounded-lg shadow-lg animate-[slideDownFadeIn_0.3s_ease-out]">
+            Message sent successfully!
+          </div>
+        )}
+        
         <div className="grid md:grid-cols-5 gap-14 items-center">
           {/* Form */}
           <div className="md:col-span-2 pl-12 pr-8">
@@ -15,67 +43,66 @@ const ContactUs = () => {
               — we’ll be in touch soon!
             </p>
 
-            <form className="space-y-2">
+            <form className="space-y-2" onSubmit={handleSubmit}>
               {/* Full Name */}
               <div>
-                <input
+                <Input
                   type="text"
                   id="fullName"
                   name="fullName"
                   placeholder="Full Name"
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-yellow-400 focus:border-yellow-400 outline-none transition"
+                  className="shadow-none border-0 border-b border-gray-300 rounded-none h-12 focus-visible:ring-0 focus-visible:border-yellow-400"
                   required
                 />
               </div>
 
               {/* Phone */}
               <div>
-                <input
+                <Input
                   type="tel"
                   id="phone"
                   name="phone"
                   placeholder="Phone"
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-yellow-400 focus:border-yellow-400 outline-none transition"
+                  className="shadow-none border-0 border-b border-gray-300 rounded-none h-12 focus-visible:ring-0 focus-visible:border-yellow-400"
                   required
                 />
               </div>
 
               {/* Email */}
               <div>
-                <input
+                <Input
                   type="email"
                   id="email"
                   name="email"
                   placeholder="Email"
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-yellow-400 focus:border-yellow-400 outline-none transition"
+                  className="shadow-none border-0 border-b border-gray-300 rounded-none h-12 focus-visible:ring-0 focus-visible:border-yellow-400"
                   required
                 />
               </div>
 
               {/* Message */}
               <div>
-                <textarea
+                <Textarea
                   id="message"
                   name="message"
                   rows={6}
                   placeholder="Message"
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-yellow-400 focus:border-yellow-400 outline-none transition resize-none"
+                  className="shadow-none border-0 border-b border-gray-300 rounded-none min-h-[120px] focus-visible:ring-0 focus-visible:border-yellow-400"
                   required
                 />
               </div>
 
               {/* Are you a Realtor */}
-              <div>
-                <select
+              <div className="pb-6">
+                <NativeSelect
                   id="realtor"
                   name="realtor"
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-yellow-400 focus:border-yellow-400 outline-none transition"
+                  className="shadow-none border-0 border-b border-gray-300 rounded-none h-12 focus-visible:ring-0 focus-visible:border-yellow-400"
                   required
                 >
-                  <option value="">Are you a Realtor?</option>
-                  <option value="yes">Yes</option>
-                  <option value="no">No</option>
-                </select>
+                  <option value="yes">I'm a Realtor</option>
+                  <option value="no">I'm not a Realtor</option>
+                </NativeSelect>
               </div>
 
               {/* Submit Button */}

@@ -1,9 +1,15 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 
 import './App.css'
-import Home from './pages/Home'
 import Layout from './layout/Layout'
-import Service from './pages/Service'
+
+import HomePage from './pages/HomePage'
+import ServicePage from './pages/ServicePage'
+import AboutPage from './pages/AboutPage'
+import ProjectPage from './pages/ProjectPage'
+import FifthPage from './projects/FifthPage'
+import ElevenPage from './projects/ElevenPage'
+import EversleyPage from './projects/EversleyPage'
 
 function App() {
 
@@ -13,9 +19,15 @@ function App() {
         <Routes>
 
           <Route path='/' element={<Layout />}>
-            <Route index element={<Home />} />
-            <Route path='service' element={<Service />} />
+            <Route index element={<HomePage />} />
+            <Route path='service' element={<ServicePage />} />
+            <Route path='about' element={<AboutPage />} />
+            <Route path='project' element={<ProjectPage />} />
+              <Route path='projects/fifth' element={<FifthPage />} ></Route>
+              <Route path='projects/eleven' element={<ElevenPage />} ></Route>
+              <Route path='projects/eversley' element={<EversleyPage />} ></Route>
             <Route path='*' element={<div>404 Not Found</div>} />
+            
             
           </Route>
           

@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button"
 import { Link } from "react-router-dom"
 import ContactUs from "@/blocks/ContactUs"
 
-const Home = () => {
+const HomePage = () => {
   const services = [
     {
       title: "Advisory & Real Support",
@@ -69,4 +69,4 @@ const Home = () => {
   )
 }
 
-export default Home
+export default HomePage

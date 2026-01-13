@@ -16,7 +16,7 @@ const Navbar = () => {
 
           {/* Navigation Links & Sign In - Right Side */}
           <div className="hidden md:flex items-center space-x-8">
-            <a href="#about" className="relative text-(--text-inverse) hover:text-(--color-primary) text-lg group">
+            <a href="/about" className="relative text-(--text-inverse) hover:text-(--color-primary) text-lg group">
               ABOUT
               <span className="absolute left-0 bottom-0 w-0 h-0.5 bg-yellow-400 transition-all duration-300 ease-in-out group-hover:w-full"></span>
             </a>
@@ -30,6 +30,10 @@ const Navbar = () => {
             </a>
             <a href="#contact" className="relative text-(--text-inverse) hover:text-(--color-primary) text-lg group">
               CONTACT
+              <span className="absolute left-0 bottom-0 w-0 h-0.5 bg-yellow-400 transition-all duration-300 ease-in-out group-hover:w-full"></span>
+            </a>
+            <a href="/project" className="relative text-(--text-inverse) hover:text-(--color-primary) text-lg group">
+              PROJECT
               <span className="absolute left-0 bottom-0 w-0 h-0.5 bg-yellow-400 transition-all duration-300 ease-in-out group-hover:w-full"></span>
             </a>
 

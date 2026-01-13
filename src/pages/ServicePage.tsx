@@ -1,5 +1,5 @@
 
-const Service = () => {
+const ServicePage = () => {
   const services = [
     {
       title: "Strategic Marketing",
@@ -60,4 +60,4 @@ const Service = () => {
   )
 }
 
-export default Service
+export default ServicePage

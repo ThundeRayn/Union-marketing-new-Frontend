@@ -10,6 +10,9 @@ import ProjectPage from './pages/ProjectPage'
 import FifthPage from './projects/FifthPage'
 import ElevenPage from './projects/ElevenPage'
 import EversleyPage from './projects/EversleyPage'
+import GeorginaPage from './projects/GeorginaPage'
+import CGTowerPage from './projects/CGTowerPage'
+import AbejaPage from './projects/AbejaPage'
 
 function App() {
 
@@ -26,6 +29,9 @@ function App() {
               <Route path='projects/fifth' element={<FifthPage />} ></Route>
               <Route path='projects/eleven' element={<ElevenPage />} ></Route>
               <Route path='projects/eversley' element={<EversleyPage />} ></Route>
+              <Route path='projects/georgina' element={<GeorginaPage />} ></Route>
+              <Route path='projects/cgtower' element={<CGTowerPage />} ></Route>
+              <Route path='projects/abeja' element={<AbejaPage />} ></Route>
             <Route path='*' element={<div>404 Not Found</div>} />
             
             

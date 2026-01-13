@@ -3,6 +3,9 @@ import ProjectCard from '../components/ProjectCard';
 import Upbadge from '@/blocks/Upbadge';
 import ElevenPage from '@/projects/ElevenPage';
 import EversleyPage from '@/projects/EversleyPage';
+import GeorginaPage from '@/projects/GeorginaPage';
+import CGTowerPage from '@/projects/CGTowerPage';
+import AbejaPage from '@/projects/AbejaPage';
 
 // Project list configuration
 const projectList = [
@@ -29,6 +32,30 @@ const projectList = [
     coverImage: 'https://res.cloudinary.com/dqj2gwlpf/image/upload/v1768277530/2021_09_28_12_28_44_thomson-c-1024x682-1_wonxfk.jpg',
     component: EversleyPage,
     path: '/projects/eversley'
+  },
+  {
+    id: 'georgina',
+    title: 'Georgina Project',
+    description: 'NOW SELLING',
+    coverImage: 'https://res.cloudinary.com/dqj2gwlpf/image/upload/v1768278560/Georgina-Heights-in-Keswick_ideq3b.jpg',
+    component: GeorginaPage,
+    path: '/projects/georgina'
+  },
+  {
+    id: 'cgtower',
+    title: 'CG Tower',
+    description: 'NOW SELLING',
+    coverImage: 'https://res.cloudinary.com/dqj2gwlpf/image/upload/v1768279079/project-part-2_vompfo.jpg',
+    component: CGTowerPage,
+    path: '/projects/cgtower'
+  },
+  {
+    id: 'abeja',
+    title: 'Abeja Project',
+    description: 'NOW SELLING',
+    coverImage: 'https://res.cloudinary.com/dqj2gwlpf/image/upload/v1768279500/index-slider-v1_kamq7j.jpg',
+    component: AbejaPage,
+    path: '/projects/abeja'
   }
 ];
 

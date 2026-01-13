@@ -1,44 +1,11 @@
 import Upbadge from "@/blocks/Upbadge"
 import PictureRender from "@/components/PictureRender"
-import { useRef, useEffect } from "react"
+import YTVideo from "@/components/YTVideo"
 
 const AbejaPage = () => {
-  const iframeRef = useRef<HTMLIFrameElement>(null);
   const images = [
     'https://via.placeholder.com/800x600'
   ];
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting && iframeRef.current) {
-            iframeRef.current.contentWindow?.postMessage(
-              '{"event":"command","func":"playVideo","args":""}',
-              '*'
-            );
-          } else if (!entry.isIntersecting && iframeRef.current) {
-            iframeRef.current.contentWindow?.postMessage(
-              '{"event":"command","func":"pauseVideo","args":""}',
-              '*'
-            );
-          }
-        });
-      },
-      { threshold: 0.25 }
-    );
-
-    const videoContainer = iframeRef.current?.parentElement;
-    if (videoContainer) {
-      observer.observe(videoContainer);
-    }
-
-    return () => {
-      if (videoContainer) {
-        observer.unobserve(videoContainer);
-      }
-    };
-  }, []);
 
   return (
     <div>
@@ -87,21 +54,7 @@ const AbejaPage = () => {
         ]}
       />
 
-      {/* YouTube Video Section */}
-      <div className="container mx-auto px-4 py-8">
-        <h2 className="text-3xl font-bold mb-6 text-center">Project Video</h2>
-        <div className="relative w-full" style={{ paddingBottom: '56.25%' }}>
-          <iframe
-            ref={iframeRef}
-            src="https://www.youtube.com/embed/KX63R85lUOc?autoplay=0&loop=1&mute=0&controls=1&enablejsapi=1"
-            style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%' }}
-            frameBorder="0"
-            allow="autoplay; encrypted-media; fullscreen; picture-in-picture"
-            allowFullScreen
-            title="YouTube Video"
-          ></iframe>
-        </div>
-      </div>
+      <YTVideo videoId="KX63R85lUOc" title="Project Video" />
     </div>
   )
 }

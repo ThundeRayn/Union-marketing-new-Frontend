@@ -11,7 +11,6 @@ interface EventSimpleProps {
 }
 
 const EventSimple = ({
-  id,
   title,
   description,
   date,

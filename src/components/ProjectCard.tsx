@@ -8,7 +8,7 @@ interface ProjectCardProps {
   path: string;
 }
 
-const ProjectCard = ({ id, title, description, coverImage, path }: ProjectCardProps) => {
+const ProjectCard = ({ title, description, coverImage, path }: ProjectCardProps) => {
   return (
     <Link 
       to={path}

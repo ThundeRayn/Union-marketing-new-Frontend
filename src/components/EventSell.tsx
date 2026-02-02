@@ -11,7 +11,6 @@ interface EventSellProps {
 }
 
 const EventSell = ({
-  id,
   title,
   description,
   button,

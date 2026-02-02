@@ -7,7 +7,7 @@ import YTVideo from "@/components/YTVideo"
 const AboutPage = () => {
   return (
     <div>
-        <SubHero    />
+        <SubHero titleShadow descriptionShadow />
         <YTVideo videoId="ncvwHd0c_Rg" title="About Us" />
         
         {/* Client Section */}

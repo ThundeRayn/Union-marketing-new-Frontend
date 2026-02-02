@@ -7,7 +7,7 @@ interface SubHeroProps {
 const SubHero = ({ title, description, url }: SubHeroProps) => {
   return (
     <div 
-      className="relative h-[60vh] flex items-center justify-center"
+      className="relative h-[60vh] flex items-center justify-center mb-12"
       style={{
         backgroundImage: `url(${url || 'https://res.cloudinary.com/dqj2gwlpf/image/upload/v1767497882/RenderingA_nvcuji.png'})`,
         backgroundSize: 'cover',

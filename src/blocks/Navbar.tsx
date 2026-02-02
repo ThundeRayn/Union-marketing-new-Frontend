@@ -17,7 +17,7 @@ const Navbar = () => {
         <div className="flex justify-between items-center h-20 pr-8">
           {/* Logo */}
           <div className="flex-shrink-0">
-            <a href="/" className="pl-10 flex items-center gap-2 group transition-transform duration-300 ease-in-out hover:translate-x-1">
+            <a href="/" className="pl-10 flex items-center gap-3 group transition-transform duration-300 ease-in-out hover:translate-x-1">
               <img 
                 src="/favicon.ico" 
                 alt="Union Logo" 

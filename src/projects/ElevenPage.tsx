@@ -1,5 +1,6 @@
 import Upbadge from "@/blocks/Upbadge"
 import { Button } from "@/components/ui/button"
+import ProjectInfo from "@/components/ProjectInfo"
 import { useRef, useEffect } from "react"
 
 const ElevenPage = () => {
@@ -93,19 +94,10 @@ const ElevenPage = () => {
         url="https://res.cloudinary.com/dqj2gwlpf/image/upload/v1768275582/Untitled-design-5_xjqyo7.jpg"
       />
 
-      {/* Project Info Section */}
-      <div className="container mx-auto px-4 py-6">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-2xl mx-auto">
-          <div className="bg-gray-50 p-6 rounded-lg border-l-4 border-yellow-400">
-            <h3 className="text-lg font-bold text-gray-700 mb-2">Project Type</h3>
-            <p className="text-2xl font-semibold text-black">CONDO TOWNS</p>
-          </div>
-          <div className="bg-gray-50 p-6 rounded-lg border-l-4 border-yellow-400">
-            <h3 className="text-lg font-bold text-gray-700 mb-2">Location</h3>
-            <p className="text-2xl font-semibold text-black">Near Finch Station</p>
-          </div>
-        </div>
-      </div>
+      <ProjectInfo 
+        type="CONDO TOWNS"
+        location="Near Finch Station"
+      />
       
       {/* Main Content Area */}
       <div className="container mx-auto px-4 py-8">

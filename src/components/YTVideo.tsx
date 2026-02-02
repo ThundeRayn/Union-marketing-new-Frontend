@@ -41,8 +41,8 @@ const YTVideo = ({ videoId, title = "Project Video" }: YTVideoProps) => {
   }, []);
 
   return (
-    <div className="container mx-auto px-4 py-8">
-      <h2 className="text-3xl font-bold mb-6 text-center">{title}</h2>
+    <div className="w-full">
+      {/* <h2 className="text-3xl font-bold mb-6 text-center">{title}</h2> */}
       <div className="relative w-full" style={{ paddingBottom: '56.25%' }}>
         <iframe
           ref={iframeRef}

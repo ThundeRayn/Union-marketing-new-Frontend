@@ -5,12 +5,22 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {/* Company Info */}
           <div>
-            <a href="/">
+            <a href="/" className="flex items-center gap-2 group transition-transform duration-300 ease-in-out hover:translate-x-1 w-fit">
               <img 
                 src="/Union-icon.png" 
                 alt="Union Logo" 
                 className="h-16 md:h-22 w-auto max-w-full object-contain transition-transform duration-300 ease-in-out hover:translate-x-2"
+              /> 
+              {/* <img 
+                src="/favicon.ico" 
+                alt="Union Logo" 
+                className="h-15"
               />
+              <img 
+                src="/letter-transparent.png" 
+                alt="Union Text" 
+                className="h-15 w-85"
+              /> */}
             </a>
             {/* <p className="text-gray-400 text-sm pl-20">
               Building innovative solutions for a better tomorrow.

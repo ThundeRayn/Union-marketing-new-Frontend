@@ -14,8 +14,8 @@ const EventPage = () => {
           {/* Event 1 */}
           <EventRich
             id={1}
-            title="PHASE TWO: LIVE IN LUXURY DRIVE IN STYLE"
-            description="Buy a unit and receive a TESLA MODEL Y with your own EV CHARGING STATION!"
+            title="Phase Two: Live in Luxury Drive in Style"
+            description="Buy a unit and receive a Tesla Model Y with your own EV charging station!"
             date="June 15th"
             time="12 PM - 5 PM"
             address="139 Main St., #206, Unionville, Markham L3R 2G6"
@@ -39,8 +39,8 @@ const EventPage = () => {
             title="Renowned Industry Expert Lawyer Liu Yan"
             description="Share Insider Tips on Home Buying!"
             date="May 11th"
-            time="12:00 pm"
-            address="11 altamont rd, North york, M2M 1S5"
+            time="12:00 PM"
+            address="11 Altamont Rd, North York, M2M 1S5"
             backgroundImage="https://res.cloudinary.com/dqj2gwlpf/image/upload/v1770005204/open2-1024x724-1_pnlomi.jpg"
           />
 
@@ -50,8 +50,8 @@ const EventPage = () => {
           {/* Event 3 */}
           <EventSell
             id={3}
-            title="LUXURY TOWNHOMES PRECONSTRUCTION"
-            description="11 ALTAMONT ROAD (NEAR YONGE & FINCH)"
+            title="Luxury Townhomes Preconstruction"
+            description="11 Altamont Road (Near Yonge & Finch)"
             button="NOW SELLING"
             hover="VIEW MORE"
             link="/project"

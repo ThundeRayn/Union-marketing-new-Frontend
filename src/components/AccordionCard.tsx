@@ -47,6 +47,7 @@ const AccordionCard = ({
               <div key={index}>
                 <button
                   onClick={() => toggleAccordion(index)}
+                  onMouseEnter={() => window.innerWidth >= 768 && setActiveIndex(index)}
                   className={`w-full text-left px-6 py-4 rounded-lg transition-all duration-300 ${
                     activeIndex === index
                       ? 'bg-yellow-400 text-black font-semibold'

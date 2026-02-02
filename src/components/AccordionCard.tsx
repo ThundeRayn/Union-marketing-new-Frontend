@@ -33,10 +33,10 @@ const AccordionCard = ({
         <div className="flex flex-col justify-between">
           {/* Header */}
           <div className="mb-8">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+            <h2 className="text-3xl md:text-5xl font-normal text-gray-900 mb-6">
               {title}
             </h2>
-            <p className="text-gray-600 text-base leading-relaxed">
+            <p className="text-gray-600 text-sm leading-relaxed">
               {shortDescription}
             </p>
           </div>
@@ -58,7 +58,7 @@ const AccordionCard = ({
 
                 {/* Expanded Description */}
                 {activeIndex === index && (
-                  <div className="mt-2 p-4 bg-gray-50 rounded-lg border border-gray-200 animate-[slideDown_0.3s_ease-out]">
+                  <div className="mt-2 p-4 bg-gray-50 rounded-lg border border-gray-200 animate-in fade-in slide-in-from-top-2 duration-300">
                     <p className="text-gray-700 leading-relaxed">
                       {item.description}
                     </p>

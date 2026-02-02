@@ -76,7 +76,7 @@ const Service = () => {
 
         {/* Service Card 2 */}
         <AccordionCard
-          title="Planning &Marketing"
+          title="Planning & Marketing"
           shortDescription="This service offers expert guidance and support throughout the project development process, including:"
           items={servicesData2}
           imageUrl="https://res.cloudinary.com/dqj2gwlpf/image/upload/v1768281398/Untitled-design-1_uucu7z.png"
@@ -86,7 +86,7 @@ const Service = () => {
         
         {/* Service Card 3 */}
         <AccordionCard
-          title="Integrated Marketing & Sales Solutions"
+          title="Marketing & Sales"
           shortDescription="A comprehensive suite of services designed to effectively market and sell real estate projects:"
           items={servicesData3}
           imageUrl="https://res.cloudinary.com/dqj2gwlpf/image/upload/v1768281410/Untitled-design-3_llkzqd.png"

@@ -20,7 +20,11 @@ const AccordionCard = ({
   imageUrl,
   imageAlt = 'Card Image'
 }: AccordionCardProps) => {
-  const [activeIndex, setActiveIndex] = useState(0)
+  const [activeIndex, setActiveIndex] = useState<number | null>(0)
+
+  const toggleAccordion = (index: number) => {
+    setActiveIndex(activeIndex === index ? null : index)
+  }
 
   return (
     <div className="bg-white rounded-lg shadow-lg overflow-hidden">
@@ -38,27 +42,30 @@ const AccordionCard = ({
           </div>
 
           {/* Accordion Items */}
-          <div className="space-y-3">
+          <div className="space-y-4">
             {items.map((item, index) => (
-              <button
-                key={index}
-                onClick={() => setActiveIndex(index)}
-                className={`w-full text-left px-6 py-4 rounded-lg transition-all duration-300 ${
-                  activeIndex === index
-                    ? 'bg-yellow-400 text-black font-semibold'
-                    : 'bg-gray-100 text-gray-800 hover:bg-gray-200'
-                }`}
-              >
-                {item.subtitle}
-              </button>
-            ))}
-          </div>
+              <div key={index}>
+                <button
+                  onClick={() => toggleAccordion(index)}
+                  className={`w-full text-left px-6 py-4 rounded-lg transition-all duration-300 ${
+                    activeIndex === index
+                      ? 'bg-yellow-400 text-black font-semibold'
+                      : 'bg-gray-100 text-gray-800 hover:bg-gray-200'
+                  }`}
+                >
+                  {item.subtitle}
+                </button>
 
-          {/* Description */}
-          <div className="mt-8 p-6 bg-gray-50 rounded-lg border border-gray-200">
-            <p className="text-gray-700 leading-relaxed">
-              {items[activeIndex].description}
-            </p>
+                {/* Expanded Description */}
+                {activeIndex === index && (
+                  <div className="mt-2 p-4 bg-gray-50 rounded-lg border border-gray-200 animate-[slideDown_0.3s_ease-out]">
+                    <p className="text-gray-700 leading-relaxed">
+                      {item.description}
+                    </p>
+                  </div>
+                )}
+              </div>
+            ))}
           </div>
         </div>
 

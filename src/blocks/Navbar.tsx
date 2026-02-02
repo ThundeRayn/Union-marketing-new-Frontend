@@ -20,7 +20,7 @@ const Navbar = () => {
               ABOUT
               <span className="absolute left-0 bottom-0 w-0 h-0.5 bg-yellow-400 transition-all duration-300 ease-in-out group-hover:w-full"></span>
             </a>
-            <a href="#services" className="relative text-(--text-inverse) hover:text-(--color-primary) text-lg group">
+            <a href="/service" className="relative text-(--text-inverse) hover:text-(--color-primary) text-lg group">
               SERVICES
               <span className="absolute left-0 bottom-0 w-0 h-0.5 bg-yellow-400 transition-all duration-300 ease-in-out group-hover:w-full"></span>
             </a>

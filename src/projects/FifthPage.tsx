@@ -60,23 +60,9 @@ const Fifth = () => {
         url="https://res.cloudinary.com/dqj2gwlpf/image/upload/v1767459181/%E8%9E%A2%E5%B9%95%E6%88%AA%E5%9C%96-2025-03-16-%E4%B8%8B%E5%8D%8811.44.45_xocjxm.png"
       />
 
-      {/* Video Section */}
-      <div className="w-full">
-        <video 
-          ref={videoRef}
-          className="w-full"
-          loop
-          playsInline
-          controls
-          muted
-        >
-          <source 
-            src="https://res.cloudinary.com/dqj2gwlpf/video/upload/v1768270984/Snapinst.app_video_AQNZAZ3s3Pcv0l5g3n8Haw4eZyc_pmc3C1XCmc44toevbCAhJPM9QR5WxYJkN8icoZLijXcj3S7sIdK_Q-ntdHkP85kNlEvXJGL9UJM-1_byxrhs.mp4" 
-            type="video/mp4" 
-          />
-          Your browser does not support the video tag.
-        </video>
-      </div>
+
+      
+      
       
       {/* Main Content Area */}
       <div className="container mx-auto flex flex-col items-center">
@@ -136,6 +122,25 @@ const Fifth = () => {
           />
         </div>
       </div>
+      
+      {/* Video Section */}
+      <div className="w-full">
+        <video 
+          ref={videoRef}
+          className="w-full"
+          loop
+          playsInline
+          controls
+          muted
+        >
+          <source 
+            src="https://res.cloudinary.com/dqj2gwlpf/video/upload/v1768270984/Snapinst.app_video_AQNZAZ3s3Pcv0l5g3n8Haw4eZyc_pmc3C1XCmc44toevbCAhJPM9QR5WxYJkN8icoZLijXcj3S7sIdK_Q-ntdHkP85kNlEvXJGL9UJM-1_byxrhs.mp4" 
+            type="video/mp4" 
+          />
+          Your browser does not support the video tag.
+        </video>
+      </div>
+
     </div>
   )
 }

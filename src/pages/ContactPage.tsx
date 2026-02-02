@@ -1,15 +1,16 @@
 import SubHero from "@/blocks/SubHero"
 import ContactUs from "@/blocks/ContactUs"
+import Upbadge from "@/blocks/Upbadge"
 
 const ContactPage = () => {
   return (
     <>
-      <SubHero 
-        title="Get In Touch"
-        description="We'd love to hear from you. Let's connect and discuss your real estate projects."
-        backgroundImage="https://res.cloudinary.com/dqj2gwlpf/image/upload/v1767459181/%E8%9E%A2%E5%B9%95%E6%88%AA%E5%9C%96-2025-03-16-%E4%B8%8B%E5%8D%8811.44.45_xocjxm.png"
-      />
-
+      <Upbadge 
+        title='CONTACT' 
+        description="We'd love to hear from you. Connect to discuss your real estate projects." 
+        fullScreen={false}
+        url="https://res.cloudinary.com/dqj2gwlpf/image/upload/v1767459181/%E8%9E%A2%E5%B9%95%E6%88%AA%E5%9C%96-2025-03-16-%E4%B8%8B%E5%8D%8811.44.45_xocjxm.png"
+         />
       
       <ContactUs />
 

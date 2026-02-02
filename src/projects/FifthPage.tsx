@@ -1,18 +1,12 @@
 import Upbadge from "@/blocks/Upbadge"
 import { Button } from "@/components/ui/button"
-import { useRef, useEffect, useState } from "react"
+import { useRef, useEffect } from "react"
 
 const Fifth = () => {
   const videoRef = useRef<HTMLVideoElement>(null);
-  const floorPlanRef = useRef<HTMLDivElement>(null);
-  const [layoutType, setLayoutType] = useState<'double' | 'single'>('double');
 
   const scrollToVideo = () => {
     videoRef.current?.scrollIntoView({ behavior: 'smooth', block: 'center' });
-  };
-
-  const scrollToFloorPlan = () => {
-    floorPlanRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
   };
 
   useEffect(() => {
@@ -45,30 +39,13 @@ const Fifth = () => {
   }, []);
 
   const buttons = [
-    { id: 1, label: 'FEATURES & FINISHES', link: 'https://drive.google.com/file/d/15aiUkCq8d4q3PiRF4jx6uNxVx6ktsf1A/view?usp=sharing' },
-    { id: 2, label: 'BROCHER', link: 'https://drive.google.com/file/d/1MezmxgSo62ofhhaiQPBe28jSLjZM2qIE/view?usp=sharing', target: '_blank' },
+    { id: 1, label: 'AMENITY MAP', link: 'https://drive.google.com/file/d/1dA7KyqEZHfJbGqSIUCs67ZPAplIheGRR/view?usp=sharing',target: '_blank' },
+    { id: 2, label: 'INCENTIVE', link: 'https://drive.google.com/file/d/11-iSgsejyMtEchqczBAp_I0asat2O28g/view?usp=sharing', target: '_blank' },
     { id: 3, label: 'VIDEO', link: '#video', onClick: scrollToVideo },
-    { id: 4, label: 'FLOOR PLAN', link: '#floorplan', onClick: scrollToFloorPlan },
-    { id: 5, label: 'SITE PLAN', link: 'https://drive.google.com/file/d/17s4JyyoPxJCFtpG8leLkctwoSFdNAUcP/view?usp=sharing', target: '_blank' },
-    { id: 7, label: 'PRICE LIST', link: 'https://drive.google.com/file/d/13v4GCFyi6PnuhkZFSss7lNc5BMCHQ5n9/view?usp=sharing', target: '_blank' },
-    { id: 8, label: 'AMENITIES MAP', link: 'https://drive.google.com/file/d/1eCj4BmgpHA4EPMQhQ5l-Y3erJSKvqPRN/view?usp=sharing', target: '_blank' },
-    { id: 9, label: 'WORKSHEET', link: 'https://drive.google.com/file/d/1GIcib_2DQblIQmeY_E-fuaJkhWT9tYEi/view?usp=sharing' , target: '_blank' },
-  ];
-
-  const doubleCarFloorPlans = [
-    { id: 'dc1', label: 'THR-1 End & Corner', link: 'https://drive.google.com/file/d/1MTpvAKcrki8SbuMh9Qi8uay82IS9FjV3/view?usp=sharing', target: '_blank' },
-    { id: 'dc2', label: 'THR-1', link: 'https://drive.google.com/file/d/1l4hFDuroUfmJtliGlWdMDI2b1qEUs26S/view?usp=sharing',target: '_blank' },
-    { id: 'dc3', label: 'THR-2', link: 'https://drive.google.com/file/d/1bClYi29cCxs3A3VEQPWpqOaB3_gSLket/view?usp=sharing', target: '_blank' },
-    { id: 'dc4', label: 'THR-3 End & Corner', link: 'https://drive.google.com/file/d/1bClYi29cCxs3A3VEQPWpqOaB3_gSLket/view?usp=sharing', target: '_blank' },
-    { id: 'dc5', label: 'THR-3', link: 'https://drive.google.com/file/d/1-JKX1bYk2b0Yy3jv5ZV6p2k9g0k1Y1b2/view?usp=sharing', target: '_blank' },
-    { id: 'dc6', label: 'THR-4', link: 'https://drive.google.com/file/d/19ZzE0QRvUb0S_BxGDV4CXbszWcp6-wLW/view?usp=sharing', target: '_blank' },
-  ];
-
-  const singleCarFloorPlans = [
-    { id: 'sc1', label: 'THF-2', link: 'https://drive.google.com/file/d/1BhdKjw_I9omaRRPUmrPnZimAYP-rMLwi/view?usp=sharing', target: '_blank' },
-    { id: 'sc2', label: 'THF-3 End', link: 'https://drive.google.com/file/d/1_nnbgnrgFA97JxI66ZnFuITUKxLX_Fm6/view?usp=sharing', target: '_blank' },
-    { id: 'sc3', label: 'THF-3', link: 'https://drive.google.com/file/d/1lOiR7rLqVtWR8oR1JbKRv7n4P23dV_zX/view?usp=sharing', target: '_blank' },
-    { id: 'sc4', label: 'TH-4', link: 'https://drive.google.com/file/d/14rKmbMPaA7MYgoRpT9nhXtmlSHHFPNWJ/view?usp=sharing', target: '_blank' },
+    { id: 4, label: 'SINGLE-GARAGE-FLOOR PLAN', link: 'https://drive.google.com/file/d/1XQ3KB1eIVwUDvSmLqkYzmongkDzMfDBa/view?usp=sharing', target: '_blank' },
+    { id: 5, label: 'DOUBLE-GARAGE-FLOOR PLAN', link: 'https://drive.google.com/file/d/1RaBlR1yFYNYrZKSuzooYyYZxfczZrt3O/view?usp=sharing', target: '_blank' },
+    { id: 7, label: 'SITE PLAN', link: 'https://drive.google.com/file/d/1QbwY5Y0vgypLbFr1KWYAzcH4rFRks9gk/view?usp=sharing', target: '_blank' },
+    { id: 8, label: 'PRICE LIST', link: 'https://drive.google.com/file/d/1IkN9GZX7j665fhWAVT07G2GJDWzNwOSn/view?usp=sharing', target: '_blank' }
   ];
 
   const images = [
@@ -82,11 +59,29 @@ const Fifth = () => {
         description='NOW SELLING'
         url="https://res.cloudinary.com/dqj2gwlpf/image/upload/v1767459181/%E8%9E%A2%E5%B9%95%E6%88%AA%E5%9C%96-2025-03-16-%E4%B8%8B%E5%8D%8811.44.45_xocjxm.png"
       />
+
+      {/* Video Section */}
+      <div className="w-full">
+        <video 
+          ref={videoRef}
+          className="w-full"
+          loop
+          playsInline
+          controls
+          muted
+        >
+          <source 
+            src="https://res.cloudinary.com/dqj2gwlpf/video/upload/v1768270984/Snapinst.app_video_AQNZAZ3s3Pcv0l5g3n8Haw4eZyc_pmc3C1XCmc44toevbCAhJPM9QR5WxYJkN8icoZLijXcj3S7sIdK_Q-ntdHkP85kNlEvXJGL9UJM-1_byxrhs.mp4" 
+            type="video/mp4" 
+          />
+          Your browser does not support the video tag.
+        </video>
+      </div>
       
       {/* Main Content Area */}
-      <div className="container mx-auto px-4 py-8">
+      <div className="container mx-auto flex flex-col items-center">
           
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+        <div className="w-full max-w-2xl gap-8 px-4 py-5 md:py-20">
           {/* Left Container - Button List */}
           
           <div className="flex flex-col space-y-4">
@@ -116,7 +111,7 @@ const Fifth = () => {
           </div>
 
           {/* Right Container - Image List */}
-          <div className="flex flex-col space-y-4">
+          <div className="flex flex-col space-y-4 mt-8">
             {images.map((image, index) => (
               <div key={index} className="w-full overflow-hidden rounded-lg">
                 <img
@@ -130,54 +125,9 @@ const Fifth = () => {
         </div>
       </div>
 
-      {/* Floor Plan Section */}
-      <div ref={floorPlanRef} className="container mx-auto px-4 py-8">
-        <h2 className="text-3xl font-bold mb-6 text-center">Floor Plans</h2>
-        
-        {/* Layout Type Switch */}
-        <div className="flex justify-center gap-8 mb-8">
-          <h3
-            onClick={() => setLayoutType('double')}
-            className={`text-2xl font-semibold cursor-pointer transition-all duration-300 ${
-              layoutType === 'double' 
-                ? 'text-black border-b-4 border-yellow-400 pb-2' 
-                : 'text-gray-400 hover:text-gray-600 pb-2'
-            }`}
-          >
-            Double Garage
-          </h3>
-          <h3
-            onClick={() => setLayoutType('single')}
-            className={`text-2xl font-semibold cursor-pointer transition-all duration-300 ${
-              layoutType === 'single' 
-                ? 'text-black border-b-4 border-yellow-400 pb-2' 
-                : 'text-gray-400 hover:text-gray-600 pb-2'
-            }`}
-          >
-            Single Garage
-          </h3>
-        </div>
-
-        {/* Floor Plan Buttons */}
-        <div className="flex flex-col space-y-4 max-w-md mx-auto">
-          {(layoutType === 'double' ? doubleCarFloorPlans : singleCarFloorPlans).map((plan) => (
-            <Button
-              key={plan.id}
-              variant="price"
-              size="union"
-              asChild
-            >
-              <a href={plan.link} target="_blank" rel="noopener noreferrer">
-                {plan.label}
-              </a>
-            </Button>
-          ))}
-        </div>
-      </div>
-
       {/* The Builder Section */}
-      <div className="container mx-auto px-4 py-8">
-        <h2 className="text-3xl font-bold mb-6 text-center">The Builder</h2>
+      <div className="container mx-auto px-4 py-12">
+        <h2 className="text-3xl font-serif font-bold mb-6 text-center">The Builder</h2>
         <div className="flex items-center justify-center gap-4">
           <img 
             src="https://res.cloudinary.com/dqj2gwlpf/image/upload/v1767486776/logo-removebg-preview_t0imsb.png" 
@@ -185,24 +135,6 @@ const Fifth = () => {
             className="w-32 h-32 object-cover rounded-lg" 
           />
         </div>
-      </div>
-
-      {/* Video Section */}
-      <div className="container mx-auto px-4 py-8">
-        <video 
-          ref={videoRef}
-          className="w-full rounded-lg shadow-lg"
-          loop
-          playsInline
-          controls
-          muted
-        >
-          <source 
-            src="https://res.cloudinary.com/dqj2gwlpf/video/upload/v1768270984/Snapinst.app_video_AQNZAZ3s3Pcv0l5g3n8Haw4eZyc_pmc3C1XCmc44toevbCAhJPM9QR5WxYJkN8icoZLijXcj3S7sIdK_Q-ntdHkP85kNlEvXJGL9UJM-1_byxrhs.mp4" 
-            type="video/mp4" 
-          />
-          Your browser does not support the video tag.
-        </video>
       </div>
     </div>
   )

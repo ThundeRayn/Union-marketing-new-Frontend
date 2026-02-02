@@ -2,13 +2,15 @@ interface SubHeroProps {
   title: string;
   description?: string;
   url?: string;
+  fullScreen?: boolean;
 }
 
-const SubHero = ({ title, description, url }: SubHeroProps) => {
+const SubHero = ({ title, description, url, fullScreen = true }: SubHeroProps) => {
   return (
     <div 
-      className="relative h-[60vh] flex items-center justify-center mb-12"
+      className="relative flex items-center justify-center"
       style={{
+        height: fullScreen ? 'calc(100vh - 80px)' : '60vh',
         backgroundImage: `url(${url || 'https://res.cloudinary.com/dqj2gwlpf/image/upload/v1767497882/RenderingA_nvcuji.png'})`,
         backgroundSize: 'cover',
         backgroundPosition: 'center'

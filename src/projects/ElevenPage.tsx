@@ -119,6 +119,7 @@ const ElevenPage = () => {
               alt="Main project"
               className="w-full p-6 h-auto object-cover rounded-lg mb-4" 
             />
+            {/* eslint-disable-next-line react-hooks/refs */}
             {buttons.map((button) => (
               <Button
                 key={button.id}

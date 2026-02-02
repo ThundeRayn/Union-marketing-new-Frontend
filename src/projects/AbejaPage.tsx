@@ -3,9 +3,6 @@ import PictureRender from "@/components/PictureRender"
 import YTVideo from "@/components/YTVideo"
 
 const AbejaPage = () => {
-  const images = [
-    'https://via.placeholder.com/800x600'
-  ];
 
   return (
     <div>

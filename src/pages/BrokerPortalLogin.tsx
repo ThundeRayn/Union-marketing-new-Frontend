@@ -39,7 +39,10 @@ const BrokerPortalLogin = () => {
         {/* Header */}
         <div className="text-center mb-8">
           <h1 className="text-4xl font-bold text-gray-900 mb-2">Broker Portal</h1>
-          <p className="text-gray-600">{isLogin ? 'Sign in to your account' : 'Create a new account'}</p>
+          <p className="text-gray-600">
+            {isLogin ? 
+            'Have an account already? Sign in to unlock more'
+             : 'Create a new account'}</p>
         </div>
 
         {/* Toggle Tabs */}

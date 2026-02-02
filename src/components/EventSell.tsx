@@ -37,11 +37,11 @@ const EventSell = ({
         
         {/* Content */}
         <div className="relative z-10 text-center px-4 space-y-6">
-          <h2 
+          <h1 
             className="font-serif text-4xl font-bold text-white mb-4 drop-shadow-2xl animate-[slideDownFadeIn_0.8s_ease-out]"
           >
             {title}
-          </h2>
+          </h1>
           
           <p 
             className="font-light text-lg text-white mb-8 drop-shadow-lg animate-[slideDownFadeIn_0.8s_ease-out]"

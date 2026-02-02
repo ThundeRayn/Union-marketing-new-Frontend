@@ -17,13 +17,23 @@ const Navbar = () => {
         <div className="flex justify-between items-center h-20 pr-8">
           {/* Logo */}
           <div className="flex-shrink-0">
-            <a href="/">
-            <img 
+            <a href="/" className="pl-10 flex items-center gap-2 group transition-transform duration-300 ease-in-out hover:translate-x-1">
+              <img 
+                src="/favicon.ico" 
+                alt="Union Logo" 
+                className="h-10 w-10"
+              />
+              <img 
+                src="/letter-transparent.png" 
+                alt="Union Text" 
+                className="h-9 w-55"
+              />
+            </a>
+             {/* <img 
               src="/Union-icon.png" 
               alt="Union Logo" 
               className="h-15 transition-transform duration-300 ease-in-out hover:translate-x-2"
-            />
-            </a>
+            />  */}
           </div>
 
           {/* Navigation Links & Sign In - Right Side (Desktop) */}

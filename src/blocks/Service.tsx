@@ -4,31 +4,61 @@ import AccordionCard from '@/components/AccordionCard'
 const Service = () => {
   const servicesData1 = [
     {
-      subtitle: "Market Analysis",
-      description: "Comprehensive market research and competitive analysis to identify opportunities and positioning strategies for your pre-construction projects in Ontario."
+      subtitle: "Demographic Studies",
+      description: "Analyzing target demographics to align project offerings with market needs."
     },
     {
-      subtitle: "Strategic Planning",
-      description: "Develop tailored strategies that align with your project goals, timeline, and target demographics for maximum market impact."
+      subtitle: "Competitive Analysis",
+      description: "Assessing market competition to identify unique selling propositions and market gaps."
     },
     {
-      subtitle: "Implementation",
-      description: "Execute plans with precision, managing all marketing initiatives and ensuring consistent brand messaging across all channels."
+      subtitle: "Marketing Insights",
+      description: "Delivering comprehensive market research and insights to inform project development and positioning."
     }
   ]
 
   const servicesData2 = [
     {
-      subtitle: "Client Relationship",
-      description: "Build and maintain strong relationships with developers, builders, and buyers through transparent communication and personalized service."
+      subtitle: "Land Acquisition",
+      description: "Offering expert advice on strategic land purchases and site selection."
     },
     {
-      subtitle: "Expert Consultation",
-      description: "Provide specialized insights and expert guidance on market trends, pricing strategies, and development opportunities."
+      subtitle: "Regulatory Compliance",
+      description: "Navigating legal and regulatory requirements for smooth project development."
     },
     {
-      subtitle: "Project Support",
-      description: "Ongoing support throughout the entire project lifecycle, from pre-construction planning to final delivery and beyond."
+      subtitle: "Builder Focus",
+      description: "Partnering with architects and designers to ensure projects meet market expectations and aesthetic standards."
+    }
+  ]
+
+  const servicesData3 = [
+    {
+      subtitle: "Branding & Promotion",
+      description: "Creating compelling branding and promotional campaigns tailored to target audiences."
+    },
+    {
+      subtitle: "Digital Marketing",
+      description: "Implementing online marketing tactics to maximize reach and engagement."
+    },
+    {
+      subtitle: "Sales Development",
+      description: "Establishing and optimizing various sales channels, including broker networks and direct sales."
+    }
+  ]
+
+  const servicesData4 = [
+    {
+      subtitle: "Investor Engagement",
+      description: "Strengthening relationships with investors through regular updates and tailored communication."
+    },
+    {
+      subtitle: "Builder Partnership Support",
+      description: "Collaborating with builders to ensure project specifications and timelines are met."
+    },
+    {
+      subtitle: "Stakeholder Coordination",
+      description: "Facilitating effective communication and coordination among all project stakeholders."
     }
   ]
 
@@ -37,20 +67,40 @@ const Service = () => {
       <div className="max-w-7xl mx-auto space-y-16">
         {/* Service Card 1 */}
         <AccordionCard
-          title="Marketing & Sales Strategy"
-          shortDescription="Tailored marketing and sales strategies for pre-construction low-rise projects, encompassing market analysis, branding, and targeted campaigns."
+          title="Strategic Market Analysis"
+          shortDescription="This service encompasses a comprehensive approach to understanding and interpreting market dynamics to inform and guide real estate projects. It involves:"
           items={servicesData1}
           imageUrl="https://res.cloudinary.com/dqj2gwlpf/image/upload/v1768281404/Untitled-design_z0zzrk.png"
-          imageAlt="Marketing Strategy"
+          imageAlt="Strategic Market Analysis"
         />
 
         {/* Service Card 2 */}
         <AccordionCard
-          title="Advisory & Expert Support"
-          shortDescription="Comprehensive support in project planning and execution, providing strategic partnerships and expert insights for enhanced project viability."
+          title="Planning &Marketing"
+          shortDescription="This service offers expert guidance and support throughout the project development process, including:"
           items={servicesData2}
           imageUrl="https://res.cloudinary.com/dqj2gwlpf/image/upload/v1768281398/Untitled-design-1_uucu7z.png"
-          imageAlt="Advisory Support"
+          imageAlt="Planning & Marketing"
+        />
+
+        
+        {/* Service Card 3 */}
+        <AccordionCard
+          title="Integrated Marketing & Sales Solutions"
+          shortDescription="A comprehensive suite of services designed to effectively market and sell real estate projects:"
+          items={servicesData3}
+          imageUrl="https://res.cloudinary.com/dqj2gwlpf/image/upload/v1768281410/Untitled-design-3_llkzqd.png"
+          imageAlt="Integrated Marketing & Sales Solutions"
+        />
+
+        
+        {/* Service Card 4 */}
+        <AccordionCard
+          title="Builder Relationship Management"
+          shortDescription="Focused on maintaining and strengthening relationships with key project stakeholders:"
+          items={servicesData4}
+          imageUrl="https://res.cloudinary.com/dqj2gwlpf/image/upload/v1768281416/Untitled-design-2_ftiwxs.png"
+          imageAlt="Builder Relationship Management"
         />
       </div>
     </div>

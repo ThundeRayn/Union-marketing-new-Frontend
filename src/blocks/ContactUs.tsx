@@ -124,7 +124,7 @@ const ContactUs = () => {
             <img 
               src="https://res.cloudinary.com/dqj2gwlpf/image/upload/v1767817651/avi-waxman-f9qZuKoZYoY-unsplash_z2zx1w.jpg" 
               alt="Contact Us"
-              className="w-full h-[800px] object-cover rounded-[40px]"
+              className="w-full h-[400px] md:h-[800px] object-cover rounded-[40px] md:rounded-bl-[100px]"
             />
           </div>
         </div>

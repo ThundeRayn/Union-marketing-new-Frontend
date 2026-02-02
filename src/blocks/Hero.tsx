@@ -46,7 +46,7 @@ const Hero = () => {
   }
 
   return (
-    <div className="relative w-full h-[500px] bg-gray-800">
+    <div className="relative w-full bg-gray-800" style={{ height: 'calc(100vh - 80px)' }}>
       {slides.map((slide, index) => (
         <div
           key={index}

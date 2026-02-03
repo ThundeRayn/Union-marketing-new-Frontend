@@ -1,4 +1,4 @@
-import Upbadge from "@/blocks/Upbadge"
+//import Upbadge from "@/blocks/Upbadge"
 import { Button } from "@/components/ui/button"
 import ProjectInfo from "@/components/ProjectInfo"
 import { useRef, useEffect } from "react"
@@ -88,21 +88,34 @@ const ElevenPage = () => {
 
   return (
     <div>
-      <Upbadge 
+      {/* <Upbadge 
         title='11 Altamont Rd.' 
         description='NOW SELLING'
         url="https://res.cloudinary.com/dqj2gwlpf/image/upload/v1768275582/Untitled-design-5_xjqyo7.jpg"
-      />
+      /> */}
 
+      {/* Video Section */}
+      <div ref={videoContainerRef} className="w-full">
+        <div className="w-full aspect-video overflow-hidden">
+          <iframe 
+            ref={iframeRef}
+            src="https://player.vimeo.com/video/340649441?loop=1&autoplay=1&title=0&byline=0&portrait=0" 
+            className="w-full h-full"
+            frameBorder="0" 
+            allow="autoplay; fullscreen; picture-in-picture" 
+            allowFullScreen
+          />
+        </div>
+      </div>
       <ProjectInfo 
         type="CONDO TOWNS"
         location="Near Finch Station"
       />
       
       {/* Main Content Area */}
-      <div className="container mx-auto px-4 py-8">
+      <div className="container mx-auto px-4 py-8 flex flex-col items-center">
           
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+        <div className="w-full max-w-2xl">
           {/* Left Container - Button List */}
           
           <div className="flex flex-col space-y-4">
@@ -132,7 +145,7 @@ const ElevenPage = () => {
           </div>
 
           {/* Right Container - Image List */}
-          <div className="flex flex-col space-y-4">
+          <div className="flex flex-col space-y-4 mt-8">
             {images.map((image, index) => (
               <div key={index} className="w-full overflow-hidden rounded-lg">
                 <img
@@ -158,28 +171,16 @@ const ElevenPage = () => {
         </div>
       </div>
 
-      {/* Video Section */}
-      <div ref={videoContainerRef} className="container mx-auto px-4 py-8">
-        <div className="w-full aspect-video rounded-lg overflow-hidden shadow-lg">
-          <iframe 
-            ref={iframeRef}
-            src="https://player.vimeo.com/video/340649441?loop=1&title=0&byline=0&portrait=0" 
-            className="w-full h-full"
-            frameBorder="0" 
-            allow="autoplay; fullscreen; picture-in-picture" 
-            allowFullScreen
-          />
-        </div>
-      </div>
+      
 
       {/* Cloudinary Video Section */}
-      <div className="container mx-auto px-4 py-8">
+      <div className="w-full">
         <video 
           ref={cloudinaryVideoRef}
-          className="w-full rounded-lg shadow-lg"
+          className="w-full"
           loop
           playsInline
-          controls
+          autoPlay
           muted
         >
           <source 

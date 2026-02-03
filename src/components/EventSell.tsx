@@ -36,9 +36,9 @@ const EventSell = ({
         <div className="absolute inset-0 bg-black/40"></div>
         
         {/* Content */}
-        <div className="relative z-10 text-center px-4 space-y-6">
+        <div className="relative z-10 text-center px-4 space-y-4">
           <h1 
-            className="font-serif text-4xl font-bold text-white mb-4 drop-shadow-2xl animate-[slideDownFadeIn_0.8s_ease-out]"
+            className="font-serif mx-10 text-2xl md:text-4xl font-bold text-white mb-4 drop-shadow-2xl animate-[slideDownFadeIn_0.8s_ease-out]"
           >
             {title}
           </h1>
@@ -52,7 +52,7 @@ const EventSell = ({
           <div className="flex justify-center items-center">
             <button 
               onClick={() => navigate(link)}
-              className="relative border border-yellow-400 text-white px-6 py-3 rounded-lg font-bold overflow-hidden group inline-block cursor-pointer transition-all duration-300 animate-[slideDownFadeIn_0.8s_ease-out]"
+              className="relative border border-yellow-400 text-white px-6 py-3 rounded-lg font-semibold overflow-hidden group inline-block cursor-pointer transition-all duration-300 animate-[slideDownFadeIn_0.8s_ease-out]"
             >
               <span className="relative z-10 transition-all duration-300 ease-in-out group-hover:opacity-0">
                 {button}

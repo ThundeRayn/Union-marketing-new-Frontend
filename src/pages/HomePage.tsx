@@ -46,7 +46,7 @@ const HomePage = () => {
 
             {services.map((service, index) => (
               <div key={index} className="bg-white border border-gray-200 rounded-[50px] p-8 shadow-sm hover:shadow-2xl hover:scale-105 transition-all duration-500 ease-in-out">
-                <h3 className="text-2xl font-semibold text-gray-900 mb-4">
+                <h3 className="text-xl md:text-2xl font-semibold text-gray-900 mb-4">
                   {service.title}
                 </h3>
                 <p className="text-gray-600 font-normal mb-6 leading-relaxed">

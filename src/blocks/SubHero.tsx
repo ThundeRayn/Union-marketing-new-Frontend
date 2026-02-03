@@ -28,19 +28,19 @@ const SubHero = ({
       <div className="absolute inset-0 bg-black/40"></div>
       
       {/* Titles with border */}
-      <div className="relative z-10 text-center space-y-[4vh]">
+      <div className="relative z-10 text-center space-y-4 px-4">
         <h1 
-          className="text-[5vh] lg:text-[7vh] lg:font-serif lg:font-bold font-bold font-serif text-yellow-400 px-[4vw] py-[2vh] inline-block animate-[slideDownFadeIn_0.8s_ease-out]"
+          className="font-serif mx-10 text-2xl md:text-4xl font-bold text-yellow-400 mb-4 drop-shadow-2xl animate-[slideDownFadeIn_0.8s_ease-out]"
           style={{ textShadow: titleShadow ? '0 8px 16px rgba(0, 0, 0, 0.5), 0 4px 8px rgba(0, 0, 0, 0.7)' : 'none' }}
         >
           {title}
         </h1>
-        <h2 
-          className="text-[3vh] lg:text-[4vh] font-semibold text-white px-[4vw] py-[1.5vh] inline-block animate-[slideDownFadeIn_0.8s_ease-out_0.2s_backwards]"
+        <p 
+          className="font-light text-lg text-white mb-8 drop-shadow-lg animate-[slideDownFadeIn_0.8s_ease-out]"
           style={{ textShadow: descriptionShadow ? '0 8px 16px rgba(0, 0, 0, 0.5), 0 4px 8px rgba(0, 0, 0, 0.7)' : 'none' }}
         >
           {description}
-        </h2>
+        </p>
       </div>
     </div>
   )

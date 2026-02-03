@@ -7,7 +7,7 @@ interface NativeVideoProps {
   loop?: boolean
 }
 
-const NativeVideo = ({ src, title = "Video", controls = true, loop = true }: NativeVideoProps) => {
+const NativeVideo = ({ src, controls = true, loop = true }: NativeVideoProps) => {
   const videoRef = useRef<HTMLVideoElement>(null);
 
   useEffect(() => {

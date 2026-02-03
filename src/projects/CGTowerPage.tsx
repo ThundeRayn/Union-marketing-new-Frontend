@@ -3,10 +3,6 @@ import PictureRender from "@/components/PictureRender"
 import YouTubeVideo from "@/components/YouTubeVideo"
 
 const CGTowerPage = () => {
-  const images = [
-    'https://via.placeholder.com/800x600'
-  ];
-
   return (
     <div>
       {/* Video Section */}

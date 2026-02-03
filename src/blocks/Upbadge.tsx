@@ -20,12 +20,12 @@ const SubHero = ({ title, description, url, fullScreen = true }: SubHeroProps) =
       <div className="absolute inset-0 bg-black/40"></div>
       
       {/* Titles with border */}
-      <div className="relative z-10 text-center space-y-6">
-        <h1 className="text-3xl md:text-4xl font-serif font-bold text-white  px-8 py-4 inline-block animate-[slideDownFadeIn_0.8s_ease-out]">
+      <div className="relative z-10 text-center space-y-4 px-4">
+        <h1 className="font-serif mx-10 text-2xl md:text-4xl font-bold text-white mb-4 drop-shadow-2xl animate-[slideDownFadeIn_0.8s_ease-out]">
           {title}
         </h1>
         {description && (
-          <p className="text-lg md:text-xl text-white max-w-2xl mx-auto animate-[slideDownFadeIn_0.8s_ease-out]">
+          <p className="font-light text-lg text-white mb-8 drop-shadow-lg animate-[slideDownFadeIn_0.8s_ease-out]">
             {description}
           </p>
         )}

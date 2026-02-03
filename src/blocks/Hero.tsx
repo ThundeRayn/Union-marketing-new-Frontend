@@ -87,7 +87,7 @@ const Hero = () => {
       <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-4 z-10">
         <h1 
           key={`title-${currentSlide}`}
-          className="font-serif text-4xl font-bold text-white mb-4 drop-shadow-2xl animate-[slideDownFadeIn_0.8s_ease-out]"
+          className="font-serif mx-10 text-2xl md:text-4xl font-bold text-white mb-4 drop-shadow-2xl animate-[slideDownFadeIn_0.8s_ease-out]"
         >
           {slides[currentSlide].title}
         </h1>
@@ -101,7 +101,7 @@ const Hero = () => {
           <a 
             key={`button-${currentSlide}`}
             href={slides[currentSlide].link}
-            className="relative border border-yellow-400 text-white px-6 py-3 rounded-lg font-bold overflow-hidden group inline-block animate-[slideDownFadeIn_0.8s_ease-out]"
+            className="relative border border-yellow-400 text-white px-6 py-3 rounded-lg font-semibold overflow-hidden group inline-block animate-[slideDownFadeIn_0.8s_ease-out]"
           >
             <span className="relative z-10 transition-all duration-300 ease-in-out group-hover:opacity-0">
               MORE INFORMATION

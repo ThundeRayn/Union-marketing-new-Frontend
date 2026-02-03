@@ -21,12 +21,12 @@ const Navbar = () => {
               <img 
                 src="/favicon.ico" 
                 alt="Union Logo" 
-                className="h-10 w-10"
+                className="h-8 w-8 md:h-10 md:w-10"
               />
               <img 
                 src="/letter-transparent.png" 
                 alt="Union Text" 
-                className="h-9 w-55"
+                className="h-8 w-45 md:h-9 md:w-55"
               />
             </a>
              {/* <img 

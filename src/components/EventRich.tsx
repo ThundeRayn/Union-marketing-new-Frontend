@@ -43,10 +43,10 @@ const EventRich = ({
         <div className="absolute inset-0 bg-black/40"></div>
         
         {/* Content */}
-        <div className="relative z-10 text-center px-4 space-y-6">
+        <div className="relative z-10 text-center px-4 space-y-4">
           <h1 
             key={`title-${id}`}
-            className="font-serif text-4xl font-bold text-white mb-4 drop-shadow-2xl animate-[slideDownFadeIn_0.8s_ease-out]"
+            className="font-serif mx-10 text-2xl md:text-4xl font-bold text-white mb-4 drop-shadow-2xl animate-[slideDownFadeIn_0.8s_ease-out]"
           >
             {title}
           </h1>
@@ -62,16 +62,18 @@ const EventRich = ({
             <button 
               key={`button-${id}`}
               onClick={() => handleCopyAddress(address)}
-              className="relative border border-yellow-400 text-white px-6 py-3 rounded-lg font-bold overflow-hidden group inline-block cursor-pointer transition-all duration-300 animate-[slideDownFadeIn_0.8s_ease-out]"
+              className="relative border border-yellow-400 text-white px-6 py-3 rounded-lg font-semibold overflow-hidden group inline-block cursor-pointer transition-all duration-300 animate-[slideDownFadeIn_0.8s_ease-out]"
             >
               <span className="relative z-10 transition-all duration-300 ease-in-out group-hover:opacity-0">
                 {date}, {time}
               </span>
-              <span className="absolute inset-0 flex items-center justify-center translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-in-out text-white">
+              <span className="absolute inset-0 flex items-center justify-center translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-in-out text-white ">
                 {copied ? '✓ Copied!' : address}
               </span>
-            </button>
+            </button> 
           </div>
+
+
         </div>
       </div>
     </div>

@@ -1,6 +1,7 @@
-import Upbadge from "@/blocks/Upbadge"
+//import Upbadge from "@/blocks/Upbadge"
 import { Button } from "@/components/ui/button"
-import { useRef, useEffect } from "react"
+import NativeVideo from "@/components/NativeVideo"
+import { useRef } from "react"
 
 const Fifth = () => {
   const videoRef = useRef<HTMLVideoElement>(null);
@@ -8,35 +9,6 @@ const Fifth = () => {
   const scrollToVideo = () => {
     videoRef.current?.scrollIntoView({ behavior: 'smooth', block: 'center' });
   };
-
-  useEffect(() => {
-    const video = videoRef.current;
-    
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting && video) {
-            video.play().catch((error) => {
-              console.log("Autoplay was prevented:", error);
-            });
-          } else if (video) {
-            video.pause();
-          }
-        });
-      },
-      { threshold: 0.25 }
-    );
-
-    if (video) {
-      observer.observe(video);
-    }
-
-    return () => {
-      if (video) {
-        observer.unobserve(video);
-      }
-    };
-  }, []);
 
   const buttons = [
     { id: 1, label: 'AMENITY MAP', link: 'https://drive.google.com/file/d/1dA7KyqEZHfJbGqSIUCs67ZPAplIheGRR/view?usp=sharing',target: '_blank' },
@@ -54,14 +26,20 @@ const Fifth = () => {
 
   return (
     <div>
-      <Upbadge 
+      {/* <Upbadge 
         title='Fifth Avenue Homes King City' 
         description='NOW SELLING'
         url="https://res.cloudinary.com/dqj2gwlpf/image/upload/v1767459181/%E8%9E%A2%E5%B9%95%E6%88%AA%E5%9C%96-2025-03-16-%E4%B8%8B%E5%8D%8811.44.45_xocjxm.png"
+      /> */}
+
+
+       {/* Video Section */}
+      <NativeVideo 
+        src="https://res.cloudinary.com/dqj2gwlpf/video/upload/v1768270984/Snapinst.app_video_AQNZAZ3s3Pcv0l5g3n8Haw4eZyc_pmc3C1XCmc44toevbCAhJPM9QR5WxYJkN8icoZLijXcj3S7sIdK_Q-ntdHkP85kNlEvXJGL9UJM-1_byxrhs.mp4"
+        title="Project Video"
+        controls={true}
+        loop={true}
       />
-
-
-      
       
       
       {/* Main Content Area */}
@@ -122,24 +100,10 @@ const Fifth = () => {
           />
         </div>
       </div>
+
+
       
-      {/* Video Section */}
-      <div className="w-full">
-        <video 
-          ref={videoRef}
-          className="w-full"
-          loop
-          playsInline
-          controls
-          muted
-        >
-          <source 
-            src="https://res.cloudinary.com/dqj2gwlpf/video/upload/v1768270984/Snapinst.app_video_AQNZAZ3s3Pcv0l5g3n8Haw4eZyc_pmc3C1XCmc44toevbCAhJPM9QR5WxYJkN8icoZLijXcj3S7sIdK_Q-ntdHkP85kNlEvXJGL9UJM-1_byxrhs.mp4" 
-            type="video/mp4" 
-          />
-          Your browser does not support the video tag.
-        </video>
-      </div>
+     
 
     </div>
   )

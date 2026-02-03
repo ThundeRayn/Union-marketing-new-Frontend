@@ -1,17 +1,14 @@
 import Upbadge from "@/blocks/Upbadge"
 import PictureRender from "@/components/PictureRender"
-import YTVideo from "@/components/YTVideo"
+import YouTubeVideo from "@/components/YouTubeVideo"
 
 const AbejaPage = () => {
 
   return (
     <div>
-      <Upbadge 
-        title='Abeja Project' 
-        description='NOW SELLING'
-        url="https://res.cloudinary.com/dqj2gwlpf/image/upload/v1768279500/index-slider-v1_kamq7j.jpg"
-      />
 
+      <YouTubeVideo videoId="KX63R85lUOc" title="Project Video" />
+      
       {/* Project Info Section */}
       <div className="container mx-auto px-4 py-6">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-2xl mx-auto">
@@ -26,10 +23,22 @@ const AbejaPage = () => {
         </div>
       </div>
 
+      {/* Picture Render Section */}
+      <PictureRender
+        title="Rendering"
+        pictures={[
+          'https://res.cloudinary.com/dqj2gwlpf/image/upload/v1770095926/render-1_ugefuc.png',
+          'https://res.cloudinary.com/dqj2gwlpf/image/upload/v1770095920/siteplan_xtuiqg.jpg',
+          'https://res.cloudinary.com/dqj2gwlpf/image/upload/v1770095900/index-slider-v3_fhhaj5.jpg',
+          'https://res.cloudinary.com/dqj2gwlpf/image/upload/v1770095886/index-slider-v4_ps8otu.jpg',
+          'https://res.cloudinary.com/dqj2gwlpf/image/upload/v1770095878/index-slider-v2_y1toqv.jpg',
+        ]}
+      />
+
       {/* The Builder Section */}
       <div className="container mx-auto px-4 py-8">
         <h2 className="text-3xl font-bold mb-6 text-center">The Builder</h2>
-        <div className="flex items-center justify-center gap-4">
+        <div className="flex flex-col md:flex-row items-center justify-center gap-4">
           <img 
             src="https://res.cloudinary.com/dqj2gwlpf/image/upload/v1767486870/Cortel-Group-with-text_p5vbhf.png" 
             alt="Builder icon"
@@ -42,16 +51,14 @@ const AbejaPage = () => {
         </div>
       </div>
 
-      {/* Picture Render Section */}
-      <PictureRender
-        title="Rendering"
-        pictures={[
-          'https://via.placeholder.com/1200x800',
-          'https://via.placeholder.com/1200x800',
-        ]}
+      
+
+      <Upbadge 
+        title='Abeja Project' 
+        description='NOW SELLING'
+        url="https://res.cloudinary.com/dqj2gwlpf/image/upload/v1768279500/index-slider-v1_kamq7j.jpg"
       />
 
-      <YTVideo videoId="KX63R85lUOc" title="Project Video" />
     </div>
   )
 }

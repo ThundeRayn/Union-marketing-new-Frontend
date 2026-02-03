@@ -1,6 +1,6 @@
 import Upbadge from "@/blocks/Upbadge"
 import PictureRender from "@/components/PictureRender"
-import YTVideo from "@/components/YTVideo"
+import YouTubeVideo from "@/components/YouTubeVideo"
 
 const CGTowerPage = () => {
   const images = [
@@ -9,11 +9,8 @@ const CGTowerPage = () => {
 
   return (
     <div>
-      <Upbadge 
-        title='CG Tower' 
-        description='NOW SELLING'
-        url="https://res.cloudinary.com/dqj2gwlpf/image/upload/v1768279277/project-part-2_q0iobc.jpg"
-      />
+      {/* Video Section */}
+      <YouTubeVideo videoId="G0atJezPcLk" title="Project Video" />
 
       {/* Project Info Section */}
       <div className="container mx-auto px-4 py-6">
@@ -29,47 +26,6 @@ const CGTowerPage = () => {
         </div>
       </div>
       
-      {/* Main Content Area */}
-      <div className="container mx-auto px-4 py-8">
-          
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-          {/* Left Container - Logo */}
-          
-          <div className="flex flex-col space-y-4">
-            <img 
-              src="https://res.cloudinary.com/dqj2gwlpf/image/upload/v1768279079/project-part-2_vompfo.jpg" 
-              alt="Main project"
-              className="w-102 p-6 h-auto object-cover rounded-lg mb-4" 
-            />
-          </div>
-
-          {/* Right Container - Image List */}
-          <div className="flex flex-col space-y-4">
-            {images.map((image, index) => (
-              <div key={index} className="w-full overflow-hidden rounded-lg">
-                <img
-                  src={image}
-                  alt={`Project image ${index + 1}`}
-                  className="w-full h-auto object-cover"
-                />
-              </div>
-            ))}
-          </div>
-        </div>
-      </div>
-
-      {/* The Builder Section */}
-      <div className="container mx-auto px-4 py-8">
-        <h2 className="text-3xl font-bold mb-6 text-center">The Builder</h2>
-        <div className="flex items-center justify-center gap-4">
-          <img 
-            src="https://res.cloudinary.com/dqj2gwlpf/image/upload/v1767486870/Cortel-Group-with-text_p5vbhf.png" 
-            alt="Builder icon"
-            className="w-102 object-cover rounded-lg" 
-          />
-        </div>
-      </div>
-
       {/* Picture Render Section */}
       <PictureRender
         title="Rendering"
@@ -91,8 +47,25 @@ const CGTowerPage = () => {
           'https://res.cloudinary.com/dqj2gwlpf/image/upload/v1768279281/VMC-Aerial-View_yjam91.jpg'
         ]}
       />
+      {/* The Builder Section */}
+      <div className="container mx-auto px-4 py-8">
+        <h2 className="text-3xl font-bold mb-6 text-center">The Builder</h2>
+        <div className="flex items-center justify-center gap-4">
+          <img 
+            src="https://res.cloudinary.com/dqj2gwlpf/image/upload/v1767486870/Cortel-Group-with-text_p5vbhf.png" 
+            alt="Builder icon"
+            className="w-102 object-cover rounded-lg" 
+          />
+        </div>
+      </div>
 
-      <YTVideo videoId="G0atJezPcLk" title="Project Video" />
+      
+      
+      <Upbadge 
+        title='CG Tower' 
+        description='NOW SELLING'
+        url="https://res.cloudinary.com/dqj2gwlpf/image/upload/v1768279277/project-part-2_q0iobc.jpg"
+      />
     </div>
   )
 }

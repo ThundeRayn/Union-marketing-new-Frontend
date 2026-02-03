@@ -1,5 +1,4 @@
-import Upbadge from "@/blocks/Upbadge"
-import YTVideo from "@/components/YTVideo"
+//import Upbadge from "@/blocks/Upbadge"
 
 const GeorginaPage = () => {
   const images = [
@@ -8,11 +7,25 @@ const GeorginaPage = () => {
 
   return (
     <div>
-      <Upbadge 
+      {/* <Upbadge 
         title='Georgina Project' 
         description='NOW SELLING'
         url="https://res.cloudinary.com/dqj2gwlpf/image/upload/v1768278560/Georgina-Heights-in-Keswick_ideq3b.jpg"
-      />
+      /> */}
+      
+      {/* Video Section */}
+      <div className="w-full">
+        <div className="w-full aspect-video">
+          <iframe 
+            src="https://www.youtube.com/embed/9BYZTIMmJPA?autoplay=1&loop=1&mute=1&controls=1&modestbranding=1"
+            className="w-full h-full"
+            frameBorder="0" 
+            allow="autoplay; fullscreen; picture-in-picture" 
+            allowFullScreen
+            title="Project Video"
+          />
+        </div>
+      </div>
 
       {/* Project Info Section */}
       <div className="container mx-auto px-4 py-6">
@@ -55,7 +68,7 @@ const GeorginaPage = () => {
         </div>
       </div>
 
-      <YTVideo videoId="9BYZTIMmJPA" title="Project Video" />
+      
     </div>
   )
 }

@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useRef, useEffect } from 'react';
 
 interface PictureRenderProps {
   title: string;
@@ -7,6 +7,7 @@ interface PictureRenderProps {
 
 const PictureRender = ({ title, pictures }: PictureRenderProps) => {
   const [currentIndex, setCurrentIndex] = useState(0);
+  const thumbnailContainerRef = useRef<HTMLDivElement>(null);
 
   const goToPrevious = () => {
     setCurrentIndex((prev) => (prev === 0 ? pictures.length - 1 : prev - 1));
@@ -20,6 +21,20 @@ const PictureRender = ({ title, pictures }: PictureRenderProps) => {
     setCurrentIndex(index);
   };
 
+  // Scroll active thumbnail into view on mobile
+  useEffect(() => {
+    if (thumbnailContainerRef.current) {
+      const activeButton = thumbnailContainerRef.current.querySelector('button[data-active="true"]') as HTMLElement;
+      if (activeButton) {
+        activeButton.scrollIntoView({
+          behavior: 'smooth',
+          block: 'nearest',
+          inline: 'center',
+        });
+      }
+    }
+  }, [currentIndex]);
+
   if (!pictures || pictures.length === 0) {
     return (
       <div className="container mx-auto px-4 py-8">
@@ -30,16 +45,16 @@ const PictureRender = ({ title, pictures }: PictureRenderProps) => {
   }
 
   return (
-    <div className="container mx-auto px-4 py-8">
-      <h2 className="text-3xl font-bold mb-6 text-center">{title}</h2>
+    <div className="container mx-auto px-4 py-4 md:py-8">
+      <h2 className="text-2xl md:text-3xl font-bold mb-4 md:mb-6 text-center">{title}</h2>
       
       <div className="relative w-full max-w-4xl mx-auto">
         {/* Main Image Display */}
-        <div className="relative w-full aspect-video rounded-lg overflow-hidden shadow-lg bg-gray-100">
+        <div className="relative w-full aspect-square md:aspect-video rounded-lg overflow-hidden shadow-lg bg-gray-100">
           <img
             src={pictures[currentIndex]}
             alt={`${title} - Image ${currentIndex + 1}`}
-            className="w-full h-full object-contain"
+            className="w-full h-full object-cover"
           />
           
           {/* Navigation Arrows */}
@@ -75,12 +90,13 @@ const PictureRender = ({ title, pictures }: PictureRenderProps) => {
 
         {/* Thumbnail Navigation */}
         {pictures.length > 1 && (
-          <div className="flex gap-2 mt-4 overflow-x-auto pb-2">
+          <div ref={thumbnailContainerRef} className="flex gap-1 md:gap-2 mt-3 md:mt-4 overflow-x-auto pb-2 scroll-smooth">
             {pictures.map((picture, index) => (
               <button
                 key={index}
+                data-active={index === currentIndex}
                 onClick={() => goToSlide(index)}
-                className={`flex-shrink-0 w-20 h-20 rounded-lg overflow-hidden border-2 transition-all ${
+                className={`flex-shrink-0 w-14 h-14 md:w-20 md:h-20 rounded-lg overflow-hidden border-2 transition-all ${
                   index === currentIndex
                     ? 'border-yellow-400 scale-105'
                     : 'border-gray-300 hover:border-gray-400 opacity-70 hover:opacity-100'

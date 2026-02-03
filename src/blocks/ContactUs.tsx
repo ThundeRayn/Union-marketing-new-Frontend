@@ -35,10 +35,10 @@ const ContactUs = () => {
         
         <div className="grid md:grid-cols-5 gap-14 items-center">
           {/* Form */}
-          <div className="md:col-span-2 pl-12 pr-8">
-            <h2 className="text-6xl font-normal text-gray-900 mb-8">
+          <div className="md:col-span-2 px-4 md:pl-12 md:pr-8">
+            <h2 className="text-6xl font-normal text-gray-900 mb-8 px-8 md:px-0">
               Wanna Contact Us?</h2>
-            <p className="text-gray-600 mb-8 pr-12">
+            <p className="text-gray-600 mb-8 pr-12 px-8 md:px-0">
               Drop your message and thoughts here 
               — we’ll be in touch soon!
             </p>

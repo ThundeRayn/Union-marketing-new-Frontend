@@ -1,4 +1,4 @@
-//import Upbadge from "@/blocks/Upbadge"
+import Upbadge from "@/blocks/Upbadge"
 
 const GeorginaPage = () => {
   const images = [
@@ -7,11 +7,7 @@ const GeorginaPage = () => {
 
   return (
     <div>
-      {/* <Upbadge 
-        title='Georgina Project' 
-        description='NOW SELLING'
-        url="https://res.cloudinary.com/dqj2gwlpf/image/upload/v1768278560/Georgina-Heights-in-Keswick_ideq3b.jpg"
-      /> */}
+     
       
       {/* Video Section */}
       <div className="w-full">
@@ -57,7 +53,7 @@ const GeorginaPage = () => {
       </div>
 
       {/* The Builder Section */}
-      <div className="container mx-auto px-4 py-8">
+      <div className="container mx-auto px-4 py-8 pb-14">
         <h2 className="text-3xl font-bold mb-6 text-center">The Builder</h2>
         <div className="flex items-center justify-center gap-4">
           <img 
@@ -68,7 +64,11 @@ const GeorginaPage = () => {
         </div>
       </div>
 
-      
+       <Upbadge 
+        title='Georgina Project' 
+        description='NOW SELLING'
+        url="https://res.cloudinary.com/dqj2gwlpf/image/upload/v1768278560/Georgina-Heights-in-Keswick_ideq3b.jpg"
+      />
     </div>
   )
 }

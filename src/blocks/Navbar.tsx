@@ -19,10 +19,12 @@ const Navbar = () => {
   ]
 
   return (
-    <nav className={`sticky top-0 z-50 transition-all duration-500 ${
+    <nav className={`fixed md:sticky top-0 left-0 right-0 z-50 transition-all duration-500 ${
       scrolled
         ? 'bg-(--color-secondary)/95 backdrop-blur-md shadow-lg'
-        : 'bg-(--color-secondary) shadow-none'
+        : isMobileMenuOpen
+          ? 'bg-black/90 backdrop-blur-md md:bg-(--color-secondary) md:backdrop-blur-none shadow-none'
+          : 'bg-black/60 backdrop-blur-sm md:bg-(--color-secondary) md:backdrop-blur-none shadow-none'
     }`}>
       <div className="max-w-7xl mx-auto md:px-4 sm:px-6 lg:px-0">
         <div className="flex justify-between items-center h-20 pr-8">
@@ -98,7 +100,7 @@ const Navbar = () => {
 
         {/* Mobile Menu Dropdown */}
         {isMobileMenuOpen && (
-          <div className="md:hidden absolute top-20 left-0 right-0 bg-(--color-secondary) shadow-lg animate-in slide-in-from-top-2 duration-300 z-40">
+          <div className="md:hidden absolute top-20 left-0 right-0 bg-black/90 backdrop-blur-md shadow-lg animate-in slide-in-from-top-2 duration-300 z-40">
             <div className="px-4 py-4 space-y-3">
               {navLinks.map((link) => (
                 <a

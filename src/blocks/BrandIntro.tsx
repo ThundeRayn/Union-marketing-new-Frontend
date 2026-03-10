@@ -1,108 +1,5 @@
 import { useEffect, useState } from 'react'
-
-// Single digit column — pure CSS transition, no JS ticking
-const OdometerDigit = ({
-  strip,
-  targetIndex,
-  duration,
-  delay,
-  started,
-}: {
-  strip: number[]
-  targetIndex: number
-  duration: number
-  delay: number
-  started: boolean
-}) => {
-  const [scrolled, setScrolled] = useState(false)
-
-  useEffect(() => {
-    if (!started) return
-    const timer = setTimeout(() => setScrolled(true), delay)
-    return () => clearTimeout(timer)
-  }, [started, delay])
-
-  return (
-    <span
-      className="inline-block relative overflow-hidden"
-      style={{ height: '1.15em', width: '0.65em', padding: '0.075em 0' }}
-    >
-      <span
-        className="block"
-        style={{
-          transform: scrolled ? `translateY(-${targetIndex * 1.15}em)` : 'translateY(0)',
-          transition: scrolled ? `transform ${duration}ms cubic-bezier(0.25, 0.46, 0.45, 0.94)` : 'none',
-        }}
-      >
-        {strip.map((d, i) => (
-          <span
-            key={i}
-            className="block text-center"
-            style={{ height: '1.15em', lineHeight: '1.15em' }}
-          >
-            {d}
-          </span>
-        ))}
-      </span>
-    </span>
-  )
-}
-
-// Orchestrates digit columns for a full number
-const OdometerNumber = ({
-  target,
-  startFrom,
-  duration = 2000,
-  delay = 0,
-  started,
-  suffix = '',
-}: {
-  target: number
-  startFrom: number
-  duration?: number
-  delay?: number
-  started: boolean
-  suffix?: string
-}) => {
-  const targetTens = Math.floor(target / 10)
-  const startTens = Math.floor(startFrom / 10)
-  const startUnits = startFrom % 10
-
-  // Build units strip
-  const unitsStrip: number[] = [startUnits]
-  let d = startUnits
-  const totalUnitsSteps = target - startFrom
-  for (let i = 0; i < totalUnitsSteps; i++) {
-    d = (d + 1) % 10
-    unitsStrip.push(d)
-  }
-
-  // Build tens strip
-  const tensStrip: number[] = []
-  for (let t = startTens; t <= targetTens; t++) {
-    tensStrip.push(t)
-  }
-
-  return (
-    <span className="inline-flex">
-      <OdometerDigit
-        strip={tensStrip}
-        targetIndex={tensStrip.length - 1}
-        duration={duration}
-        delay={delay + 150}
-        started={started}
-      />
-      <OdometerDigit
-        strip={unitsStrip}
-        targetIndex={unitsStrip.length - 1}
-        duration={duration}
-        delay={delay}
-        started={started}
-      />
-      {suffix && <span>{suffix}</span>}
-    </span>
-  )
-}
+import OdometerNumber from '@/components/OdometerNumber'
 
 interface BrandIntroProps {
   backgroundImage?: string
@@ -122,9 +19,8 @@ const BrandIntro = ({ backgroundImage }: BrandIntroProps) => {
 
   return (
     <div
-      className="relative w-full overflow-hidden"
+      className="relative w-full overflow-hidden h-screen md:h-[calc(100vh-80px)]"
       style={{
-        height: 'calc(100vh - 80px)',
         backgroundColor: 'var(--color-secondary)',
       }}
     >
@@ -147,12 +43,12 @@ const BrandIntro = ({ backgroundImage }: BrandIntroProps) => {
       />
 
       {/* Main editorial grid */}
-      <div className="relative z-10 h-full flex flex-col justify-between px-6 md:px-16 lg:px-24 py-12 md:py-16">
+      <div className="relative z-10 h-full flex flex-col justify-between px-6 md:px-16 lg:px-24 pt-28 pb-12 md:py-16">
 
         {/* Top — Overline + Brand name */}
         <div>
           <p
-            className={`text-[10px] md:text-xs tracking-[0.35em] uppercase text-[var(--color-primary)] mb-6 md:mb-8 transition-all duration-700 ease-out ${
+            className={`text-xs md:text-sm tracking-[0.35em] uppercase text-[var(--color-primary)] mb-6 md:mb-8 transition-all duration-700 ease-out ${
               visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
             }`}
             style={{
@@ -169,11 +65,11 @@ const BrandIntro = ({ backgroundImage }: BrandIntroProps) => {
             }`}
             style={{ transitionDelay: '400ms' }}
           >
-            <span className="block text-4xl md:text-7xl lg:text-8xl">
+            <span className="block text-5xl md:text-7xl lg:text-8xl">
               Union
             </span>
             <span
-              className="block text-4xl md:text-7xl lg:text-8xl mt-1 md:mt-2"
+              className="block text-5xl md:text-7xl lg:text-8xl mt-1 md:mt-2"
               style={{ color: 'var(--color-primary)' }}
             >
               Marketing
@@ -205,10 +101,10 @@ const BrandIntro = ({ backgroundImage }: BrandIntroProps) => {
             }`}
             style={{ transitionDelay: '900ms' }}
           >
-            <div className="flex gap-10 md:gap-16">
+            <div className="flex items-end gap-10 md:gap-16">
               <div>
                 <span
-                  className="block text-3xl md:text-5xl font-normal"
+                  className="block text-4xl md:text-5xl font-normal leading-[1.15]"
                   style={{
                     fontFamily: "'Prata', serif",
                     color: 'var(--color-primary)',
@@ -225,7 +121,7 @@ const BrandIntro = ({ backgroundImage }: BrandIntroProps) => {
               </div>
               <div>
                 <span
-                  className="block text-3xl md:text-5xl font-normal"
+                  className="block text-4xl md:text-5xl font-normal leading-[1.15]"
                   style={{
                     fontFamily: "'Prata', serif",
                     color: 'var(--color-primary)',
@@ -242,7 +138,7 @@ const BrandIntro = ({ backgroundImage }: BrandIntroProps) => {
               </div>
               <div>
                 <span
-                  className="block text-3xl md:text-5xl font-normal"
+                  className="block text-4xl md:text-5xl font-normal leading-[1.15]"
                   style={{
                     fontFamily: "'Prata', serif",
                     color: 'var(--color-primary)',
@@ -261,8 +157,8 @@ const BrandIntro = ({ backgroundImage }: BrandIntroProps) => {
           </div>
         </div>
 
-        {/* Bottom — tagline + scroll hint */}
-        <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6">
+        {/* Bottom — tagline + scroll */}
+        <div className="flex items-end justify-between">
           <p
             className={`text-[10px] md:text-xs tracking-[0.3em] uppercase text-white/30 transition-all duration-700 ease-out ${
               visible ? 'opacity-100' : 'opacity-0'
@@ -277,20 +173,20 @@ const BrandIntro = ({ backgroundImage }: BrandIntroProps) => {
 
           {/* Scroll indicator */}
           <div
-            className={`flex items-center gap-3 transition-all duration-700 ease-out ${
+            className={`flex flex-col md:flex-row items-center gap-1 md:gap-3 transition-all duration-700 ease-out ${
               visible ? 'opacity-100' : 'opacity-0'
             }`}
             style={{ transitionDelay: '1400ms' }}
           >
+            <div className="h-6 md:h-8 w-px bg-[var(--color-primary)]/30 relative overflow-hidden">
+              <div className="absolute top-0 left-0 w-full h-3 bg-[var(--color-primary)] animate-[scrollPulse_2s_ease-in-out_infinite]" />
+            </div>
             <span
-              className="text-[10px] tracking-[0.2em] uppercase text-white/30"
+              className="text-[9px] md:text-[10px] tracking-[0.2em] uppercase text-white/30"
               style={{ fontFamily: "'Staatliches', sans-serif" }}
             >
               Scroll
             </span>
-            <div className="w-px h-8 bg-[var(--color-primary)]/30 relative overflow-hidden">
-              <div className="absolute top-0 left-0 w-full h-3 bg-[var(--color-primary)] animate-[scrollPulse_2s_ease-in-out_infinite]" />
-            </div>
           </div>
         </div>
       </div>

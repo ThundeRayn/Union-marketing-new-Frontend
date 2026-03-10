@@ -19,7 +19,7 @@ const BrandIntro = ({ backgroundImage }: BrandIntroProps) => {
 
   return (
     <div
-      className="relative w-full overflow-hidden h-screen md:h-[calc(100vh-80px)]"
+      className="relative w-full overflow-hidden h-screen lg:h-[calc(100vh-80px)]"
       style={{
         backgroundColor: 'var(--color-secondary)',
       }}
@@ -43,7 +43,7 @@ const BrandIntro = ({ backgroundImage }: BrandIntroProps) => {
       />
 
       {/* Main editorial grid */}
-      <div className="relative z-10 h-full flex flex-col justify-between px-6 md:px-16 lg:px-24 pt-28 pb-12 md:py-16">
+      <div className="relative z-10 h-full flex flex-col justify-between px-6 md:px-16 lg:px-24 pt-[15vh] pb-12 lg:py-16">
 
         {/* Top — Overline + Brand name */}
         <div>
@@ -78,10 +78,10 @@ const BrandIntro = ({ backgroundImage }: BrandIntroProps) => {
         </div>
 
         {/* Middle — Editorial asymmetric content */}
-        <div className="flex flex-col md:flex-row md:items-end gap-8 md:gap-0">
+        <div className="flex flex-col lg:flex-row lg:items-end gap-8 lg:gap-0">
           {/* Left column — statement */}
           <div
-            className={`md:w-1/2 transition-all duration-1000 ease-out ${
+            className={`lg:w-1/2 transition-all duration-1000 ease-out ${
               visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'
             }`}
             style={{ transitionDelay: '700ms' }}
@@ -96,7 +96,7 @@ const BrandIntro = ({ backgroundImage }: BrandIntroProps) => {
 
           {/* Right column — key stats, pushed right */}
           <div
-            className={`md:w-1/2 md:pl-20 lg:pl-32 transition-all duration-1000 ease-out ${
+            className={`lg:w-1/2 lg:pl-20 xl:pl-32 transition-all duration-1000 ease-out ${
               visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'
             }`}
             style={{ transitionDelay: '900ms' }}

@@ -19,27 +19,25 @@ const Navbar = () => {
   ]
 
   return (
-    <nav className={`fixed md:sticky top-0 left-0 right-0 z-50 transition-all duration-500 ${
+    <nav className={`fixed lg:sticky top-0 left-0 right-0 z-50 transition-all duration-500 ${
       scrolled
         ? 'bg-(--color-secondary)/95 backdrop-blur-md shadow-lg'
-        : isMobileMenuOpen
-          ? 'bg-black/90 backdrop-blur-md md:bg-(--color-secondary) md:backdrop-blur-none shadow-none'
-          : 'bg-black/60 backdrop-blur-sm md:bg-(--color-secondary) md:backdrop-blur-none shadow-none'
+        : 'bg-(--color-secondary) shadow-none'
     }`}>
-      <div className="max-w-7xl mx-auto md:px-4 sm:px-6 lg:px-0">
-        <div className="flex justify-between items-center h-20 pr-8">
+      <div className="max-w-7xl mx-auto sm:px-6 lg:px-0">
+        <div className="flex justify-between items-center h-16 lg:h-20 pr-8">
           {/* Logo */}
           <div className="flex-shrink-0">
             <a href="/" className="pl-10 flex items-center gap-3 group transition-transform duration-300 ease-in-out hover:translate-x-1">
               <img 
                 src="/favicon.ico" 
                 alt="Union Logo" 
-                className="h-8 w-8 md:h-10 md:w-10"
+                className="h-8 w-8 lg:h-10 lg:w-10"
               />
               <img 
                 src="/letter-transparent.png" 
                 alt="Union Text" 
-                className="h-8 w-45 md:h-9 md:w-55"
+                className="h-8 w-45 lg:h-9 lg:w-55"
               />
             </a>
              {/* <img 
@@ -50,7 +48,7 @@ const Navbar = () => {
           </div>
 
           {/* Navigation Links & Sign In - Right Side (Desktop) */}
-          <div className="hidden md:flex items-center space-x-8">
+          <div className="hidden lg:flex items-center space-x-8">
             <a href="/about" className="relative text-(--text-inverse) hover:text-(--color-primary) text-lg group">
               ABOUT
               <span className="absolute left-0 bottom-0 w-0 h-0.5 bg-yellow-400 transition-all duration-300 ease-in-out group-hover:w-full"></span>
@@ -86,7 +84,7 @@ const Navbar = () => {
           </div>
 
           {/* Mobile Menu Button */}
-          <div className="md:hidden">
+          <div className="lg:hidden">
             <button 
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
               className="text-white hover:text-yellow-400 focus:outline-none"
@@ -100,7 +98,7 @@ const Navbar = () => {
 
         {/* Mobile Menu Dropdown */}
         {isMobileMenuOpen && (
-          <div className="md:hidden absolute top-20 left-0 right-0 bg-black/90 backdrop-blur-md shadow-lg animate-in slide-in-from-top-2 duration-300 z-40">
+          <div className="lg:hidden absolute top-16 lg:top-20 left-0 right-0 bg-(--color-secondary) shadow-lg animate-in slide-in-from-top-2 duration-300 z-40">
             <div className="px-4 py-4 space-y-3">
               {navLinks.map((link) => (
                 <a

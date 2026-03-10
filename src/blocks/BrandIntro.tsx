@@ -1,10 +1,122 @@
 import { useEffect, useState } from 'react'
 
-const BrandIntro = () => {
-  const [visible, setVisible] = useState(false)
+// Single digit column — pure CSS transition, no JS ticking
+const OdometerDigit = ({
+  strip,
+  targetIndex,
+  duration,
+  delay,
+  started,
+}: {
+  strip: number[]
+  targetIndex: number
+  duration: number
+  delay: number
+  started: boolean
+}) => {
+  const [scrolled, setScrolled] = useState(false)
 
   useEffect(() => {
-    const timer = setTimeout(() => setVisible(true), 100)
+    if (!started) return
+    const timer = setTimeout(() => setScrolled(true), delay)
+    return () => clearTimeout(timer)
+  }, [started, delay])
+
+  return (
+    <span
+      className="inline-block relative overflow-hidden"
+      style={{ height: '1.15em', width: '0.65em', padding: '0.075em 0' }}
+    >
+      <span
+        className="block"
+        style={{
+          transform: scrolled ? `translateY(-${targetIndex * 1.15}em)` : 'translateY(0)',
+          transition: scrolled ? `transform ${duration}ms cubic-bezier(0.25, 0.46, 0.45, 0.94)` : 'none',
+        }}
+      >
+        {strip.map((d, i) => (
+          <span
+            key={i}
+            className="block text-center"
+            style={{ height: '1.15em', lineHeight: '1.15em' }}
+          >
+            {d}
+          </span>
+        ))}
+      </span>
+    </span>
+  )
+}
+
+// Orchestrates digit columns for a full number
+const OdometerNumber = ({
+  target,
+  startFrom,
+  duration = 2000,
+  delay = 0,
+  started,
+  suffix = '',
+}: {
+  target: number
+  startFrom: number
+  duration?: number
+  delay?: number
+  started: boolean
+  suffix?: string
+}) => {
+  const targetTens = Math.floor(target / 10)
+  const startTens = Math.floor(startFrom / 10)
+  const startUnits = startFrom % 10
+
+  // Build units strip
+  const unitsStrip: number[] = [startUnits]
+  let d = startUnits
+  const totalUnitsSteps = target - startFrom
+  for (let i = 0; i < totalUnitsSteps; i++) {
+    d = (d + 1) % 10
+    unitsStrip.push(d)
+  }
+
+  // Build tens strip
+  const tensStrip: number[] = []
+  for (let t = startTens; t <= targetTens; t++) {
+    tensStrip.push(t)
+  }
+
+  return (
+    <span className="inline-flex">
+      <OdometerDigit
+        strip={tensStrip}
+        targetIndex={tensStrip.length - 1}
+        duration={duration}
+        delay={delay + 150}
+        started={started}
+      />
+      <OdometerDigit
+        strip={unitsStrip}
+        targetIndex={unitsStrip.length - 1}
+        duration={duration}
+        delay={delay}
+        started={started}
+      />
+      {suffix && <span>{suffix}</span>}
+    </span>
+  )
+}
+
+interface BrandIntroProps {
+  backgroundImage?: string
+}
+
+const BrandIntro = ({ backgroundImage }: BrandIntroProps) => {
+  const [visible, setVisible] = useState(false)
+  const [countersStarted, setCountersStarted] = useState(false)
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setVisible(true)
+      setTimeout(() => setCountersStarted(true), 900)
+    }, 100)
     return () => clearTimeout(timer)
   }, [])
 
@@ -16,16 +128,16 @@ const BrandIntro = () => {
         backgroundColor: 'var(--color-secondary)',
       }}
     >
-      {/* Subtle gold grain texture overlay */}
-      <div
-        className="absolute inset-0 opacity-[0.03]"
-        style={{
-          backgroundImage: `radial-gradient(circle at 20% 50%, var(--color-primary) 1px, transparent 1px),
-                            radial-gradient(circle at 80% 20%, var(--color-primary) 0.5px, transparent 0.5px),
-                            radial-gradient(circle at 60% 80%, var(--color-primary) 0.5px, transparent 0.5px)`,
-          backgroundSize: '60px 60px, 40px 40px, 50px 50px',
-        }}
-      />
+      {/* Background image */}
+      {backgroundImage && (
+        <div
+          className="absolute inset-0 bg-cover bg-center"
+          style={{ backgroundImage: `url(${backgroundImage})` }}
+        />
+      )}
+
+      {/* Dark overlay */}
+      <div className="absolute inset-0 bg-black/50" />
 
       {/* Gold accent line — top left */}
       <div
@@ -102,7 +214,7 @@ const BrandIntro = () => {
                     color: 'var(--color-primary)',
                   }}
                 >
-                  50+
+                  <OdometerNumber target={50} startFrom={30} duration={2000} delay={0} started={countersStarted} suffix="+" />
                 </span>
                 <span
                   className="block text-[10px] md:text-xs tracking-[0.2em] uppercase text-white/50 mt-2"
@@ -119,7 +231,7 @@ const BrandIntro = () => {
                     color: 'var(--color-primary)',
                   }}
                 >
-                  10+
+                  <OdometerNumber target={10} startFrom={0} duration={1800} delay={200} started={countersStarted} suffix="+" />
                 </span>
                 <span
                   className="block text-[10px] md:text-xs tracking-[0.2em] uppercase text-white/50 mt-2"

@@ -1,8 +1,10 @@
 
 import ContactUs from "@/blocks/ContactUs"
 import Upbadge from "@/blocks/Upbadge"
+import { useScrollAnimation } from "@/hooks/useScrollAnimation"
 
 const ContactPage = () => {
+  const { ref: infoRef, isVisible: infoVisible } = useScrollAnimation(0.05)
   return (
     <>
       <Upbadge 
@@ -15,7 +17,9 @@ const ContactPage = () => {
       <ContactUs />
 
       {/* Info Section */}
-      <div className="py-20 px-14 bg-gray-50 max-w-2xl mx-auto text-center">
+      <div ref={infoRef} className={`py-20 px-6 md:px-14 bg-gray-50 max-w-2xl mx-auto text-center transition-all duration-700 ease-out ${
+        infoVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+      }`}>
         <div className="mb-12">
           <h3 className="text-2xl font-semibold text-gray-900 mb-4">
             Our location

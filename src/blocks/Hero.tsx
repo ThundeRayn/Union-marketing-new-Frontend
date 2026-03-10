@@ -87,7 +87,7 @@ const Hero = () => {
       <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-4 z-10">
         <h1 
           key={`title-${currentSlide}`}
-          className="font-serif mx-10 text-2xl md:text-4xl font-bold text-white mb-4 drop-shadow-2xl animate-[slideDownFadeIn_0.8s_ease-out]"
+          className="font-serif mx-10 text-2xl md:text-5xl font-normal text-white mb-4 drop-shadow-2xl animate-[slideDownFadeIn_0.8s_ease-out]"
         >
           {slides[currentSlide].title}
         </h1>
@@ -112,6 +112,9 @@ const Hero = () => {
           </a>
         )}
       </div>
+
+        {/* Gold accent line */}
+      <div className="absolute bottom-16 left-1/2 -translate-x-1/2 w-12 h-px bg-yellow-400/50 z-10"></div>
 
         {/* Slide Indicators */}
       <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex gap-2 z-10">

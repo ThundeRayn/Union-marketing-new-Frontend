@@ -4,9 +4,11 @@ import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
 import { NativeSelect } from "@/components/ui/native-select"
 import { useState } from "react"
+import { useScrollAnimation } from "@/hooks/useScrollAnimation"
 
 const ContactUs = () => {
   const [showNotification, setShowNotification] = useState(false)
+  const { ref, isVisible } = useScrollAnimation(0.05)
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
@@ -24,7 +26,7 @@ const ContactUs = () => {
   }
 
   return (
-    <div className="py-20 px-7 bg-gray-50">
+    <div ref={ref} className="py-20 px-6 md:px-7 bg-gray-50">
       <div className="max-w-7xl mx-auto">
         {/* Notification */}
         {showNotification && (
@@ -32,10 +34,12 @@ const ContactUs = () => {
             Message sent successfully!
           </div>
         )}
-        
+
         <div className="grid md:grid-cols-5 gap-14 items-center">
           {/* Form */}
-          <div className="md:col-span-2 px-4 md:pl-12 md:pr-8">
+          <div className={`md:col-span-2 px-4 md:pl-12 md:pr-8 transition-all duration-1000 ease-out ${
+            isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-10'
+          }`}>
             <h2 className="text-6xl font-normal text-gray-900 mb-8 px-8 md:px-0">
               Wanna Contact Us?</h2>
             <p className="text-gray-600 mb-8 pr-12 px-8 md:px-0">
@@ -45,7 +49,7 @@ const ContactUs = () => {
 
             <form className="space-y-2" onSubmit={handleSubmit}>
               {/* Full Name */}
-              <div>
+              <div className="input-animated relative">
                 <Input
                   type="text"
                   id="fullName"
@@ -57,7 +61,7 @@ const ContactUs = () => {
               </div>
 
               {/* Phone */}
-              <div>
+              <div className="input-animated relative">
                 <Input
                   type="tel"
                   id="phone"
@@ -69,7 +73,7 @@ const ContactUs = () => {
               </div>
 
               {/* Email */}
-              <div>
+              <div className="input-animated relative">
                 <Input
                   type="email"
                   id="email"
@@ -81,7 +85,7 @@ const ContactUs = () => {
               </div>
 
               {/* Message */}
-              <div>
+              <div className="input-animated relative">
                 <Textarea
                   id="message"
                   name="message"
@@ -120,7 +124,9 @@ const ContactUs = () => {
           </div>
 
           {/* Image */}
-          <div className="relative md:col-span-3">
+          <div className={`relative md:col-span-3 transition-all duration-1000 ease-out delay-200 ${
+            isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-10'
+          }`}>
             <img 
               src="https://res.cloudinary.com/dqj2gwlpf/image/upload/v1767817651/avi-waxman-f9qZuKoZYoY-unsplash_z2zx1w.jpg" 
               alt="Contact Us"

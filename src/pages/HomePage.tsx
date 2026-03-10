@@ -1,11 +1,14 @@
 import Customer from "@/blocks/Customer"
+import BrandIntro from "@/blocks/BrandIntro"
 import Hero from "../blocks/Hero"
 import Mission from "../blocks/Mission"
 import { Button } from "@/components/ui/button"
 import { Link } from "react-router-dom"
 import ContactUs from "@/blocks/ContactUs"
+import { useScrollAnimation } from "@/hooks/useScrollAnimation"
 
 const HomePage = () => {
+  const { ref: servicesRef, isVisible: servicesVisible } = useScrollAnimation(0.05)
   const services = [
     {
       title: "Advisory & Real Support",
@@ -27,12 +30,13 @@ const HomePage = () => {
 
   return (
     <div>
+      <BrandIntro/>
       <Hero/>
       <Mission/>
 
       {/* Our services */}
-      <div 
-        className="py-20 px-14 relative"
+      <div
+        className="py-20 px-6 md:px-14 relative parallax-bg"
         style={{
           backgroundImage: 'url(https://res.cloudinary.com/dqj2gwlpf/image/upload/v1767497882/RenderingA_nvcuji.png)',
           backgroundSize: 'cover',
@@ -40,12 +44,20 @@ const HomePage = () => {
         }}
       >
         <div className="absolute inset-0 bg-black/50"></div>
-        <div className="max-w-7xl mx-auto relative z-10">
-          <h2 className="text-5xl font-serif font-bold text-white mb-12 text-center">Our Services</h2>
+        <div ref={servicesRef} className="max-w-7xl mx-auto relative z-10">
+          <h2 className={`text-3xl md:text-5xl font-serif font-normal text-white mb-12 text-center transition-all duration-700 ease-out ${
+            servicesVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'
+          }`}>Our Services</h2>
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
 
             {services.map((service, index) => (
-              <div key={index} className="bg-white border border-gray-200 rounded-[50px] p-8 shadow-sm hover:shadow-2xl hover:scale-105 transition-all duration-500 ease-in-out">
+              <div
+                key={index}
+                className={`bg-white border border-gray-200 rounded-2xl p-8 shadow-sm hover:shadow-2xl hover:-translate-y-1 hover:border-yellow-400/50 transition-all duration-500 ease-out ${
+                  servicesVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+                }`}
+                style={{ transitionDelay: servicesVisible ? `${index * 120}ms` : '0ms' }}
+              >
                 <h3 className="text-xl md:text-2xl font-semibold text-gray-900 mb-4">
                   {service.title}
                 </h3>

@@ -6,6 +6,7 @@ import EversleyPage from '@/projects/EversleyPage';
 import GeorginaPage from '@/projects/GeorginaPage';
 import CGTowerPage from '@/projects/CGTowerPage';
 import AbejaPage from '@/projects/AbejaPage';
+import { useScrollAnimation } from '@/hooks/useScrollAnimation';
 
 // Project list configuration
 const projectList = [
@@ -60,21 +61,30 @@ const projectList = [
 ];
 
 const ProjectPage = () => {
+  const { ref, isVisible } = useScrollAnimation(0.05)
+
   return (
     <>
     <Upbadge title='PROJECTS' description='View our on selling' fullScreen={false} />
-    <div className="container mx-auto px-4 md:px-24 py-8">
- 
+    <div ref={ref} className="container mx-auto px-4 md:px-24 py-8">
+
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 pt-12">
-        {projectList.map((project) => (
-          <ProjectCard
+        {projectList.map((project, index) => (
+          <div
             key={project.id}
-            id={project.id}
-            title={project.title}
-            description={project.description}
-            coverImage={project.coverImage}
-            path={project.path}
-          />
+            className={`transition-all duration-700 ease-out ${
+              isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+            }`}
+            style={{ transitionDelay: isVisible ? `${index * 120}ms` : '0ms' }}
+          >
+            <ProjectCard
+              id={project.id}
+              title={project.title}
+              description={project.description}
+              coverImage={project.coverImage}
+              path={project.path}
+            />
+          </div>
         ))}
       </div>
     </div>

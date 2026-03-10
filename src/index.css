@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=DM+Serif+Display&family=Prata&family=Staatliches&display=swap");
 
 @import "tailwindcss";
 
@@ -6,8 +6,12 @@
 
 @custom-variant dark (&:is(.dark *));
 
+html {
+  scroll-behavior: smooth;
+}
+
 :root {
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+  font-family: 'Inter', 'Helvetica Neue', Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
 
@@ -56,8 +60,8 @@
 }
 
 @theme{
-  --font-base: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-  --font-roboto: "Roboto", sans-serif;
+  --font-sans: 'Roboto', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  --font-serif: 'Prata', serif;
 }
 
 @keyframes fadeIn {
@@ -78,6 +82,36 @@
     opacity: 1;
     transform: translateY(0);
   }
+}
+
+@keyframes slideUpFadeIn {
+  from { opacity: 0; transform: translateY(40px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideInLeft {
+  from { opacity: 0; transform: translateX(-40px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes slideInRight {
+  from { opacity: 0; transform: translateX(40px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes scaleIn {
+  from { opacity: 0; transform: scale(0.95); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+@keyframes kenBurns {
+  from { transform: scale(1); }
+  to { transform: scale(1.04); }
+}
+
+@keyframes scrollPulse {
+  0%, 100% { transform: translateY(-100%); }
+  50% { transform: translateY(200%); }
 }
 
 @theme inline {
@@ -167,4 +201,32 @@
 
   }
 
+}
+
+.parallax-bg {
+  background-attachment: fixed;
+}
+
+@media (max-width: 768px), (hover: none) {
+  .parallax-bg {
+    background-attachment: scroll;
+  }
+}
+
+.input-animated {
+  position: relative;
+}
+.input-animated::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 0;
+  height: 2px;
+  background: #fbc944;
+  transition: all 0.3s ease-out;
+  transform: translateX(-50%);
+}
+.input-animated:focus-within::after {
+  width: 100%;
 }

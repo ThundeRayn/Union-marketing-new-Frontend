@@ -10,15 +10,15 @@ interface ProjectCardProps {
 
 const ProjectCard = ({ title, description, coverImage, path }: ProjectCardProps) => {
   return (
-    <Link 
+    <Link
       to={path}
-      className="block rounded-lg overflow-hidden hover:shadow-xl transition-shadow duration-300 border border-gray-200"
+      className="block rounded-xl overflow-hidden hover:shadow-2xl hover:-translate-y-1 transition-all duration-500 border border-gray-200 hover:border-yellow-400/30 group"
     >
       <div className="relative w-full h-48 overflow-hidden">
-        <img 
-          src={coverImage} 
+        <img
+          src={coverImage}
           alt={title}
-          className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+          className="w-full h-full object-cover group-hover:scale-105 group-hover:brightness-105 transition-all duration-700"
         />
       </div>
       <div className="p-6">

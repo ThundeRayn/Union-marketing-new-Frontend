@@ -1,7 +1,14 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 
 const Navbar = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
+  const [scrolled, setScrolled] = useState(false)
+
+  useEffect(() => {
+    const handleScroll = () => setScrolled(window.scrollY > 50)
+    window.addEventListener('scroll', handleScroll)
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [])
 
   const navLinks = [
     { label: 'ABOUT', href: '/about' },
@@ -12,7 +19,11 @@ const Navbar = () => {
   ]
 
   return (
-    <nav className="sticky top-0 z-50 bg-(--color-secondary) shadow-md">
+    <nav className={`sticky top-0 z-50 transition-all duration-500 ${
+      scrolled
+        ? 'bg-(--color-secondary)/95 backdrop-blur-md shadow-lg'
+        : 'bg-(--color-secondary) shadow-none'
+    }`}>
       <div className="max-w-7xl mx-auto md:px-4 sm:px-6 lg:px-0">
         <div className="flex justify-between items-center h-20 pr-8">
           {/* Logo */}

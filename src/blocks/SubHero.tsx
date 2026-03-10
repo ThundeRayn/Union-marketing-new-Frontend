@@ -16,7 +16,7 @@ const SubHero = ({
 }: SubHeroProps = {}) => {
   return (
     <div 
-      className="relative w-full flex items-center justify-center"
+      className="relative w-full flex items-center justify-center parallax-bg"
       style={{
         height: 'calc(100vh - 80px)',
         backgroundImage: `url(${backgroundImage})`,
@@ -30,7 +30,7 @@ const SubHero = ({
       {/* Titles with border */}
       <div className="relative z-10 text-center space-y-4 px-4">
         <h1 
-          className="font-serif mx-10 text-2xl md:text-4xl font-bold text-yellow-400 mb-4 drop-shadow-2xl animate-[slideDownFadeIn_0.8s_ease-out]"
+          className="font-serif mx-10 text-2xl md:text-5xl font-normal text-yellow-400 mb-4 drop-shadow-2xl animate-[slideDownFadeIn_0.8s_ease-out]"
           style={{ textShadow: titleShadow ? '0 8px 16px rgba(0, 0, 0, 0.5), 0 4px 8px rgba(0, 0, 0, 0.7)' : 'none' }}
         >
           {title}

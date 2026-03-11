@@ -8,7 +8,6 @@ import ServicePage from './pages/ServicePage'
 import AboutPage from './pages/AboutPage'
 import EventPage from './pages/EventPage'
 import ProjectPage from './pages/ProjectPage'
-import ContactPage from './pages/ContactPage'
 import BrokerPortalLogin from './pages/BrokerPortalLogin'
 import FifthPage from './projects/FifthPage'
 import ElevenPage from './projects/ElevenPage'
@@ -29,7 +28,6 @@ function App() {
             <Route path='about' element={<AboutPage />} />
             <Route path='event' element={<EventPage />} />
             <Route path='project' element={<ProjectPage />} />
-            <Route path='contact' element={<ContactPage />} />
             <Route path='login' element={<BrokerPortalLogin />} />
               <Route path='projects/fifth' element={<FifthPage />} ></Route>
               <Route path='projects/eleven' element={<ElevenPage />} ></Route>

@@ -17,7 +17,12 @@ const ContactUs = () => {
   }
 
   return (
-    <div ref={ref} className="bg-white py-20 px-6 md:px-8">
+    <div
+      ref={ref}
+      className="relative py-20 px-6 md:px-8 bg-cover bg-center bg-fixed"
+      style={{ backgroundImage: 'url(https://res.cloudinary.com/dqj2gwlpf/image/upload/v1767497882/RenderingA_nvcuji.png)' }}
+    >
+      <div className="absolute inset-0 bg-black/40" />
       {/* Notification */}
       {showNotification && (
         <div className="fixed top-8 left-1/2 -translate-x-1/2 z-50 bg-green-500 text-white px-6 py-3 rounded-lg shadow-lg animate-[slideDownFadeIn_0.3s_ease-out]">
@@ -25,7 +30,7 @@ const ContactUs = () => {
         </div>
       )}
 
-      <div className="max-w-4xl mx-auto">
+      <div className="max-w-4xl mx-auto relative z-10">
         {/* Gold accent line */}
         <div
           className={`w-12 h-px bg-(--color-primary) mb-8 transition-all duration-1000 ease-out ${
@@ -35,14 +40,14 @@ const ContactUs = () => {
 
         {/* Heading */}
         <h2
-          className={`font-serif font-normal text-3xl md:text-5xl text-gray-900 mb-3 transition-all duration-700 ease-out ${
+          className={`font-serif font-normal text-3xl md:text-5xl text-white mb-3 transition-all duration-700 ease-out ${
             isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'
           }`}
         >
           Get In Touch
         </h2>
         <p
-          className={`text-xs tracking-[0.2em] uppercase text-gray-400 mb-12 transition-all duration-700 ease-out ${
+          className={`text-xs tracking-[0.2em] uppercase text-white/50 mb-12 transition-all duration-700 ease-out ${
             isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
           }`}
           style={{
@@ -68,7 +73,7 @@ const ContactUs = () => {
                 type="text"
                 name="fullName"
                 placeholder="Full Name"
-                className="shadow-none bg-transparent border-0 border-b border-gray-300 rounded-none h-12 text-gray-900 placeholder:text-gray-400 focus-visible:ring-0 focus-visible:border-(--color-primary)"
+                className="shadow-none bg-transparent border-0 border-b border-white/30 rounded-none h-12 text-white placeholder:text-white/40 focus-visible:ring-0 focus-visible:border-(--color-primary)"
                 required
               />
             </div>
@@ -77,7 +82,7 @@ const ContactUs = () => {
                 type="tel"
                 name="phone"
                 placeholder="Phone"
-                className="shadow-none bg-transparent border-0 border-b border-gray-300 rounded-none h-12 text-gray-900 placeholder:text-gray-400 focus-visible:ring-0 focus-visible:border-(--color-primary)"
+                className="shadow-none bg-transparent border-0 border-b border-white/30 rounded-none h-12 text-white placeholder:text-white/40 focus-visible:ring-0 focus-visible:border-(--color-primary)"
                 required
               />
             </div>
@@ -90,18 +95,18 @@ const ContactUs = () => {
                 type="email"
                 name="email"
                 placeholder="Email"
-                className="shadow-none bg-transparent border-0 border-b border-gray-300 rounded-none h-12 text-gray-900 placeholder:text-gray-400 focus-visible:ring-0 focus-visible:border-(--color-primary)"
+                className="shadow-none bg-transparent border-0 border-b border-white/30 rounded-none h-12 text-white placeholder:text-white/40 focus-visible:ring-0 focus-visible:border-(--color-primary)"
                 required
               />
             </div>
             <div className="input-animated relative">
               <NativeSelect
                 name="realtor"
-                className="shadow-none bg-transparent border-0 border-b border-gray-300 rounded-none h-12 text-gray-400 focus-visible:ring-0 focus-visible:border-(--color-primary)"
+                className="shadow-none bg-transparent border-0 border-b border-white/30 rounded-none h-12 text-white focus-visible:ring-0 focus-visible:border-(--color-primary)"
                 required
               >
-                <option value="yes" className="bg-white text-gray-900">I'm a Realtor</option>
-                <option value="no" className="bg-white text-gray-900">I'm not a Realtor</option>
+                <option value="yes" className="bg-black text-white">I'm a Realtor</option>
+                <option value="no" className="bg-black text-white">I'm not a Realtor</option>
               </NativeSelect>
             </div>
           </div>
@@ -112,7 +117,7 @@ const ContactUs = () => {
               name="message"
               rows={4}
               placeholder="Message"
-              className="shadow-none bg-transparent border-0 border-b border-gray-300 rounded-none min-h-[100px] text-gray-900 placeholder:text-gray-400 focus-visible:ring-0 focus-visible:border-(--color-primary)"
+              className="shadow-none bg-transparent border-0 border-b border-white/30 rounded-none min-h-[100px] text-white placeholder:text-white/40 focus-visible:ring-0 focus-visible:border-(--color-primary)"
               required
             />
           </div>

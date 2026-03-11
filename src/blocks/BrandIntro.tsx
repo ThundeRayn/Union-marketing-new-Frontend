@@ -27,7 +27,7 @@ const BrandIntro = ({ backgroundImage }: BrandIntroProps) => {
       {/* Background image */}
       {backgroundImage && (
         <div
-          className="absolute inset-0 bg-cover bg-center"
+          className="absolute inset-0 bg-cover bg-center bg-fixed"
           style={{ backgroundImage: `url(${backgroundImage})` }}
         />
       )}

@@ -1,4 +1,3 @@
-
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
@@ -12,131 +11,127 @@ const ContactUs = () => {
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
-    
-    // Show notification
     setShowNotification(true)
-    
-    // Hide notification after 3 seconds
-    setTimeout(() => {
-      setShowNotification(false)
-    }, 3000)
-    
-    // Reset form
+    setTimeout(() => setShowNotification(false), 3000)
     e.currentTarget.reset()
   }
 
   return (
-    <div ref={ref} className="py-20 px-6 md:px-7 bg-gray-50">
-      <div className="max-w-7xl mx-auto">
-        {/* Notification */}
-        {showNotification && (
-          <div className="fixed top-8 left-1/2 -translate-x-1/2 z-50 bg-green-500 text-white px-6 py-3 rounded-lg shadow-lg animate-[slideDownFadeIn_0.3s_ease-out]">
-            Message sent successfully!
-          </div>
-        )}
+    <div ref={ref} className="bg-white py-20 px-6 md:px-8">
+      {/* Notification */}
+      {showNotification && (
+        <div className="fixed top-8 left-1/2 -translate-x-1/2 z-50 bg-green-500 text-white px-6 py-3 rounded-lg shadow-lg animate-[slideDownFadeIn_0.3s_ease-out]">
+          Message sent successfully!
+        </div>
+      )}
 
-        <div className="grid md:grid-cols-5 gap-14 items-center">
-          {/* Form */}
-          <div className={`md:col-span-2 px-4 md:pl-12 md:pr-8 transition-all duration-1000 ease-out ${
-            isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-10'
-          }`}>
-            <h2 className="text-6xl font-normal text-gray-900 mb-8 px-8 md:px-0">
-              Wanna Contact Us?</h2>
-            <p className="text-gray-600 mb-8 pr-12 px-8 md:px-0">
-              Drop your message and thoughts here 
-              — we’ll be in touch soon!
-            </p>
+      <div className="max-w-4xl mx-auto">
+        {/* Gold accent line */}
+        <div
+          className={`w-12 h-px bg-(--color-primary) mb-8 transition-all duration-1000 ease-out ${
+            isVisible ? 'opacity-100 w-12' : 'opacity-0 w-0'
+          }`}
+        />
 
-            <form className="space-y-2" onSubmit={handleSubmit}>
-              {/* Full Name */}
-              <div className="input-animated relative">
-                <Input
-                  type="text"
-                  id="fullName"
-                  name="fullName"
-                  placeholder="Full Name"
-                  className="shadow-none border-0 border-b border-gray-300 rounded-none h-12 focus-visible:ring-0 focus-visible:border-yellow-400"
-                  required
-                />
-              </div>
+        {/* Heading */}
+        <h2
+          className={`font-serif font-normal text-3xl md:text-5xl text-gray-900 mb-3 transition-all duration-700 ease-out ${
+            isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'
+          }`}
+        >
+          Get In Touch
+        </h2>
+        <p
+          className={`text-xs tracking-[0.2em] uppercase text-gray-400 mb-12 transition-all duration-700 ease-out ${
+            isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
+          }`}
+          style={{
+            fontFamily: "'Staatliches', sans-serif",
+            transitionDelay: '200ms',
+          }}
+        >
+          We&rsquo;d love to hear from you
+        </p>
 
-              {/* Phone */}
-              <div className="input-animated relative">
-                <Input
-                  type="tel"
-                  id="phone"
-                  name="phone"
-                  placeholder="Phone"
-                  className="shadow-none border-0 border-b border-gray-300 rounded-none h-12 focus-visible:ring-0 focus-visible:border-yellow-400"
-                  required
-                />
-              </div>
-
-              {/* Email */}
-              <div className="input-animated relative">
-                <Input
-                  type="email"
-                  id="email"
-                  name="email"
-                  placeholder="Email"
-                  className="shadow-none border-0 border-b border-gray-300 rounded-none h-12 focus-visible:ring-0 focus-visible:border-yellow-400"
-                  required
-                />
-              </div>
-
-              {/* Message */}
-              <div className="input-animated relative">
-                <Textarea
-                  id="message"
-                  name="message"
-                  rows={6}
-                  placeholder="Message"
-                  className="shadow-none border-0 border-b border-gray-300 rounded-none min-h-[120px] focus-visible:ring-0 focus-visible:border-yellow-400"
-                  required
-                />
-              </div>
-
-              {/* Are you a Realtor */}
-              <div className="pb-6">
-                <NativeSelect
-                  id="realtor"
-                  name="realtor"
-                  className="shadow-none border-0 border-b border-gray-300 rounded-none h-12 focus-visible:ring-0 focus-visible:border-yellow-400"
-                  required
-                >
-                  <option value="yes">I'm a Realtor</option>
-                  <option value="no">I'm not a Realtor</option>
-                </NativeSelect>
-              </div>
-
-              {/* Submit Button */}
-              <div>
-                <Button 
-                  type="submit"
-                  variant="union"
-                  size="union"
-                  className="w-full"
-                >
-                  SEND MESSAGE
-                </Button>
-              </div>
-            </form>
+        {/* Form */}
+        <form
+          className={`space-y-6 transition-all duration-1000 ease-out ${
+            isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+          }`}
+          style={{ transitionDelay: '400ms' }}
+          onSubmit={handleSubmit}
+        >
+          {/* Row 1: Name + Phone */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div className="input-animated relative">
+              <Input
+                type="text"
+                name="fullName"
+                placeholder="Full Name"
+                className="shadow-none bg-transparent border-0 border-b border-gray-300 rounded-none h-12 text-gray-900 placeholder:text-gray-400 focus-visible:ring-0 focus-visible:border-(--color-primary)"
+                required
+              />
+            </div>
+            <div className="input-animated relative">
+              <Input
+                type="tel"
+                name="phone"
+                placeholder="Phone"
+                className="shadow-none bg-transparent border-0 border-b border-gray-300 rounded-none h-12 text-gray-900 placeholder:text-gray-400 focus-visible:ring-0 focus-visible:border-(--color-primary)"
+                required
+              />
+            </div>
           </div>
 
-          {/* Image */}
-          <div className={`relative md:col-span-3 transition-all duration-1000 ease-out delay-200 ${
-            isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-10'
-          }`}>
-            <img 
-              src="https://res.cloudinary.com/dqj2gwlpf/image/upload/v1767817651/avi-waxman-f9qZuKoZYoY-unsplash_z2zx1w.jpg" 
-              alt="Contact Us"
-              className="w-full h-[400px] md:h-[800px] object-cover rounded-[40px] md:rounded-bl-[100px]"
+          {/* Row 2: Email + Realtor */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div className="input-animated relative">
+              <Input
+                type="email"
+                name="email"
+                placeholder="Email"
+                className="shadow-none bg-transparent border-0 border-b border-gray-300 rounded-none h-12 text-gray-900 placeholder:text-gray-400 focus-visible:ring-0 focus-visible:border-(--color-primary)"
+                required
+              />
+            </div>
+            <div className="input-animated relative">
+              <NativeSelect
+                name="realtor"
+                className="shadow-none bg-transparent border-0 border-b border-gray-300 rounded-none h-12 text-gray-400 focus-visible:ring-0 focus-visible:border-(--color-primary)"
+                required
+              >
+                <option value="yes" className="bg-white text-gray-900">I'm a Realtor</option>
+                <option value="no" className="bg-white text-gray-900">I'm not a Realtor</option>
+              </NativeSelect>
+            </div>
+          </div>
+
+          {/* Row 3: Message */}
+          <div className="input-animated relative">
+            <Textarea
+              name="message"
+              rows={4}
+              placeholder="Message"
+              className="shadow-none bg-transparent border-0 border-b border-gray-300 rounded-none min-h-[100px] text-gray-900 placeholder:text-gray-400 focus-visible:ring-0 focus-visible:border-(--color-primary)"
+              required
             />
           </div>
-        </div>
+
+          {/* Submit */}
+          <div className="pt-2">
+            <Button
+              type="submit"
+              variant="union"
+              size="union"
+              className="bg-[var(--color-primary)] text-black hover:bg-(--color-secondary) hover:text-white"
+            >
+              SEND MESSAGE
+            </Button>
+          </div>
+        </form>
       </div>
     </div>
   )
 }
 
-export default ContactUs;
+export default ContactUs

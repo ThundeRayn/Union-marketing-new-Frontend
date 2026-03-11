@@ -6,25 +6,12 @@ const Footer = () => {
           {/* Company Info */}
           <div>
             <a href="/" className="flex items-center gap-2 group transition-transform duration-300 ease-in-out hover:translate-x-1 w-fit">
-              <img 
-                src="/Union-icon.png" 
-                alt="Union Logo" 
+              <img
+                src="/Union-icon.png"
+                alt="Union Logo"
                 className="h-16 md:h-22 w-auto max-w-full object-contain transition-transform duration-300 ease-in-out hover:translate-x-2"
-              /> 
-              {/* <img 
-                src="/favicon.ico" 
-                alt="Union Logo" 
-                className="h-15"
               />
-              <img 
-                src="/letter-transparent.png" 
-                alt="Union Text" 
-                className="h-15 w-85"
-              /> */}
             </a>
-            {/* <p className="text-gray-400 text-sm pl-20">
-              Building innovative solutions for a better tomorrow.
-            </p> */}
           </div>
 
           {/* Contact Info */}
@@ -34,7 +21,6 @@ const Footer = () => {
               <li>info@unionmarketingrealty.ca</li>
               <li>139 Main St. 206 Unionville Markham L3R 2G6</li>
             </ul>
-            {/* Social Media Icons */}
 
             <div className="flex space-x-4 mt-4">
               <a href="https://www.instagram.com/unionmarketingrealty/reels/" target="_blank" rel="noopener noreferrer" className="text-yellow-400 hover:text-pink-400 hover:scale-110 transition-all duration-300">

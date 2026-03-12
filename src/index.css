@@ -227,9 +227,14 @@ select:-webkit-autofill:focus {
   background-attachment: fixed;
 }
 
-@media (max-width: 768px), (hover: none) {
-  .parallax-bg {
-    background-attachment: scroll;
+
+/* Project card: portrait on mobile, varied ratio on tablet+ */
+.project-card-ratio {
+  aspect-ratio: 3/4;
+}
+@media (min-width: 768px) {
+  .project-card-ratio {
+    aspect-ratio: var(--card-ratio);
   }
 }
 

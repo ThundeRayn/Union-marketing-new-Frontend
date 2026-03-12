@@ -13,6 +13,8 @@ const projectList = [
   {
     id: 'fifth',
     title: 'Fifth Avenue Homes King City',
+    type: 'TOWNHOMES',
+    address: 'King City, Ontario',
     description: 'NOW SELLING',
     coverImage: 'https://res.cloudinary.com/dqj2gwlpf/image/upload/v1767459181/%E8%9E%A2%E5%B9%95%E6%88%AA%E5%9C%96-2025-03-16-%E4%B8%8B%E5%8D%8811.44.45_xocjxm.png',
     component: Fifth,
@@ -22,6 +24,8 @@ const projectList = [
   {
     id: 'eleven',
     title: '11 Altamont Rd.',
+    type: 'DETACHED',
+    address: 'Scarborough, Ontario',
     description: 'NOW SELLING',
     coverImage: 'https://res.cloudinary.com/dqj2gwlpf/image/upload/v1768275582/Untitled-design-5_xjqyo7.jpg',
     component: ElevenPage,
@@ -31,6 +35,8 @@ const projectList = [
   {
     id: 'eversley',
     title: 'Eversley Project',
+    type: 'SEMI-DETACHED',
+    address: 'King, Ontario',
     description: 'NOW SELLING',
     coverImage: 'https://res.cloudinary.com/dqj2gwlpf/image/upload/v1768277530/2021_09_28_12_28_44_thomson-c-1024x682-1_wonxfk.jpg',
     component: EversleyPage,
@@ -40,6 +46,8 @@ const projectList = [
   {
     id: 'georgina',
     title: 'Georgina Project',
+    type: 'DETACHED',
+    address: 'Keswick, Ontario',
     description: 'NOW SELLING',
     coverImage: 'https://res.cloudinary.com/dqj2gwlpf/image/upload/v1768278560/Georgina-Heights-in-Keswick_ideq3b.jpg',
     component: GeorginaPage,
@@ -49,6 +57,8 @@ const projectList = [
   {
     id: 'cgtower',
     title: 'CG Tower',
+    type: 'CONDO',
+    address: 'Vaughan, Ontario',
     description: 'NOW SELLING',
     coverImage: 'https://res.cloudinary.com/dqj2gwlpf/image/upload/v1768279079/project-part-2_vompfo.jpg',
     component: CGTowerPage,
@@ -58,6 +68,8 @@ const projectList = [
   {
     id: 'abeja',
     title: 'Abeja Project',
+    type: 'CONDO',
+    address: 'Hamilton, Ontario',
     description: 'NOW SELLING',
     coverImage: 'https://res.cloudinary.com/dqj2gwlpf/image/upload/v1768279500/index-slider-v1_kamq7j.jpg',
     component: AbejaPage,
@@ -72,11 +84,8 @@ const ProjectPage = () => {
   return (
     <>
     <Upbadge title='PROJECTS' description='View our on selling' fullScreen={false} />
-    <div ref={ref} className="container mx-auto px-4 md:px-24 py-8">
-      <div
-        className="pt-12"
-        style={{ columnCount: 3, columnGap: '12px' }}
-      >
+    <div ref={ref} className="px-4 md:px-5 lg:px-24 py-4 bg-black">
+      <div className="pt-8 columns-1 md:columns-2 md:gap-3 lg:columns-3 lg:gap-3">
         {projectList.map((project, index) => (
           <div
             key={project.id}
@@ -88,6 +97,8 @@ const ProjectPage = () => {
             <ProjectCard
               id={project.id}
               title={project.title}
+              type={project.type}
+              address={project.address}
               description={project.description}
               coverImage={project.coverImage}
               path={project.path}

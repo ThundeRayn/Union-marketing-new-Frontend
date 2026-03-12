@@ -1,4 +1,4 @@
-import { useRef, useEffect } from "react"
+import { useRef, useEffect, useState } from "react"
 
 interface YTVideoProps {
   videoId: string;
@@ -7,52 +7,60 @@ interface YTVideoProps {
 
 const YTVideo = ({ videoId, title = "Project Video" }: YTVideoProps) => {
   const iframeRef = useRef<HTMLIFrameElement>(null);
+  const [iframeLoaded, setIframeLoaded] = useState(false);
 
   useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting && iframeRef.current) {
-            iframeRef.current.contentWindow?.postMessage(
-              '{"event":"command","func":"playVideo","args":""}',
-              '*'
-            );
-          } else if (!entry.isIntersecting && iframeRef.current) {
-            iframeRef.current.contentWindow?.postMessage(
-              '{"event":"command","func":"pauseVideo","args":""}',
-              '*'
-            );
-          }
-        });
-      },
-      { threshold: 0.25 }
-    );
+    if (!iframeLoaded) return;
 
-    const videoContainer = iframeRef.current?.parentElement;
-    if (videoContainer) {
-      observer.observe(videoContainer);
-    }
+    // Small delay to ensure YouTube player is fully initialized after iframe load
+    const timeout = setTimeout(() => {
+      const iframe = iframeRef.current;
+      if (!iframe) return;
 
-    return () => {
-      if (videoContainer) {
-        observer.unobserve(videoContainer);
-      }
-    };
-  }, []);
+      const sendCommand = (func: string) => {
+        iframe.contentWindow?.postMessage(
+          JSON.stringify({ event: 'command', func, args: '' }),
+          '*'
+        );
+      };
+
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              sendCommand('playVideo');
+            } else {
+              sendCommand('pauseVideo');
+            }
+          });
+        },
+        { threshold: 0.25 }
+      );
+
+      const wrapper = iframe.parentElement;
+      if (wrapper) observer.observe(wrapper);
+
+      return () => {
+        if (wrapper) observer.unobserve(wrapper);
+      };
+    }, 1500);
+
+    return () => clearTimeout(timeout);
+  }, [iframeLoaded]);
 
   return (
     <div className="w-full">
-      {/* <h2 className="text-3xl font-bold mb-6 text-center">{title}</h2> */}
       <div className="relative w-full" style={{ paddingBottom: '56.25%' }}>
         <iframe
           ref={iframeRef}
-          src={`https://www.youtube.com/embed/${videoId}?autoplay=0&loop=1&mute=0&controls=1&enablejsapi=1`}
+          onLoad={() => setIframeLoaded(true)}
+          src={`https://www.youtube.com/embed/${videoId}?autoplay=0&loop=1&playlist=${videoId}&mute=1&controls=1&modestbranding=1&rel=0&showinfo=0&iv_load_policy=3&disablekb=0&enablejsapi=1`}
           style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%' }}
           frameBorder="0"
           allow="autoplay; encrypted-media; fullscreen; picture-in-picture"
           allowFullScreen
           title={title}
-        ></iframe>
+        />
       </div>
     </div>
   );

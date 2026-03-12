@@ -3,6 +3,7 @@ import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 
 const EventForm = () => {
+  const [tapped, setTapped] = useState(false)
   const [formData, setFormData] = useState({
     fullName: '',
     phone: '',
@@ -100,11 +101,15 @@ const EventForm = () => {
 
             <button
               type="button"
-              onClick={(e) => e.preventDefault()}
-              className="w-full py-2 bg-(--color-primary) text-black rounded-none hover:bg-gray-600 hover:text-gray-400 transition-colors duration-300 group text-sm font-medium mt-6"
+              onClick={() => setTapped(true)}
+              className={`w-full py-2 rounded-none transition-colors duration-300 text-sm font-medium mt-6 ${
+                tapped
+                  ? 'bg-gray-600 text-gray-400'
+                  : 'bg-(--color-primary) text-black hover:bg-gray-600 hover:text-gray-400 group'
+              }`}
             >
-              <span className="group-hover:hidden">Register</span>
-              <span className="hidden group-hover:inline">Event Is Over</span>
+              <span className={tapped ? 'hidden' : 'group-hover:hidden'}>Register</span>
+              <span className={tapped ? 'inline' : 'hidden group-hover:inline'}>Event Is Over</span>
             </button>
           </form>
         </div>

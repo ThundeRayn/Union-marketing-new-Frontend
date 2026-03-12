@@ -105,7 +105,7 @@ const Navbar = () => {
                   {link.label}
                 </a>
               ))}
-              <a href="#" className="block w-full">
+              <a href="/login" className="block w-full">
                 <button 
                   className="w-full px-4 py-3 border border-yellow-400 text-(--text-inverse) hover:text-(--color-primary) rounded-lg transition-colors duration-200 font-medium"
                   onClick={() => setIsMobileMenuOpen(false)}

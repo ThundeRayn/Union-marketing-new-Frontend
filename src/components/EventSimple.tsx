@@ -1,3 +1,5 @@
+import { useState } from 'react'
+
 interface EventSimpleProps {
   id: number
   title: string
@@ -16,6 +18,8 @@ const EventSimple = ({
   address,
   qrCodeImage
 }: EventSimpleProps) => {
+  const [tapped, setTapped] = useState(false)
+
   return (
     <div className="border-2 border-(--color-primary)/30 my-8 mx-8 px-8 py-8 bg-(--color-secondary)">
       <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -55,11 +59,15 @@ const EventSimple = ({
           />
 
           <button
-            onClick={(e) => e.preventDefault()}
-            className="w-full py-2 bg-(--color-primary) text-black rounded-none hover:bg-gray-600 hover:text-gray-400 transition-colors duration-300 group text-sm font-medium"
+            onClick={() => setTapped(true)}
+            className={`w-full py-2 rounded-none transition-colors duration-300 text-sm font-medium ${
+              tapped
+                ? 'bg-gray-600 text-gray-400'
+                : 'bg-(--color-primary) text-black hover:bg-gray-600 hover:text-gray-400 group'
+            }`}
           >
-            <span className="group-hover:hidden">More Information</span>
-            <span className="hidden group-hover:inline">Event Is Over</span>
+            <span className={tapped ? 'hidden' : 'group-hover:hidden'}>More Information</span>
+            <span className={tapped ? 'inline' : 'hidden group-hover:inline'}>Event Is Over</span>
           </button>
         </div>
       </div>

@@ -166,7 +166,8 @@ const Customer = () => {
               <img
                 src={client.logo}
                 alt={client.name}
-                className="w-32 h-32 object-contain brightness-0 invert opacity-30 transition-all duration-500"
+                className="w-32 h-32 object-contain opacity-30 transition-[opacity,transform] duration-500"
+                style={{ filter: 'brightness(0) invert(1)' }}
               />
             </div>
           ))}

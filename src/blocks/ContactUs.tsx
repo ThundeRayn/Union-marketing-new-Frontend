@@ -20,7 +20,7 @@ const ContactUs = () => {
     <div
       ref={ref}
       className="relative py-20 px-6 md:px-8 bg-cover bg-center bg-fixed"
-      style={{ backgroundImage: 'url(https://res.cloudinary.com/dqj2gwlpf/image/upload/v1767497882/RenderingA_nvcuji.png)' }}
+      style={{ backgroundImage: 'url(https://images.unsplash.com/photo-1435575653489-b0873ec954e2?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D)' }}
     >
       <div className="absolute inset-0 bg-black/40" />
       {/* Notification */}

@@ -19,7 +19,7 @@ const projectList = [
     type: 'TOWNHOMES',
     address: 'King City, Ontario',
     description: 'NOW SELLING',
-    coverImage: 'https://res.cloudinary.com/dqj2gwlpf/image/upload/v1767459181/%E8%9E%A2%E5%B9%95%E6%88%AA%E5%9C%96-2025-03-16-%E4%B8%8B%E5%8D%8811.44.45_xocjxm.png',
+    coverImage: 'https://res.cloudinary.com/dqj2gwlpf/image/upload/v1773305589/img_2_clzm3k.jpg',
     component: Fifth,
     path: '/projects/fifth',
     ratio: '4/3',

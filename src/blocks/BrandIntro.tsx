@@ -19,7 +19,7 @@ const BrandIntro = ({ backgroundImage }: BrandIntroProps) => {
 
   return (
     <div
-      className="relative w-full overflow-hidden h-screen lg:h-[calc(100vh-80px)]"
+      className="relative w-full overflow-hidden h-dvh lg:h-[calc(100dvh-80px)]"
       style={{
         backgroundColor: 'var(--color-secondary)',
       }}
@@ -43,7 +43,7 @@ const BrandIntro = ({ backgroundImage }: BrandIntroProps) => {
       />
 
       {/* Main editorial grid */}
-      <div className="relative z-10 h-full flex flex-col justify-between px-6 md:px-16 lg:px-24 pt-[15vh] pb-12 lg:py-16">
+      <div className="relative z-10 h-full flex flex-col justify-between px-6 md:px-16 lg:px-24 pt-[15dvh] pb-12 lg:py-16">
 
         {/* Top — Overline + Brand name */}
         <div>

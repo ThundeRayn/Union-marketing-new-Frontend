@@ -76,11 +76,27 @@ const OnSelling = () => {
     return () => el.removeEventListener('scroll', updateScrollState)
   }, [])
 
+  const smoothScrollTo = (el: HTMLElement, target: number, duration = 500) => {
+    const start = el.scrollLeft
+    const distance = target - start
+    const startTime = performance.now()
+    const easeOutCubic = (t: number) => 1 - Math.pow(1 - t, 3)
+
+    const step = (currentTime: number) => {
+      const elapsed = currentTime - startTime
+      const progress = Math.min(elapsed / duration, 1)
+      el.scrollLeft = start + distance * easeOutCubic(progress)
+      if (progress < 1) requestAnimationFrame(step)
+    }
+    requestAnimationFrame(step)
+  }
+
   const scroll = (direction: 'left' | 'right') => {
     const el = scrollRef.current
     if (!el) return
     const cardWidth = el.querySelector('a')?.offsetWidth ?? 400
-    el.scrollBy({ left: direction === 'right' ? cardWidth + 24 : -(cardWidth + 24), behavior: 'smooth' })
+    const delta = direction === 'right' ? cardWidth + 24 : -(cardWidth + 24)
+    smoothScrollTo(el, el.scrollLeft + delta)
   }
 
   return (
@@ -173,12 +189,12 @@ const OnSelling = () => {
               animationDelay: `${index * 100}ms`,
             }}
           >
-            {/* Image */}
-            <div className="absolute inset-0">
+            {/* Image + overlay scale together */}
+            <div className="absolute inset-0 group-hover:scale-105 transition-transform duration-700 ease-out">
               <img
                 src={project.image}
                 alt={project.title}
-                className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+                className="w-full h-full object-cover"
               />
               <div className="absolute inset-0 bg-linear-to-t from-black/60 to-transparent" />
             </div>

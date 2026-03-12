@@ -18,7 +18,7 @@ const Hero = () => {
       description: 'Tailored marketing and sales strategies for pre-construction low-rise projects, encompassing market analysis, branding, and targeted campaigns for maximum sales effectiveness.',
     },
     {
-      image: 'https://res.cloudinary.com/dqj2gwlpf/image/upload/v1767459181/%E8%9E%A2%E5%B9%95%E6%88%AA%E5%9C%96-2025-03-16-%E4%B8%8B%E5%8D%8811.44.45_xocjxm.png',
+      image: 'https://res.cloudinary.com/dqj2gwlpf/image/upload/v1773305589/img_2_clzm3k.jpg',
       title: 'Network & Expert CoBuilders',
       description: 'Fostering strategic partnerships with developers and builders, providing insights and support to enhance project viability and success in the pre-construction low-rise market.',
     },

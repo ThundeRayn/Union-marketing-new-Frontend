@@ -1,7 +1,46 @@
+import { useEffect, useRef, useCallback } from 'react'
 import { useScrollAnimation } from "@/hooks/useScrollAnimation"
 
 const Customer = () => {
   const { ref, isVisible } = useScrollAnimation(0.05)
+  const mobileCardsRef = useRef<(HTMLDivElement | null)[]>([])
+
+  const setMobileCardRef = useCallback((el: HTMLDivElement | null, index: number) => {
+    mobileCardsRef.current[index] = el
+  }, [])
+
+  // Spotlight scroll effect for mobile/iPad
+  useEffect(() => {
+    const cards = mobileCardsRef.current.filter(Boolean) as HTMLDivElement[]
+    if (cards.length === 0) return
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          const img = (entry.target as HTMLDivElement).querySelector('img')
+          const card = entry.target as HTMLDivElement
+          if (img) {
+            if (entry.isIntersecting) {
+              img.style.opacity = '1'
+              img.style.transform = 'scale(1.05)'
+              card.style.borderColor = 'rgba(251, 201, 68, 0.3)'
+            } else {
+              img.style.opacity = '0.3'
+              img.style.transform = 'scale(1)'
+              card.style.borderColor = ''
+            }
+          }
+        })
+      },
+      {
+        rootMargin: '-35% 0px -35% 0px',
+        threshold: 0,
+      }
+    )
+
+    cards.forEach((card) => observer.observe(card))
+    return () => observer.disconnect()
+  }, [])
 
   const clients = [
     {
@@ -113,12 +152,13 @@ const Customer = () => {
           </div>
         </div>
 
-        {/* Mobile/iPad: logo grid only */}
+        {/* Mobile/iPad: logo grid with spotlight scroll */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-10 items-center lg:hidden">
           {clients.map((client, index) => (
             <div
               key={index}
-              className={`flex items-center justify-center p-4 border border-white/10 hover:border-(--color-primary)/30 transition-all duration-500 ease-out ${
+              ref={(el) => setMobileCardRef(el, index)}
+              className={`flex items-center justify-center p-4 border border-white/10 transition-all duration-500 ease-out ${
                 isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'
               }`}
               style={{ transitionDelay: isVisible ? `${index * 150}ms` : '0ms' }}
@@ -126,7 +166,7 @@ const Customer = () => {
               <img
                 src={client.logo}
                 alt={client.name}
-                className="w-32 h-32 object-contain brightness-0 invert opacity-50 hover:opacity-100 hover:scale-105 transition-all duration-500"
+                className="w-32 h-32 object-contain brightness-0 invert opacity-30 transition-all duration-500"
               />
             </div>
           ))}

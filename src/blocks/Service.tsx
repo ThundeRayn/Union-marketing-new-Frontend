@@ -1,7 +1,9 @@
 
 import AccordionCard from '@/components/AccordionCard'
+import { useScrollAnimation } from '@/hooks/useScrollAnimation'
 
 const Service = () => {
+  const { ref, isVisible } = useScrollAnimation(0.05)
   const servicesData1 = [
     {
       subtitle: "Demographic Studies",
@@ -63,8 +65,10 @@ const Service = () => {
   ]
 
   return (
-    <div className="py-20 px-4 md:px-14 bg-gray-50">
-      <div className="max-w-7xl mx-auto space-y-16">
+    <div ref={ref} className="py-20 px-4 md:px-14 bg-gray-50">
+      <div className={`max-w-7xl mx-auto space-y-16 transition-all duration-1000 ease-out ${
+        isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+      }`}>
         {/* Service Card 1 */}
         <AccordionCard
           title="Strategic Market Analysis"

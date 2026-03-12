@@ -1,5 +1,6 @@
 
 import { useState, useEffect, useRef } from 'react'
+import { Link } from 'react-router-dom'
 
 const Hero = () => {
   const [currentSlide, setCurrentSlide] = useState(0)
@@ -8,26 +9,29 @@ const Hero = () => {
   const slides = [
     {
       image: 'https://res.cloudinary.com/dqj2gwlpf/image/upload/v1767459350/2021_09_28_12_28_44_thomson-c-1024x682-1_ojqhoh.jpg',
-      title: 'Welcome to Union Marketing',
-      subtitle: 'Your trusted real estate partner',
-      link: '#about'
+      title: 'Advisory & Real Support',
+      description: 'Comprehensive support in project planning and execution, including land acquisition, regulatory compliance and tailored development strategies.',
     },
     {
       image: 'https://res.cloudinary.com/dqj2gwlpf/image/upload/v1767459319/Untitled-design-4_ui8y7s.png',
-      title: 'Find Your Dream Home',
-      subtitle: 'Expert guidance every step of the way'
+      title: 'Marketing & Sales Strategy',
+      description: 'Tailored marketing and sales strategies for pre-construction low-rise projects, encompassing market analysis, branding, and targeted campaigns for maximum sales effectiveness.',
     },
     {
       image: 'https://res.cloudinary.com/dqj2gwlpf/image/upload/v1767459181/%E8%9E%A2%E5%B9%95%E6%88%AA%E5%9C%96-2025-03-16-%E4%B8%8B%E5%8D%8811.44.45_xocjxm.png',
-      title: 'Professional Real Estate Services',
-      subtitle: 'Building innovative solutions for a better tomorrow',
-      link: '#contact'
-    }
+      title: 'Network & Expert CoBuilders',
+      description: 'Fostering strategic partnerships with developers and builders, providing insights and support to enhance project viability and success in the pre-construction low-rise market.',
+    },
+    {
+      image: 'https://res.cloudinary.com/dqj2gwlpf/image/upload/v1767497882/RenderingA_nvcuji.png',
+      title: 'Consult & Market Analysis',
+      description: 'In-depth market analysis and consultation services, including demographic studies, pricing strategies, and trend insights for project optimization.',
+    },
   ]
 
   useEffect(() => {
     timerRef.current = setInterval(() => {
-      setCurrentSlide((prev) => (prev + 1) % 3)
+      setCurrentSlide((prev) => (prev + 1) % 4)
     }, 8000)
     
     return () => {
@@ -46,14 +50,15 @@ const Hero = () => {
   }
 
   return (
-    <div className="relative w-full bg-gray-800" style={{ height: 'calc(100vh - 80px)' }}>
+    <div className="relative w-full h-screen bg-gray-800">
       {slides.map((slide, index) => (
         <div
           key={index}
           style={{
             backgroundImage: `url(${slide.image})`,
             backgroundSize: 'cover',
-            backgroundPosition: 'center'
+            backgroundPosition: 'center',
+            backgroundAttachment: 'fixed',
           }}
           className={`absolute top-0 left-0 w-full h-full transition-opacity duration-1000 ${
             index === currentSlide ? 'opacity-100' : 'opacity-0'
@@ -63,67 +68,70 @@ const Hero = () => {
         </div>
       ))}
 
-      {/* Left Arrow */}
-      <button
-        onClick={goToPrevious}
-        className="absolute left-4 top-1/2 -translate-y-1/2 z-20 bg-black/50 hover:bg-black/70 text-white p-3 rounded-full transition"
-      >
-        <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
-        </svg>
-      </button>
-
-      {/* Right Arrow */}
-      <button
-        onClick={goToNext}
-        className="absolute right-4 top-1/2 -translate-y-1/2 z-20 bg-black/50 hover:bg-black/70 text-white p-3 rounded-full transition"
-      >
-        <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-        </svg>
-      </button>
-
-      {/* conditional button with link */}
-      <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-4 z-10">
-        <h1 
+      {/* Content */}
+      <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-6 z-10">
+        <h1
           key={`title-${currentSlide}`}
-          className="font-serif mx-10 text-2xl md:text-4xl font-bold text-white mb-4 drop-shadow-2xl animate-[slideDownFadeIn_0.8s_ease-out]"
+          className="font-serif mx-10 text-2xl md:text-5xl font-normal text-white mb-4 drop-shadow-2xl animate-[slideDownFadeIn_0.8s_ease-out]"
         >
           {slides[currentSlide].title}
         </h1>
-        <p 
-          key={`subtitle-${currentSlide}`}
-          className="font-light text-lg text-white mb-8 drop-shadow-lg animate-[slideDownFadeIn_0.8s_ease-out]"
+        <p
+          key={`desc-${currentSlide}`}
+          className="font-light text-sm md:text-lg text-white/70 mb-8 max-w-2xl leading-relaxed drop-shadow-lg animate-[slideDownFadeIn_0.8s_ease-out]"
         >
-          {slides[currentSlide].subtitle}
+          {slides[currentSlide].description}
         </p>
-        {slides[currentSlide].link && (
-          <a 
-            key={`button-${currentSlide}`}
-            href={slides[currentSlide].link}
-            className="relative border border-yellow-400 text-white px-6 py-3 rounded-lg font-semibold overflow-hidden group inline-block animate-[slideDownFadeIn_0.8s_ease-out]"
-          >
-            <span className="relative z-10 transition-all duration-300 ease-in-out group-hover:opacity-0">
-              MORE INFORMATION
-            </span>
-            <span className="absolute inset-0 flex items-center justify-center translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-in-out text-white">
-              CHECK NOW →
-            </span>
-          </a>
-        )}
+        <Link
+          key={`button-${currentSlide}`}
+          to="/service"
+          className="relative border border-yellow-400 text-white px-6 py-3 rounded-lg font-semibold overflow-hidden group inline-block animate-[slideDownFadeIn_0.8s_ease-out]"
+        >
+          <span className="relative z-10 transition-all duration-300 ease-in-out group-hover:opacity-0">
+            VIEW MORE
+          </span>
+          <span className="absolute inset-0 flex items-center justify-center translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-in-out text-white">
+            LEARN MORE →
+          </span>
+        </Link>
       </div>
 
-        {/* Slide Indicators */}
-      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex gap-2 z-10">
-        {slides.map((_, index) => (
+      {/* Bottom bar: arrows + indicators */}
+      <div className="absolute bottom-8 left-0 right-0 z-20 px-6 md:px-16">
+        <div className="flex items-center justify-between md:justify-center md:gap-6">
+          {/* Left Arrow */}
           <button
-            key={index}
-            onClick={() => setCurrentSlide(index)}
-            className={`h-2 rounded-full transition-all ${
-              index === currentSlide ? 'w-6 bg-yellow-400' : 'w-2 bg-white/50'
-            }`}
-          />
-        ))}
+            onClick={goToPrevious}
+            className="bg-black/50 hover:bg-black/70 text-white p-3 rounded-full transition"
+          >
+            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+            </svg>
+          </button>
+
+          {/* Slide Indicators */}
+          <div className="flex gap-2">
+            {slides.map((_, index) => (
+              <button
+                key={index}
+                onClick={() => setCurrentSlide(index)}
+                className={`h-2 rounded-full transition-all ${
+                  index === currentSlide ? 'w-6 bg-yellow-400' : 'w-2 bg-white/50'
+                }`}
+              />
+            ))}
+          </div>
+
+          {/* Right Arrow */}
+          <button
+            onClick={goToNext}
+            className="bg-black/50 hover:bg-black/70 text-white p-3 rounded-full transition"
+          >
+            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+            </svg>
+          </button>
+        </div>
       </div>
     </div>
   )

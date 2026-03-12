@@ -25,30 +25,36 @@ const EventForm = () => {
   }
 
   return (
-    <div className="m-8 border-3 border-black px-8 py-2 bg-white">
+    <div className="m-8 border-2 border-(--color-primary)/30 px-8 py-8 bg-(--color-secondary)">
       <div className="grid grid-cols-1 md:grid-cols-5 gap-0 min-h-80 items-center">
         {/* Left Section - Title and Description */}
         <div className="md:col-span-3 text-center">
-          <h2 className="text-4xl font-bold text-gray-900 mb-6">
+          <h2
+            className="text-3xl md:text-4xl font-normal text-white mb-6"
+            style={{ fontFamily: 'var(--font-heading)' }}
+          >
             Register for 11 Altamont
           </h2>
 
-          <p className="text-2xl font-semibold text-gray-900 mb-2">
+          <p
+            className="text-sm tracking-[0.15em] uppercase text-(--color-primary) mb-2"
+            style={{ fontFamily: 'var(--font-label)' }}
+          >
             Are You an Agent?
           </p>
-          
+
           <a href="/login" className="mb-2 block text-center">
-            <Button className="bg-black text-white hover:bg-yellow-400 hover:text-black transition-colors duration-300 rounded-none">
+            <Button className="bg-(--color-primary) text-black hover:bg-white hover:text-black transition-colors duration-300 rounded-none">
               YES
             </Button>
           </a>
 
           <div className="space-y-1">
-            <p className="text-gray-700 text-base leading-relaxed">
-              If <span className="font-bold">YES</span>, please press 'YES' or go to Broker Portal to log in or register.
+            <p className="text-white/60 text-base leading-relaxed">
+              If <span className="font-bold text-white">YES</span>, please press 'YES' or go to Broker Portal to log in or register.
             </p>
-            <p className="text-gray-700 text-base leading-relaxed">
-              If <span className="font-bold">NO</span>, please register email for further information and updates using the form here.
+            <p className="text-white/60 text-base leading-relaxed">
+              If <span className="font-bold text-white">NO</span>, please register email for further information and updates using the form here.
             </p>
           </div>
         </div>
@@ -64,7 +70,7 @@ const EventForm = () => {
                 value={formData.fullName}
                 onChange={handleInputChange}
                 required
-                className="w-full border-0 border-b border-black rounded-none shadow-none focus:border-yellow-400"
+                className="w-full border-0 border-b border-white/30 rounded-none shadow-none text-white placeholder:text-white/40 focus:border-(--color-primary)"
               />
             </div>
 
@@ -76,7 +82,7 @@ const EventForm = () => {
                 value={formData.phone}
                 onChange={handleInputChange}
                 required
-                className="w-full border-0 border-b border-black rounded-none shadow-none focus:border-yellow-400"
+                className="w-full border-0 border-b border-white/30 rounded-none shadow-none text-white placeholder:text-white/40 focus:border-(--color-primary)"
               />
             </div>
 
@@ -88,16 +94,18 @@ const EventForm = () => {
                 value={formData.email}
                 onChange={handleInputChange}
                 required
-                className="w-full border-0 border-b border-black rounded-none shadow-none focus:border-yellow-400"
+                className="w-full border-0 border-b border-white/30 rounded-none shadow-none text-white placeholder:text-white/40 focus:border-(--color-primary)"
               />
             </div>
 
-            <Button
-              type="submit"
-              className="w-full bg-black text-white hover:bg-yellow-400 hover:text-black transition-colors duration-300 rounded-none mt-6"
+            <button
+              type="button"
+              onClick={(e) => e.preventDefault()}
+              className="w-full py-2 bg-(--color-primary) text-black rounded-none hover:bg-gray-600 hover:text-gray-400 transition-colors duration-300 group text-sm font-medium mt-6"
             >
-              Register
-            </Button>
+              <span className="group-hover:hidden">Register</span>
+              <span className="hidden group-hover:inline">Event Is Over</span>
+            </button>
           </form>
         </div>
       </div>

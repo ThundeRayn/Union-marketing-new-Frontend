@@ -6,7 +6,7 @@ import EventSell from '@/components/EventSell'
 
 const EventPage = () => {
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-black">
       {/* Events Container */}
       <div className="w-full">
         {/* Events Grid */}

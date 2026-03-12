@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=DM+Serif+Display&family=Prata&family=Staatliches&display=swap");
 
 @import "tailwindcss";
 
@@ -6,10 +6,34 @@
 
 @custom-variant dark (&:is(.dark *));
 
+html {
+  scroll-behavior: smooth;
+}
+
+/* Prevent browser autofill from overriding dark input styles */
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover,
+textarea:-webkit-autofill:focus,
+select:-webkit-autofill,
+select:-webkit-autofill:hover,
+select:-webkit-autofill:focus {
+  -webkit-text-fill-color: white;
+  -webkit-box-shadow: 0 0 0px 1000px transparent inset;
+  transition: background-color 5000s ease-in-out 0s;
+}
+
 :root {
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+  font-family: 'Inter', 'Helvetica Neue', Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
+
+  /* Font families */
+  --font-heading: 'Prata', serif;
+  --font-label: 'Staatliches', sans-serif;
+  --font-body: 'Inter', 'Helvetica Neue', Helvetica, Arial, sans-serif;
 
   /* Primary colors */
   --color-primary: #fbc944;
@@ -56,8 +80,8 @@
 }
 
 @theme{
-  --font-base: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-  --font-roboto: "Roboto", sans-serif;
+  --font-sans: 'Roboto', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  --font-serif: 'Prata', serif;
 }
 
 @keyframes fadeIn {
@@ -78,6 +102,36 @@
     opacity: 1;
     transform: translateY(0);
   }
+}
+
+@keyframes slideUpFadeIn {
+  from { opacity: 0; transform: translateY(40px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideInLeft {
+  from { opacity: 0; transform: translateX(-40px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes slideInRight {
+  from { opacity: 0; transform: translateX(40px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes scaleIn {
+  from { opacity: 0; transform: scale(0.95); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+@keyframes kenBurns {
+  from { transform: scale(1); }
+  to { transform: scale(1.04); }
+}
+
+@keyframes scrollPulse {
+  0%, 100% { transform: translateY(-100%); }
+  50% { transform: translateY(200%); }
 }
 
 @theme inline {
@@ -167,4 +221,37 @@
 
   }
 
+}
+
+.parallax-bg {
+  background-attachment: fixed;
+}
+
+
+/* Project card: portrait on mobile, varied ratio on tablet+ */
+.project-card-ratio {
+  aspect-ratio: 3/4;
+}
+@media (min-width: 768px) {
+  .project-card-ratio {
+    aspect-ratio: var(--card-ratio);
+  }
+}
+
+.input-animated {
+  position: relative;
+}
+.input-animated::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 0;
+  height: 2px;
+  background: #fbc944;
+  transition: all 0.3s ease-out;
+  transform: translateX(-50%);
+}
+.input-animated:focus-within::after {
+  width: 100%;
 }

@@ -31,7 +31,7 @@ const EventRich = ({
     <div className="event-card">
       {/* Event Hero Section */}
       <div 
-        className="relative w-full flex items-center justify-center overflow-hidden"
+        className="relative w-full flex items-center justify-center overflow-hidden parallax-bg"
         style={{
           height: 'calc(100vh - 80px)',
           backgroundImage: `url(${backgroundImage})`,
@@ -40,13 +40,13 @@ const EventRich = ({
         }}
       >
         {/* Dark overlay */}
-        <div className="absolute inset-0 bg-black/40"></div>
+        <div className="absolute inset-0 bg-black/50"></div>
         
         {/* Content */}
         <div className="relative z-10 text-center px-4 space-y-4">
           <h1 
             key={`title-${id}`}
-            className="font-serif mx-10 text-2xl md:text-4xl font-bold text-white mb-4 drop-shadow-2xl animate-[slideDownFadeIn_0.8s_ease-out]"
+            className="font-serif mx-10 text-2xl md:text-5xl font-normal text-white mb-4 drop-shadow-2xl animate-[slideDownFadeIn_0.8s_ease-out]"
           >
             {title}
           </h1>

@@ -82,7 +82,7 @@ const Fifth = () => {
 
       {/* The Builder Section */}
       <div className="container mx-auto px-4 py-12">
-        <h2 className="text-3xl font-serif font-bold mb-6 text-center">The Builder</h2>
+        <h2 className="text-2xl md:text-3xl font-serif font-normal mb-6 text-center">The Builder</h2>
         <div className="flex items-center justify-center gap-4">
           <img 
             src="https://res.cloudinary.com/dqj2gwlpf/image/upload/v1767486776/logo-removebg-preview_t0imsb.png" 

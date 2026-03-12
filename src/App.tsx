@@ -1,3 +1,4 @@
+import { useEffect } from 'react'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 
 import './App.css'
@@ -17,6 +18,13 @@ import CGTowerPage from './projects/CGTowerPage'
 import AbejaPage from './projects/AbejaPage'
 
 function App() {
+  useEffect(() => {
+    const preloader = document.getElementById('preloader')
+    if (preloader) {
+      preloader.classList.add('preloader-fade')
+      setTimeout(() => preloader.remove(), 600)
+    }
+  }, [])
 
   return (
     <>

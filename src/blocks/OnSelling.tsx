@@ -1,57 +1,16 @@
 import { useRef, useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { useScrollAnimation } from '@/hooks/useScrollAnimation'
+import projectsData from '@/data/projects.json'
 
-const projects = [
-  {
-    title: 'Fifth Avenue',
-    subtitle: 'King City',
-    type: 'TOWNHOMES',
-    status: 'NOW SELLING',
-    image: 'https://res.cloudinary.com/dqj2gwlpf/image/upload/v1767459181/%E8%9E%A2%E5%B9%95%E6%88%AA%E5%9C%96-2025-03-16-%E4%B8%8B%E5%8D%8811.44.45_xocjxm.png',
-    path: '/projects/fifth',
-  },
-  {
-    title: '11 Altamont',
-    subtitle: 'Near Finch Station',
-    type: 'CONDO TOWNS',
-    status: 'NOW SELLING',
-    image: 'https://res.cloudinary.com/dqj2gwlpf/image/upload/v1768275582/Untitled-design-5_xjqyo7.jpg',
-    path: '/projects/eleven',
-  },
-  {
-    title: 'Eversley',
-    subtitle: 'Dufferin & 15th Sideroad',
-    type: 'LUXURY SINGLES',
-    status: 'NOW SELLING',
-    image: 'https://res.cloudinary.com/dqj2gwlpf/image/upload/v1768277530/2021_09_28_12_28_44_thomson-c-1024x682-1_wonxfk.jpg',
-    path: '/projects/eversley',
-  },
-  {
-    title: 'Georgina',
-    subtitle: 'Church St & Woodbine',
-    type: 'SINGLES',
-    status: 'NOW SELLING',
-    image: 'https://res.cloudinary.com/dqj2gwlpf/image/upload/v1768278560/Georgina-Heights-in-Keswick_ideq3b.jpg',
-    path: '/projects/georgina',
-  },
-  {
-    title: 'CG Tower',
-    subtitle: 'Jane & Rutherford',
-    type: 'RESIDENTIAL TOWER',
-    status: 'NOW SELLING',
-    image: 'https://res.cloudinary.com/dqj2gwlpf/image/upload/v1768279079/project-part-2_vompfo.jpg',
-    path: '/projects/cgtower',
-  },
-  {
-    title: 'Abeja',
-    subtitle: 'Jane & Rutherford',
-    type: 'CONDOMINIUM',
-    status: 'NOW SELLING',
-    image: 'https://res.cloudinary.com/dqj2gwlpf/image/upload/v1768279500/index-slider-v1_kamq7j.jpg',
-    path: '/projects/abeja',
-  },
-]
+const projects = projectsData.map(p => ({
+  title: p.title,
+  subtitle: p.subtitle,
+  type: p.type,
+  status: p.status,
+  image: p.coverImage,
+  path: p.path,
+}))
 
 const OnSelling = () => {
   const { ref, isVisible } = useScrollAnimation(0.05)

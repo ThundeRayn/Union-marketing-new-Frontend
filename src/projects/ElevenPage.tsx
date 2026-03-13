@@ -1,4 +1,6 @@
 //import Upbadge from "@/blocks/Upbadge"
+import ProjectBuilder from "@/blocks/ProjectBuilder"
+import BackToHome from "@/components/BackToHome"
 import { Button } from "@/components/ui/button"
 import ProjectInfo from "@/components/ProjectInfo"
 import { useRef, useEffect } from "react"
@@ -87,44 +89,38 @@ const ElevenPage = () => {
   ];
 
   return (
-    <div>
-      {/* <Upbadge 
-        title='11 Altamont Rd.' 
-        description='NOW SELLING'
-        url="https://res.cloudinary.com/dqj2gwlpf/image/upload/v1768275582/Untitled-design-5_xjqyo7.jpg"
-      /> */}
+    <div className="bg-(--color-secondary) text-white min-h-screen">
+      <BackToHome to="/project" label="PROJECTS" />
 
       {/* Video Section */}
       <div ref={videoContainerRef} className="w-full">
         <div className="w-full aspect-video overflow-hidden">
-          <iframe 
+          <iframe
             ref={iframeRef}
-            src="https://player.vimeo.com/video/340649441?loop=1&autoplay=1&title=0&byline=0&portrait=0" 
+            src="https://player.vimeo.com/video/340649441?loop=1&autoplay=1&title=0&byline=0&portrait=0"
             className="w-full h-full"
-            frameBorder="0" 
-            allow="autoplay; fullscreen; picture-in-picture" 
+            frameBorder="0"
+            allow="autoplay; fullscreen; picture-in-picture"
             allowFullScreen
           />
         </div>
       </div>
-      <ProjectInfo 
+      <ProjectInfo
         type="CONDO TOWNS"
         location="Near Finch Station"
       />
-      
+
       {/* Main Content Area */}
-      <div className="container mx-auto px-4 py-8 flex flex-col items-center">
-          
+      <div className="mx-auto px-6 md:px-16 lg:px-24 py-10 flex flex-col items-center">
+
         <div className="w-full max-w-2xl">
-          {/* Left Container - Button List */}
-          
+
           <div className="flex flex-col space-y-4">
-            <img 
-              src="https://res.cloudinary.com/dqj2gwlpf/image/upload/v1768275579/logo-11altamont-boxed_n3bqur.png" 
+            <img
+              src="https://res.cloudinary.com/dqj2gwlpf/image/upload/v1768275579/logo-11altamont-boxed_n3bqur.png"
               alt="Main project"
-              className="w-full p-6 h-auto object-cover rounded-lg mb-4" 
+              className="w-full p-6 h-auto object-cover rounded-lg mb-4"
             />
-            {/* eslint-disable-next-line react-hooks/refs */}
             {buttons.map((button) => (
               <Button
                 key={button.id}
@@ -144,7 +140,7 @@ const ElevenPage = () => {
             ))}
           </div>
 
-          {/* Right Container - Image List */}
+          {/* Image List */}
           <div className="flex flex-col space-y-4 mt-8">
             {images.map((image, index) => (
               <div key={index} className="w-full overflow-hidden rounded-lg">
@@ -159,23 +155,15 @@ const ElevenPage = () => {
         </div>
       </div>
 
-      {/* The Builder Section */}
-      <div className="container mx-auto px-4 py-8">
-        <h2 className="text-3xl font-bold mb-6 text-center">The Builder</h2>
-        <div className="flex items-center justify-center gap-4">
-          <img 
-            src="https://res.cloudinary.com/dqj2gwlpf/image/upload/v1768276135/logo-7_mph9ln.png" 
-            alt="Builder icon"
-            className="h-32 object-cover rounded-lg" 
-          />
-        </div>
-      </div>
-
-      
+      <ProjectBuilder
+        images={[
+          { src: 'https://res.cloudinary.com/dqj2gwlpf/image/upload/v1768276135/logo-7_mph9ln.png', alt: 'Builder logo' }
+        ]}
+      />
 
       {/* Cloudinary Video Section */}
       <div className="w-full">
-        <video 
+        <video
           ref={cloudinaryVideoRef}
           className="w-full"
           loop
@@ -183,9 +171,9 @@ const ElevenPage = () => {
           autoPlay
           muted
         >
-          <source 
-            src="https://res.cloudinary.com/dqj2gwlpf/video/upload/v1768276273/1387_1728769250Video-in-Original-Quality_ssok0v.mov" 
-            type="video/mp4" 
+          <source
+            src="https://res.cloudinary.com/dqj2gwlpf/video/upload/v1768276273/1387_1728769250Video-in-Original-Quality_ssok0v.mov"
+            type="video/mp4"
           />
           Your browser does not support the video tag.
         </video>

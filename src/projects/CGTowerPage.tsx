@@ -1,27 +1,33 @@
 import Upbadge from "@/blocks/Upbadge"
+import ProjectBuilder from "@/blocks/ProjectBuilder"
+import BackToHome from "@/components/BackToHome"
 import PictureRender from "@/components/PictureRender"
 import YouTubeVideo from "@/components/YouTubeVideo"
+import projectsData from '@/data/projects.json'
+
+const project = projectsData.find(p => p.id === 'cgtower')!
 
 const CGTowerPage = () => {
   return (
-    <div>
+    <div className="bg-(--color-secondary) text-white min-h-screen">
+      <BackToHome to="/project" label="PROJECTS" />
       {/* Video Section */}
       <YouTubeVideo videoId="G0atJezPcLk" title="Project Video" />
 
       {/* Project Info Section */}
-      <div className="container mx-auto px-4 py-6">
+      <div className="mx-auto px-6 md:px-16 lg:px-24 py-10">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-2xl mx-auto">
-          <div className="bg-gray-50 p-6 rounded-lg border-l-4 border-yellow-400">
-            <h3 className="text-lg font-bold text-gray-700 mb-2">Project Type</h3>
-            <p className="text-2xl font-semibold text-black">RESIDENTIAL TOWER</p>
+          <div className="bg-(--color-secondary-light) p-6 rounded-lg border-l-4 border-(--color-primary)">
+            <h3 className="text-lg font-bold text-white/60 mb-2">Project Type</h3>
+            <p className="text-2xl font-semibold text-white">RESIDENTIAL TOWER</p>
           </div>
-          <div className="bg-gray-50 p-6 rounded-lg border-l-4 border-yellow-400">
-            <h3 className="text-lg font-bold text-gray-700 mb-2">Location</h3>
-            <p className="text-2xl font-semibold text-black">JANE STREET & RUTHERFORD ROAD</p>
+          <div className="bg-(--color-secondary-light) p-6 rounded-lg border-l-4 border-(--color-primary)">
+            <h3 className="text-lg font-bold text-white/60 mb-2">Location</h3>
+            <p className="text-2xl font-semibold text-white">JANE STREET & RUTHERFORD ROAD</p>
           </div>
         </div>
       </div>
-      
+
       {/* Picture Render Section */}
       <PictureRender
         title="Rendering"
@@ -43,24 +49,17 @@ const CGTowerPage = () => {
           'https://res.cloudinary.com/dqj2gwlpf/image/upload/v1768279281/VMC-Aerial-View_yjam91.jpg'
         ]}
       />
-      {/* The Builder Section */}
-      <div className="container mx-auto px-4 py-8">
-        <h2 className="text-3xl font-bold mb-6 text-center">The Builder</h2>
-        <div className="flex items-center justify-center gap-4">
-          <img 
-            src="https://res.cloudinary.com/dqj2gwlpf/image/upload/v1767486870/Cortel-Group-with-text_p5vbhf.png" 
-            alt="Builder icon"
-            className="w-102 object-cover rounded-lg" 
-          />
-        </div>
-      </div>
 
-      
-      
-      <Upbadge 
-        title='CG Tower' 
-        description='NOW SELLING'
-        url="https://res.cloudinary.com/dqj2gwlpf/image/upload/v1768279277/project-part-2_q0iobc.jpg"
+      <ProjectBuilder
+        images={[
+          { src: 'https://res.cloudinary.com/dqj2gwlpf/image/upload/v1767486870/Cortel-Group-with-text_p5vbhf.png', alt: 'Cortel Group' }
+        ]}
+      />
+
+      <Upbadge
+        title={project.title}
+        description={project.status}
+        url={project.coverImage}
       />
     </div>
   )

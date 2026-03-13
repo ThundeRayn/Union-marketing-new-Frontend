@@ -37,20 +37,20 @@ const PictureRender = ({ title, pictures }: PictureRenderProps) => {
 
   if (!pictures || pictures.length === 0) {
     return (
-      <div className="container mx-auto px-4 py-8">
-        <h2 className="text-3xl font-bold mb-6 text-center">{title}</h2>
-        <p className="text-center text-gray-500">No images available</p>
+      <div className="mx-auto px-6 md:px-16 lg:px-24 py-8">
+        <h2 className="text-3xl font-bold mb-6 text-center text-white">{title}</h2>
+        <p className="text-center text-white/40">No images available</p>
       </div>
     );
   }
 
   return (
-    <div className="container mx-auto px-4 py-4 md:py-8">
-      <h2 className="text-2xl md:text-3xl font-bold mb-4 md:mb-6 text-center">{title}</h2>
-      
+    <div className="mx-auto px-6 md:px-16 lg:px-24 py-4 md:py-8">
+      <h2 className="text-2xl md:text-3xl font-bold mb-4 md:mb-6 text-center text-white">{title}</h2>
+
       <div className="relative w-full max-w-4xl mx-auto">
         {/* Main Image Display */}
-        <div className="relative w-full aspect-square md:aspect-video rounded-lg overflow-hidden shadow-lg bg-gray-100">
+        <div className="relative w-full aspect-square md:aspect-video rounded-lg overflow-hidden shadow-lg bg-(--color-secondary-light)">
           <img
             src={pictures[currentIndex]}
             alt={`${title} - Image ${currentIndex + 1}`}
@@ -98,8 +98,8 @@ const PictureRender = ({ title, pictures }: PictureRenderProps) => {
                 onClick={() => goToSlide(index)}
                 className={`flex-shrink-0 w-14 h-14 md:w-20 md:h-20 rounded-lg overflow-hidden border-2 transition-all ${
                   index === currentIndex
-                    ? 'border-yellow-400 scale-105'
-                    : 'border-gray-300 hover:border-gray-400 opacity-70 hover:opacity-100'
+                    ? 'border-(--color-primary) scale-105'
+                    : 'border-white/20 hover:border-white/40 opacity-70 hover:opacity-100'
                 }`}
               >
                 <img
@@ -120,7 +120,7 @@ const PictureRender = ({ title, pictures }: PictureRenderProps) => {
                 key={index}
                 onClick={() => goToSlide(index)}
                 className={`h-2 rounded-full transition-all ${
-                  index === currentIndex ? 'w-8 bg-yellow-400' : 'w-2 bg-gray-300'
+                  index === currentIndex ? 'w-8 bg-(--color-primary)' : 'w-2 bg-white/30'
                 }`}
                 aria-label={`Go to slide ${index + 1}`}
               />

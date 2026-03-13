@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { Input } from '@/components/ui/input'
+import { Button } from '@/components/ui/button'
 
 const BrokerPortalLogin = () => {
   const [isLogin, setIsLogin] = useState(true)
@@ -202,13 +203,14 @@ const BrokerPortalLogin = () => {
             </div>
           )}
 
-          <button
+          <Button
             type="submit"
-            className="w-full py-3 mt-2 bg-(--color-primary) text-black rounded-none text-sm font-medium tracking-[0.1em] uppercase hover:bg-white transition-colors duration-300"
-            style={{ fontFamily: 'var(--font-label)' }}
+            variant="union"
+            size="union"
+            className="w-full mt-2 bg-(--color-primary) text-black hover:bg-white"
           >
             {isLogin ? 'Sign In' : 'Create Account'}
-          </button>
+          </Button>
         </form>
 
         {/* Footer */}

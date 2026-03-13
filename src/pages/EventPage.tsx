@@ -3,10 +3,12 @@ import EventRich from '@/components/EventRich'
 import EventSimple from '@/components/EventSimple'
 import EventForm from '@/components/EventForm'
 import EventSell from '@/components/EventSell'
+import BackToHome from '@/components/BackToHome'
 
 const EventPage = () => {
   return (
     <div className="min-h-screen bg-black">
+      <BackToHome />
       {/* Events Container */}
       <div className="w-full">
         {/* Events Grid */}

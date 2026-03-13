@@ -1,5 +1,6 @@
 import Upbadge from "@/blocks/Upbadge"
 import ProjectBuilder from "@/blocks/ProjectBuilder"
+import ProjectNavigation from "@/blocks/ProjectNavigation"
 import ProjectButtonList from "@/blocks/ProjectButtonList"
 import BackToHome from "@/components/BackToHome"
 import NativeVideo from "@/components/NativeVideo"
@@ -66,11 +67,7 @@ const Fifth = () => {
         </div>
       </div>
 
-      <ProjectBuilder
-        images={[
-          { src: 'https://res.cloudinary.com/dqj2gwlpf/image/upload/v1767486776/logo-removebg-preview_t0imsb.png', alt: 'Builder logo' }
-        ]}
-      />
+      
 
       {/* Video Section */}
       <NativeVideo
@@ -79,7 +76,14 @@ const Fifth = () => {
         controls={true}
         loop={true}
       />
+      
+      <ProjectBuilder
+        images={[
+          { src: 'https://res.cloudinary.com/dqj2gwlpf/image/upload/v1767486776/logo-removebg-preview_t0imsb.png', alt: 'Builder logo' }
+        ]}
+      />
 
+      <ProjectNavigation projectId="fifth" />
     </div>
   )
 }

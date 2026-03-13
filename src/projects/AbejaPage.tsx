@@ -1,6 +1,8 @@
 import Upbadge from "@/blocks/Upbadge"
 import ProjectBuilder from "@/blocks/ProjectBuilder"
+import ProjectNavigation from "@/blocks/ProjectNavigation"
 import BackToHome from "@/components/BackToHome"
+import ProjectInfo from "@/components/ProjectInfo"
 import PictureRender from "@/components/PictureRender"
 import YouTubeVideo from "@/components/YouTubeVideo"
 import projectsData from '@/data/projects.json'
@@ -15,19 +17,7 @@ const AbejaPage = () => {
 
       <YouTubeVideo videoId="KX63R85lUOc" title="Project Video" />
 
-      {/* Project Info Section */}
-      <div className="mx-auto px-6 md:px-16 lg:px-24 py-10">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-2xl mx-auto">
-          <div className="bg-(--color-secondary-light) p-6 rounded-lg border-l-4 border-(--color-primary)">
-            <h3 className="text-lg font-bold text-white/60 mb-2">Project Type</h3>
-            <p className="text-2xl font-semibold text-white">CONDOMINIUM</p>
-          </div>
-          <div className="bg-(--color-secondary-light) p-6 rounded-lg border-l-4 border-(--color-primary)">
-            <h3 className="text-lg font-bold text-white/60 mb-2">Location</h3>
-            <p className="text-2xl font-semibold text-white">JANE STREET & RUTHERFORD ROAD</p>
-          </div>
-        </div>
-      </div>
+      <ProjectInfo projectId="abeja" />
 
       {/* Picture Render Section */}
       <PictureRender
@@ -54,6 +44,7 @@ const AbejaPage = () => {
         url={project.coverImage}
       />
 
+      <ProjectNavigation projectId="abeja" />
     </div>
   )
 }

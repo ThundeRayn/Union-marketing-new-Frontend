@@ -1,5 +1,6 @@
 //import Upbadge from "@/blocks/Upbadge"
 import ProjectBuilder from "@/blocks/ProjectBuilder"
+import ProjectNavigation from "@/blocks/ProjectNavigation"
 import BackToHome from "@/components/BackToHome"
 import { Button } from "@/components/ui/button"
 import ProjectInfo from "@/components/ProjectInfo"
@@ -105,10 +106,7 @@ const ElevenPage = () => {
           />
         </div>
       </div>
-      <ProjectInfo
-        type="CONDO TOWNS"
-        location="Near Finch Station"
-      />
+      <ProjectInfo projectId="eleven" />
 
       {/* Main Content Area */}
       <div className="mx-auto px-6 md:px-16 lg:px-24 py-10 flex flex-col items-center">
@@ -178,6 +176,8 @@ const ElevenPage = () => {
           Your browser does not support the video tag.
         </video>
       </div>
+
+      <ProjectNavigation projectId="eleven" />
     </div>
   )
 }

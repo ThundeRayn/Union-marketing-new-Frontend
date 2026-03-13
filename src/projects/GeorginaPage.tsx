@@ -1,6 +1,8 @@
 import Upbadge from "@/blocks/Upbadge"
 import ProjectBuilder from "@/blocks/ProjectBuilder"
+import ProjectNavigation from "@/blocks/ProjectNavigation"
 import BackToHome from "@/components/BackToHome"
+import ProjectInfo from "@/components/ProjectInfo"
 import projectsData from '@/data/projects.json'
 
 const project = projectsData.find(p => p.id === 'georgina')!
@@ -28,19 +30,7 @@ const GeorginaPage = () => {
         </div>
       </div>
 
-      {/* Project Info Section */}
-      <div className="mx-auto px-6 md:px-16 lg:px-24 py-10">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-2xl mx-auto">
-          <div className="bg-(--color-secondary-light) p-6 rounded-lg border-l-4 border-(--color-primary)">
-            <h3 className="text-lg font-bold text-white/60 mb-2">Project Type</h3>
-            <p className="text-2xl font-semibold text-white">SINGLES</p>
-          </div>
-          <div className="bg-(--color-secondary-light) p-6 rounded-lg border-l-4 border-(--color-primary)">
-            <h3 className="text-lg font-bold text-white/60 mb-2">Location</h3>
-            <p className="text-2xl font-semibold text-white">CHURCH STREET & WOODBINE AVENUE</p>
-          </div>
-        </div>
-      </div>
+      <ProjectInfo projectId="georgina" />
 
       {/* Main Content Area */}
       <div className="mx-auto px-6 md:px-16 lg:px-24 py-8">
@@ -68,6 +58,8 @@ const GeorginaPage = () => {
         description={project.status}
         url={project.coverImage}
       />
+
+      <ProjectNavigation projectId="georgina" />
     </div>
   )
 }

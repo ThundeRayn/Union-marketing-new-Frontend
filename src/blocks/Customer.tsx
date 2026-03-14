@@ -1,5 +1,22 @@
-import { useEffect, useRef, useCallback } from 'react'
+import { useEffect, useRef, useCallback, useState } from 'react'
 import { useScrollAnimation } from "@/hooks/useScrollAnimation"
+import { Skeleton } from '@/components/ui/skeleton'
+
+function CustomerLogo({ src, alt, className, style }: { src: string; alt: string; className?: string; style?: React.CSSProperties }) {
+  const [loaded, setLoaded] = useState(false)
+  return (
+    <div className="relative w-32 h-32">
+      {!loaded && <Skeleton className="absolute inset-0 rounded-md" />}
+      <img
+        src={src}
+        alt={alt}
+        onLoad={() => setLoaded(true)}
+        className={`w-32 h-32 object-contain transition-all duration-500 ${loaded ? '' : 'opacity-0'} ${className ?? ''}`}
+        style={style}
+      />
+    </div>
+  )
+}
 
 const Customer = () => {
   const { ref, isVisible } = useScrollAnimation(0.05)
@@ -142,11 +159,7 @@ const Customer = () => {
                 }`}
                 style={{ transitionDelay: isVisible ? `${(index + 2) * 150}ms` : '0ms' }}
               >
-                <img
-                  src={client.logo}
-                  alt={client.name}
-                  className="w-32 h-32 object-contain brightness-0 invert opacity-50 hover:opacity-100 hover:scale-105 transition-all duration-500"
-                />
+                <CustomerLogo src={client.logo} alt={client.name} className="brightness-0 invert opacity-50 hover:opacity-100 hover:scale-105" />
               </div>
             ))}
           </div>
@@ -163,12 +176,7 @@ const Customer = () => {
               }`}
               style={{ transitionDelay: isVisible ? `${index * 150}ms` : '0ms' }}
             >
-              <img
-                src={client.logo}
-                alt={client.name}
-                className="w-32 h-32 object-contain opacity-30 transition-[opacity,transform] duration-500"
-                style={{ filter: 'brightness(0) invert(1)' }}
-              />
+              <CustomerLogo src={client.logo} alt={client.name} className="opacity-30 transition-[opacity,transform] duration-500" style={{ filter: 'brightness(0) invert(1)' }} />
             </div>
           ))}
         </div>

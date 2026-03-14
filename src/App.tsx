@@ -1,21 +1,21 @@
-import { useEffect } from 'react'
+import { useEffect, lazy } from 'react'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 
 import './App.css'
 import Layout from './layout/Layout'
 
-import HomePage from './pages/HomePage'
-import ServicePage from './pages/ServicePage'
-import AboutPage from './pages/AboutPage'
-import EventPage from './pages/EventPage'
-import ProjectPage from './pages/ProjectPage'
-import BrokerPortalLogin from './pages/BrokerPortalLogin'
-import FifthPage from './projects/FifthPage'
-import ElevenPage from './projects/ElevenPage'
-import EversleyPage from './projects/EversleyPage'
-import GeorginaPage from './projects/GeorginaPage'
-import CGTowerPage from './projects/CGTowerPage'
-import AbejaPage from './projects/AbejaPage'
+const HomePage = lazy(() => import('./pages/HomePage'))
+const ServicePage = lazy(() => import('./pages/ServicePage'))
+const AboutPage = lazy(() => import('./pages/AboutPage'))
+const EventPage = lazy(() => import('./pages/EventPage'))
+const ProjectPage = lazy(() => import('./pages/ProjectPage'))
+const BrokerPortalLogin = lazy(() => import('./pages/BrokerPortalLogin'))
+const FifthPage = lazy(() => import('./projects/FifthPage'))
+const ElevenPage = lazy(() => import('./projects/ElevenPage'))
+const EversleyPage = lazy(() => import('./projects/EversleyPage'))
+const GeorginaPage = lazy(() => import('./projects/GeorginaPage'))
+const CGTowerPage = lazy(() => import('./projects/CGTowerPage'))
+const AbejaPage = lazy(() => import('./projects/AbejaPage'))
 
 function App() {
   useEffect(() => {

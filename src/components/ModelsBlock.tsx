@@ -1,3 +1,6 @@
+import { useState } from 'react'
+import { Skeleton } from '@/components/ui/skeleton'
+
 interface ModelsBlockProps {
   title?: string
   modelType: string
@@ -25,16 +28,25 @@ const ModelsBlock = ({ title = "Models", modelType, images }: ModelsBlockProps) 
 
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
           {images.map((image, index) => (
-            <div key={index} className="w-full overflow-hidden rounded-lg border border-white/10">
-              <img
-                src={image}
-                alt={`${modelType} model ${index + 1}`}
-                className="w-full h-auto object-cover"
-              />
-            </div>
+            <ModelImage key={index} src={image} alt={`${modelType} model ${index + 1}`} />
           ))}
         </div>
       </div>
+    </div>
+  )
+}
+
+function ModelImage({ src, alt }: { src: string; alt: string }) {
+  const [loaded, setLoaded] = useState(false)
+  return (
+    <div className="w-full overflow-hidden rounded-lg border border-white/10 relative">
+      {!loaded && <Skeleton className="w-full aspect-video rounded-none" />}
+      <img
+        src={src}
+        alt={alt}
+        onLoad={() => setLoaded(true)}
+        className={`w-full h-auto object-cover transition-opacity duration-500 ${loaded ? 'opacity-100' : 'opacity-0'}`}
+      />
     </div>
   )
 }

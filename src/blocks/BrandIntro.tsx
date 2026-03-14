@@ -68,7 +68,7 @@ const BrandIntro = ({ backgroundImage }: BrandIntroProps) => {
       {/* Background image */}
       {backgroundImage && (
         <div
-          className={`absolute inset-0 bg-cover bg-center bg-fixed transition-opacity duration-700 ${bgLoaded ? 'opacity-100' : 'opacity-0'}`}
+          className={`absolute inset-0 bg-cover bg-center parallax-bg transition-opacity duration-700 ${bgLoaded ? 'opacity-100' : 'opacity-0'}`}
           style={{ backgroundImage: `url(${backgroundImage})` }}
         />
       )}

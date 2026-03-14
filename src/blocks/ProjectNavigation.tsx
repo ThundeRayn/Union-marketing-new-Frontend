@@ -20,12 +20,11 @@ const ProjectNavigation = ({ projectId }: ProjectNavigationProps) => {
     >
       {/* Parallax background image from next project */}
       <div
-        className="absolute inset-0 w-full h-full"
+        className="absolute inset-0 w-full h-full parallax-bg"
         style={{
           backgroundImage: `url(${nextProject.coverImage})`,
           backgroundSize: 'cover',
           backgroundPosition: 'center',
-          backgroundAttachment: 'fixed',
         }}
       />
       {/* Dark overlay */}

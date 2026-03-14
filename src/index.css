@@ -252,6 +252,14 @@ select:-webkit-autofill:focus {
   background-attachment: fixed;
 }
 
+/* iOS/touch devices don't support background-attachment: fixed — causes badly zoomed images */
+@media (hover: none) and (pointer: coarse) {
+  .parallax-bg,
+  .bg-fixed {
+    background-attachment: scroll !important;
+  }
+}
+
 
 /* Project card: portrait on mobile, varied ratio on tablet+ */
 .project-card-ratio {

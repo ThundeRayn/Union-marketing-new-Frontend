@@ -13,8 +13,8 @@ const Navbar = () => {
   const navLinks = [
     { label: 'ABOUT', href: '/about' },
     { label: 'SERVICES', href: '/service' },
-    { label: 'EVENT', href: '/event' },
-    { label: 'PROJECT', href: '/project' },
+    { label: 'EVENTS', href: '/event' },
+    { label: 'PROJECTS', href: '/project' },
   ]
 
   return (
@@ -57,11 +57,11 @@ const Navbar = () => {
               <span className="absolute left-0 bottom-0 w-0 h-0.5 bg-yellow-400 transition-all duration-300 ease-in-out group-hover:w-full"></span>
             </a>
             <a href="/event" className="relative text-(--text-inverse) hover:text-(--color-primary) text-lg group">
-              EVENT
+              EVENTS
               <span className="absolute left-0 bottom-0 w-0 h-0.5 bg-yellow-400 transition-all duration-300 ease-in-out group-hover:w-full"></span>
             </a>
             <a href="/project" className="relative text-(--text-inverse) hover:text-(--color-primary) text-lg group">
-              PROJECT
+              PROJECTS
               <span className="absolute left-0 bottom-0 w-0 h-0.5 bg-yellow-400 transition-all duration-300 ease-in-out group-hover:w-full"></span>
             </a>
 

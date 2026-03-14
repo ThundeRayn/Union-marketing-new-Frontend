@@ -4,6 +4,8 @@ import ProjectNavigation from "@/blocks/ProjectNavigation"
 import BackToHome from "@/components/BackToHome"
 import ProjectInfo from "@/components/ProjectInfo"
 import PictureRender from "@/components/PictureRender"
+import Map from "@/components/Map"
+import ProjectTitleImage from "@/components/ProjectTitleImage"
 import projectsData from '@/data/projects.json'
 
 const project = projectsData.find(p => p.id === 'eversley')!
@@ -24,40 +26,6 @@ const EversleyPage = () => {
 
       <ProjectInfo projectId="eversley" />
 
-      {/* Main Content Area */}
-      <div className="mx-auto px-6 md:px-16 lg:px-24 py-8">
-
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-          {/* Left Container - Logo */}
-          <div className="flex flex-col space-y-4">
-            <img
-              src="https://res.cloudinary.com/dqj2gwlpf/image/upload/v1768277511/Eversley-Estate-King-City_kmpfyf.png"
-              alt="Main project"
-              className="w-102 p-6 h-auto object-cover rounded-lg mb-4"
-            />
-          </div>
-
-          {/* Right Container - Image List */}
-          <div className="flex flex-col space-y-4">
-            {images.map((image, index) => (
-              <div key={index} className="w-full overflow-hidden rounded-lg">
-                <img
-                  src={image}
-                  alt={`Project image ${index + 1}`}
-                  className="w-full h-auto object-cover"
-                />
-              </div>
-            ))}
-          </div>
-        </div>
-      </div>
-
-      <ProjectBuilder
-        images={[
-          { src: 'https://res.cloudinary.com/dqj2gwlpf/image/upload/v1767486888/Treasure-Hill-1_hp69af.webp', alt: 'Treasure Hill' }
-        ]}
-      />
-
       <PictureRender
         title="Rendering"
         pictures={[
@@ -70,6 +38,13 @@ const EversleyPage = () => {
         ]}
       />
 
+      <ProjectTitleImage
+        src="https://res.cloudinary.com/dqj2gwlpf/image/upload/v1768277511/Eversley-Estate-King-City_kmpfyf.png"
+        alt="Main project"
+      />
+
+      <Map title="Site Map" images={images} />
+
       <PictureRender
         title="Model Home Gallery"
         pictures={[
@@ -80,6 +55,14 @@ const EversleyPage = () => {
           'https://res.cloudinary.com/dqj2gwlpf/image/upload/v1768277591/Eversley-Estates-Model-5-1_krykrb.webp'
         ]}
       />
+
+      <ProjectBuilder
+        images={[
+          { src: 'https://res.cloudinary.com/dqj2gwlpf/image/upload/v1767486888/Treasure-Hill-1_hp69af.webp', alt: 'Treasure Hill' }
+        ]}
+      />
+
+      
 
       <ProjectNavigation projectId="eversley" />
     </div>

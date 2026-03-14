@@ -5,11 +5,13 @@ export function useMediaLoaded(src: string | undefined) {
 
   useEffect(() => {
     if (!src) return
-    setLoaded(false)
+    setTimeout(() => setLoaded(false), 0)
     const img = new Image()
     img.onload = () => setLoaded(true)
     img.src = src
-    if (img.complete) setLoaded(true)
+    if (img.complete) {
+      setTimeout(() => setLoaded(true), 0)
+    }
   }, [src])
 
   return loaded

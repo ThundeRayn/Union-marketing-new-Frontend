@@ -3,40 +3,43 @@ import { useState, useEffect, useRef } from 'react'
 import { Link } from 'react-router-dom'
 import { Skeleton } from '@/components/ui/skeleton'
 
+const slides = [
+  {
+    image: 'https://res.cloudinary.com/dqj2gwlpf/image/upload/v1767459350/2021_09_28_12_28_44_thomson-c-1024x682-1_ojqhoh.jpg',
+    title: 'Advisory & Real Support',
+    description: 'Comprehensive support in project planning and execution, including land acquisition, regulatory compliance and tailored development strategies.',
+  },
+  {
+    image: 'https://res.cloudinary.com/dqj2gwlpf/image/upload/v1767459319/Untitled-design-4_ui8y7s.png',
+    title: 'Marketing & Sales Strategy',
+    description: 'Tailored marketing and sales strategies for pre-construction low-rise projects, encompassing market analysis, branding, and targeted campaigns for maximum sales effectiveness.',
+  },
+  {
+    image: 'https://res.cloudinary.com/dqj2gwlpf/image/upload/v1773305589/img_2_clzm3k.jpg',
+    title: 'Network & Expert CoBuilders',
+    description: 'Fostering strategic partnerships with developers and builders, providing insights and support to enhance project viability and success in the pre-construction low-rise market.',
+  },
+  {
+    image: 'https://res.cloudinary.com/dqj2gwlpf/image/upload/v1767497882/RenderingA_nvcuji.png',
+    title: 'Consult & Market Analysis',
+    description: 'In-depth market analysis and consultation services, including demographic studies, pricing strategies, and trend insights for project optimization.',
+  },
+]
+
 const Hero = () => {
   const [currentSlide, setCurrentSlide] = useState(0)
   const [firstImageLoaded, setFirstImageLoaded] = useState(false)
   const timerRef = useRef<ReturnType<typeof setInterval> | null>(null)
 
-  const slides = [
-    {
-      image: 'https://res.cloudinary.com/dqj2gwlpf/image/upload/v1767459350/2021_09_28_12_28_44_thomson-c-1024x682-1_ojqhoh.jpg',
-      title: 'Advisory & Real Support',
-      description: 'Comprehensive support in project planning and execution, including land acquisition, regulatory compliance and tailored development strategies.',
-    },
-    {
-      image: 'https://res.cloudinary.com/dqj2gwlpf/image/upload/v1767459319/Untitled-design-4_ui8y7s.png',
-      title: 'Marketing & Sales Strategy',
-      description: 'Tailored marketing and sales strategies for pre-construction low-rise projects, encompassing market analysis, branding, and targeted campaigns for maximum sales effectiveness.',
-    },
-    {
-      image: 'https://res.cloudinary.com/dqj2gwlpf/image/upload/v1773305589/img_2_clzm3k.jpg',
-      title: 'Network & Expert CoBuilders',
-      description: 'Fostering strategic partnerships with developers and builders, providing insights and support to enhance project viability and success in the pre-construction low-rise market.',
-    },
-    {
-      image: 'https://res.cloudinary.com/dqj2gwlpf/image/upload/v1767497882/RenderingA_nvcuji.png',
-      title: 'Consult & Market Analysis',
-      description: 'In-depth market analysis and consultation services, including demographic studies, pricing strategies, and trend insights for project optimization.',
-    },
-  ]
-
   // Preload first slide image
   useEffect(() => {
     const img = new Image()
-    img.onload = () => setFirstImageLoaded(true)
+    const markLoaded = () => setFirstImageLoaded(true)
+    img.onload = markLoaded
     img.src = slides[0].image
-    if (img.complete) setFirstImageLoaded(true)
+    if (img.complete) {
+      setTimeout(markLoaded, 0)
+    }
   }, [])
 
   // Only start carousel after first image is loaded

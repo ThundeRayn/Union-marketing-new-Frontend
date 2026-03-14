@@ -52,7 +52,7 @@ const Fifth = () => {
           <img
             src="https://res.cloudinary.com/dqj2gwlpf/image/upload/v1768269691/king_city-1_ici26g.png"
             alt="Main project"
-            className="w-full h-auto object-cover mb-14 brightness-0 invert opacity-80"
+            className="w-full h-auto object-cover mb-14 brightness-0 invert"
           />
           <ProjectButtonList buttons={buttons} />
 

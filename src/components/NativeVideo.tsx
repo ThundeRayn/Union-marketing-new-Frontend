@@ -6,9 +6,17 @@ interface NativeVideoProps {
   title?: string
   controls?: boolean
   loop?: boolean
+  poster?: string
+  preload?: 'none' | 'metadata' | 'auto'
 }
 
-const NativeVideo = ({ src, controls = true, loop = true }: NativeVideoProps) => {
+const NativeVideo = ({
+  src,
+  controls = true,
+  loop = true,
+  poster,
+  preload = 'metadata',
+}: NativeVideoProps) => {
   const videoRef = useRef<HTMLVideoElement>(null);
   const [videoLoaded, setVideoLoaded] = useState(false);
 
@@ -41,6 +49,14 @@ const NativeVideo = ({ src, controls = true, loop = true }: NativeVideoProps) =>
     };
   }, []);
 
+  useEffect(() => {
+    if (videoLoaded) return;
+    const timeout = setTimeout(() => {
+      setVideoLoaded(true);
+    }, 4000);
+    return () => clearTimeout(timeout);
+  }, [videoLoaded]);
+
   return (
     <div className="w-full relative">
       {!videoLoaded && (
@@ -58,7 +74,10 @@ const NativeVideo = ({ src, controls = true, loop = true }: NativeVideoProps) =>
         playsInline
         controls={controls}
         muted
-        onLoadedData={() => setVideoLoaded(true)}
+        preload={preload}
+        poster={poster}
+        onLoadedMetadata={() => setVideoLoaded(true)}
+        onError={() => setVideoLoaded(true)}
       >
         <source 
           src={src}

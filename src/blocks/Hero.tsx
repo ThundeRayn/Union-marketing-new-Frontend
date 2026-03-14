@@ -1,9 +1,11 @@
 
 import { useState, useEffect, useRef } from 'react'
 import { Link } from 'react-router-dom'
+import { Skeleton } from '@/components/ui/skeleton'
 
 const Hero = () => {
   const [currentSlide, setCurrentSlide] = useState(0)
+  const [firstImageLoaded, setFirstImageLoaded] = useState(false)
   const timerRef = useRef<ReturnType<typeof setInterval> | null>(null)
 
   const slides = [
@@ -29,17 +31,27 @@ const Hero = () => {
     },
   ]
 
+  // Preload first slide image
   useEffect(() => {
+    const img = new Image()
+    img.onload = () => setFirstImageLoaded(true)
+    img.src = slides[0].image
+    if (img.complete) setFirstImageLoaded(true)
+  }, [])
+
+  // Only start carousel after first image is loaded
+  useEffect(() => {
+    if (!firstImageLoaded) return
     timerRef.current = setInterval(() => {
       setCurrentSlide((prev) => (prev + 1) % 4)
     }, 8000)
-    
+
     return () => {
       if (timerRef.current) {
         clearInterval(timerRef.current)
       }
     }
-  }, [])
+  }, [firstImageLoaded])
 
   const goToPrevious = () => {
     setCurrentSlide((prev) => (prev === 0 ? slides.length - 1 : prev - 1))
@@ -51,6 +63,31 @@ const Hero = () => {
 
   return (
     <div className="relative w-full h-screen bg-gray-800">
+      {/* Structural skeleton matching Hero layout */}
+      {!firstImageLoaded && (
+        <>
+          <Skeleton className="absolute inset-0 rounded-none z-0" />
+          <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-6 z-10">
+            <Skeleton className="h-6 md:h-10 w-64 md:w-96 mb-4" />
+            <Skeleton className="h-4 w-80 md:w-[500px] mb-2" />
+            <Skeleton className="h-4 w-60 md:w-[400px] mb-8" />
+            <Skeleton className="h-12 w-36 rounded-lg" />
+          </div>
+          <div className="absolute bottom-8 left-0 right-0 z-20 px-6 md:px-16">
+            <div className="flex items-center justify-center gap-6">
+              <Skeleton className="w-11 h-11 rounded-full" />
+              <div className="flex gap-2">
+                <Skeleton className="h-2 w-6 rounded-full" />
+                <Skeleton className="h-2 w-2 rounded-full" />
+                <Skeleton className="h-2 w-2 rounded-full" />
+                <Skeleton className="h-2 w-2 rounded-full" />
+              </div>
+              <Skeleton className="w-11 h-11 rounded-full" />
+            </div>
+          </div>
+        </>
+      )}
+
       {slides.map((slide, index) => (
         <div
           key={index}

@@ -1,7 +1,9 @@
+import { Suspense } from "react";
 import { Outlet, useLocation } from "react-router-dom";
 import Navbar from "../blocks/Navbar";
 import Footer from "../blocks/Footer";
 import useScrollToTop from "../hooks/useScrollToTop";
+import { PageSkeleton } from "../components/skeletons";
 
 const Layout = () => {
   useScrollToTop()
@@ -14,7 +16,9 @@ const Layout = () => {
         key={location.pathname}
         className="animate-[fadeIn_0.4s_ease-out]"
       >
-        <Outlet />
+        <Suspense fallback={<PageSkeleton />}>
+          <Outlet />
+        </Suspense>
       </main>
       <Footer/>
 

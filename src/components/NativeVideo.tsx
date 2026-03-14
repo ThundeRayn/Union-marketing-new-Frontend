@@ -1,4 +1,5 @@
-import { useRef, useEffect } from "react"
+import { useRef, useEffect, useState } from "react"
+import { Skeleton } from '@/components/ui/skeleton'
 
 interface NativeVideoProps {
   src: string
@@ -9,6 +10,7 @@ interface NativeVideoProps {
 
 const NativeVideo = ({ src, controls = true, loop = true }: NativeVideoProps) => {
   const videoRef = useRef<HTMLVideoElement>(null);
+  const [videoLoaded, setVideoLoaded] = useState(false);
 
   useEffect(() => {
     const video = videoRef.current;
@@ -40,14 +42,23 @@ const NativeVideo = ({ src, controls = true, loop = true }: NativeVideoProps) =>
   }, []);
 
   return (
-    <div className="w-full">
-      <video 
+    <div className="w-full relative">
+      {!videoLoaded && (
+        <div className="w-full aspect-video relative">
+          <Skeleton className="absolute inset-0 rounded-none" />
+          <div className="absolute inset-0 flex items-center justify-center">
+            <Skeleton className="h-14 w-14 rounded-full" />
+          </div>
+        </div>
+      )}
+      <video
         ref={videoRef}
-        className="w-full"
+        className={`w-full transition-opacity duration-500 ${videoLoaded ? 'opacity-100' : 'opacity-0'}`}
         loop={loop}
         playsInline
         controls={controls}
         muted
+        onLoadedData={() => setVideoLoaded(true)}
       >
         <source 
           src={src}

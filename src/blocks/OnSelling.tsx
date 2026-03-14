@@ -1,6 +1,7 @@
 import { useRef, useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { useScrollAnimation } from '@/hooks/useScrollAnimation'
+import { Skeleton } from '@/components/ui/skeleton'
 import projectsData from '@/data/projects.json'
 
 const projects = projectsData.map(p => ({
@@ -150,11 +151,7 @@ const OnSelling = () => {
           >
             {/* Image + overlay scale together */}
             <div className="absolute inset-0 group-hover:scale-105 transition-transform duration-700 ease-out">
-              <img
-                src={project.image}
-                alt={project.title}
-                className="w-full h-full object-cover"
-              />
+              <OnSellingImage src={project.image} alt={project.title} />
               <div className="absolute inset-0 bg-linear-to-t from-black/60 to-transparent" />
             </div>
 
@@ -204,6 +201,29 @@ const OnSelling = () => {
         </div>
       </div>
     </div>
+  )
+}
+
+function OnSellingImage({ src, alt }: { src: string; alt: string }) {
+  const [loaded, setLoaded] = useState(false)
+  return (
+    <>
+      {!loaded && (
+        <>
+          <Skeleton className="absolute inset-0 rounded-none" />
+          <div className="absolute bottom-0 left-0 right-0 p-6 z-1 pointer-events-none">
+            <Skeleton className="h-3 w-16 mb-2" />
+            <Skeleton className="h-6 w-3/4" />
+          </div>
+        </>
+      )}
+      <img
+        src={src}
+        alt={alt}
+        onLoad={() => setLoaded(true)}
+        className={`w-full h-full object-cover transition-opacity duration-500 ${loaded ? 'opacity-100' : 'opacity-0'}`}
+      />
+    </>
   )
 }
 

@@ -21,7 +21,9 @@ const CGTowerPage = () => {
         description={project.status}
         url={project.coverImage}
       />
+      
       <ProjectInfo projectId="cgtower" />
+
       <YouTubeVideo videoId="G0atJezPcLk" title="Project Video" />
 
       <ProjectBuilder

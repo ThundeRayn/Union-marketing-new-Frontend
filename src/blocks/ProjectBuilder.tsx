@@ -1,9 +1,26 @@
-import { useEffect, useRef, useCallback } from 'react'
+import { useEffect, useRef, useCallback, useState } from 'react'
 import { useScrollAnimation } from '@/hooks/useScrollAnimation'
+import { Skeleton } from '@/components/ui/skeleton'
 
 interface ProjectBuilderProps {
   images: { src: string; alt: string }[]
   noFilter?: boolean
+}
+
+function BuilderLogo({ src, alt, noFilter, style }: { src: string; alt: string; noFilter: boolean; style?: React.CSSProperties }) {
+  const [loaded, setLoaded] = useState(false)
+  return (
+    <div className="relative">
+      {!loaded && <Skeleton className="w-48 h-32 rounded-md" />}
+      <img
+        src={src}
+        alt={alt}
+        onLoad={() => setLoaded(true)}
+        className={`max-w-48 max-h-32 object-contain transition-[opacity,transform] duration-500 ${loaded ? '' : 'opacity-0 absolute'}`}
+        style={noFilter ? style : { filter: 'brightness(0) invert(1)', opacity: loaded ? 0.3 : 0, ...style }}
+      />
+    </div>
+  )
 }
 
 const ProjectBuilder = ({ images, noFilter = false }: ProjectBuilderProps) => {
@@ -79,12 +96,7 @@ const ProjectBuilder = ({ images, noFilter = false }: ProjectBuilderProps) => {
             }`}
             style={{ transitionDelay: isVisible ? `${(index + 2) * 150}ms` : '0ms' }}
           >
-            <img
-              src={image.src}
-              alt={image.alt}
-              className="max-w-48 max-h-32 object-contain transition-[opacity,transform] duration-500"
-              style={noFilter ? undefined : { filter: 'brightness(0) invert(1)', opacity: 0.3 }}
-            />
+            <BuilderLogo src={image.src} alt={image.alt} noFilter={noFilter} />
           </div>
         ))}
       </div>

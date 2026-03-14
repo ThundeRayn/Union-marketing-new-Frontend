@@ -1,4 +1,6 @@
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { Skeleton } from '@/components/ui/skeleton';
 
 interface ProjectCardProps {
   id: string;
@@ -12,17 +14,30 @@ interface ProjectCardProps {
 }
 
 const ProjectCard = ({ title, type, address, coverImage, path, ratio = '4/3' }: ProjectCardProps) => {
+  const [loaded, setLoaded] = useState(false)
+
   return (
     <Link
       to={path}
       className="block relative overflow-hidden bg-black hover:shadow-2xl hover:-translate-y-1 transition-all duration-500 group"
     >
       <div className="relative w-full overflow-hidden project-card-ratio" style={{ '--card-ratio': ratio } as React.CSSProperties}>
+        {!loaded && (
+          <>
+            <Skeleton className="absolute inset-0 rounded-none z-1" />
+            <div className="absolute bottom-0 left-0 right-0 p-5 z-2 pointer-events-none">
+              <Skeleton className="h-2.5 w-14 mb-2" />
+              <Skeleton className="h-5 w-3/4 mb-1.5" />
+              <Skeleton className="h-2.5 w-1/2" />
+            </div>
+          </>
+        )}
         <div className="absolute inset-0 group-hover:scale-105 transition-transform duration-700">
           <img
             src={coverImage}
             alt={title}
-            className="w-full h-full object-cover group-hover:brightness-110 transition-all duration-700"
+            onLoad={() => setLoaded(true)}
+            className={`w-full h-full object-cover group-hover:brightness-110 transition-all duration-700 ${loaded ? 'opacity-100' : 'opacity-0'}`}
           />
           <div className="absolute inset-0 bg-linear-to-t from-black/70 via-black/20 to-transparent" />
         </div>

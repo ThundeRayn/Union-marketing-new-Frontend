@@ -5,6 +5,7 @@ import ProjectButtonList from "@/blocks/ProjectButtonList"
 import BackToHome from "@/components/BackToHome"
 import NativeVideo from "@/components/NativeVideo"
 import Map from "@/components/Map"
+import PictureRender from "@/components/PictureRender"
 import projectsData from '@/data/projects.json'
 
 const project = projectsData.find(p => p.id === 'fifth')!
@@ -51,6 +52,12 @@ const Fifth = () => {
       </div>
 
       <Map title="Amenity Map" images={images} />
+      <PictureRender
+        title="Rendering"
+        pictures={[
+          'https://res.cloudinary.com/dqj2gwlpf/image/upload/v1773470772/Fifth-rendering_yir4d0.jpg'
+        ]}
+      />
       {/* Video Section */}
       <NativeVideo
         src="https://res.cloudinary.com/dqj2gwlpf/video/upload/v1768270984/Snapinst.app_video_AQNZAZ3s3Pcv0l5g3n8Haw4eZyc_pmc3C1XCmc44toevbCAhJPM9QR5WxYJkN8icoZLijXcj3S7sIdK_Q-ntdHkP85kNlEvXJGL9UJM-1_byxrhs.mp4"

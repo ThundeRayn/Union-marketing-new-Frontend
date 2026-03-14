@@ -5,7 +5,6 @@ import BackToHome from "@/components/BackToHome"
 import ProjectInfo from "@/components/ProjectInfo"
 import PictureRender from "@/components/PictureRender"
 import Map from "@/components/Map"
-import ProjectTitleImage from "@/components/ProjectTitleImage"
 import projectsData from '@/data/projects.json'
 
 const project = projectsData.find(p => p.id === 'eversley')!
@@ -22,6 +21,7 @@ const EversleyPage = () => {
         title={project.title}
         description={project.status}
         url={project.coverImage}
+        iconImage="https://res.cloudinary.com/dqj2gwlpf/image/upload/v1768277511/Eversley-Estate-King-City_kmpfyf.png"
       />
 
       <ProjectInfo projectId="eversley" />
@@ -36,11 +36,6 @@ const EversleyPage = () => {
           'https://res.cloudinary.com/dqj2gwlpf/image/upload/v1768277555/Eversley-Estates-Ensuite_t37zin.webp',
           'https://res.cloudinary.com/dqj2gwlpf/image/upload/v1768277550/Eversley-Estates-Backyard_dh4vyb.webp',
         ]}
-      />
-
-      <ProjectTitleImage
-        src="https://res.cloudinary.com/dqj2gwlpf/image/upload/v1768277511/Eversley-Estate-King-City_kmpfyf.png"
-        alt="Main project"
       />
 
       <Map title="Site Map" images={images} />

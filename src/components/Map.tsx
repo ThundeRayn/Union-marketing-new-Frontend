@@ -36,11 +36,13 @@ const Map = ({ title, images }: MapProps) => {
             }`}
             style={{ transitionDelay: isVisible ? `${(index + 1) * 120}ms` : '0ms' }}
           >
-            <img
-              src={image}
-              alt={`${title} image ${index + 1}`}
-              className="w-full h-auto object-cover"
-            />
+            <a href={image} target="_blank" rel="noopener noreferrer">
+              <img
+                src={image}
+                alt={`${title} image ${index + 1}`}
+                className="w-full h-auto object-cover cursor-pointer hover:opacity-90 transition-opacity duration-300"
+              />
+            </a>
           </div>
         ))}
       </div>

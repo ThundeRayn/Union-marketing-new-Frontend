@@ -4,6 +4,7 @@ import ProjectNavigation from "@/blocks/ProjectNavigation"
 import BackToHome from "@/components/BackToHome"
 import { Button } from "@/components/ui/button"
 import ProjectInfo from "@/components/ProjectInfo"
+import Map from "@/components/Map"
 import { useRef, useEffect, useState } from 'react'
 import projectsData from '@/data/projects.json'
 
@@ -113,20 +114,10 @@ const ElevenPage = () => {
             ))}
           </div>
 
-          {/* Image List */}
-          <div className="flex flex-col space-y-4 mt-8">
-            {images.map((image, index) => (
-              <div key={index} className="w-full overflow-hidden rounded-lg">
-                <img
-                  src={image}
-                  alt={`Project image ${index + 1}`}
-                  className="w-full h-auto object-cover"
-                />
-              </div>
-            ))}
-          </div>
         </div>
       </div>
+
+      <Map title="Site Plan" images={images} />
 
       <ProjectBuilder
         images={[

@@ -4,6 +4,7 @@ import ProjectNavigation from "@/blocks/ProjectNavigation"
 import BackToHome from "@/components/BackToHome"
 import ProjectInfo from "@/components/ProjectInfo"
 import PictureRender from "@/components/PictureRender"
+import ModelsBlock from "@/components/ModelsBlock"
 import YouTubeVideo from "@/components/YouTubeVideo"
 import projectsData from '@/data/projects.json'
 
@@ -14,9 +15,20 @@ const CGTowerPage = () => {
     <div className="bg-(--color-secondary) text-white min-h-screen">
       <BackToHome to="/project" label="PROJECTS" />
       {/* Video Section */}
+
+      <Upbadge
+        title={project.title}
+        description={project.status}
+        url={project.coverImage}
+      />
+      <ProjectInfo projectId="cgtower" />
       <YouTubeVideo videoId="G0atJezPcLk" title="Project Video" />
 
-      <ProjectInfo projectId="cgtower" />
+      <ProjectBuilder
+        images={[
+          { src: 'https://res.cloudinary.com/dqj2gwlpf/image/upload/v1767486870/Cortel-Group-with-text_p5vbhf.png', alt: 'Cortel Group' }
+        ]}
+      />
 
       {/* Picture Render Section */}
       <PictureRender
@@ -40,17 +52,18 @@ const CGTowerPage = () => {
         ]}
       />
 
-      <ProjectBuilder
+
+      <ModelsBlock
+        modelType="Condo Models"
         images={[
-          { src: 'https://res.cloudinary.com/dqj2gwlpf/image/upload/v1767486870/Cortel-Group-with-text_p5vbhf.png', alt: 'Cortel Group' }
+          'https://res.cloudinary.com/dqj2gwlpf/image/upload/v1768279374/PERIWINKLE_uf1fw8.jpg',
+          'https://res.cloudinary.com/dqj2gwlpf/image/upload/v1768279371/SAFFRON_sryraz.jpg',
+          'https://res.cloudinary.com/dqj2gwlpf/image/upload/v1768279367/LILAC-3D_s4mkut.png',
+          'https://res.cloudinary.com/dqj2gwlpf/image/upload/v1768279364/PAISLEY_igu4w3.jpg'
         ]}
       />
 
-      <Upbadge
-        title={project.title}
-        description={project.status}
-        url={project.coverImage}
-      />
+      
 
       <ProjectNavigation projectId="cgtower" />
     </div>

@@ -14,10 +14,20 @@ const AbejaPage = () => {
   return (
     <div className="bg-(--color-secondary) text-white min-h-screen">
       <BackToHome to="/project" label="PROJECTS" />
-
+      <Upbadge
+        title={project.title}
+        description={project.status}
+        url={project.coverImage}
+      />
+      <ProjectInfo projectId="abeja" />
       <YouTubeVideo videoId="KX63R85lUOc" title="Project Video" />
 
-      <ProjectInfo projectId="abeja" />
+       <ProjectBuilder
+        images={[
+          { src: 'https://res.cloudinary.com/dqj2gwlpf/image/upload/v1768279495/AbejaDistrictCondos_logo_zv7baw.jpg', alt: 'Cortel Group' },
+        ]}
+        noFilter
+      />
 
       {/* Picture Render Section */}
       <PictureRender
@@ -30,19 +40,13 @@ const AbejaPage = () => {
           'https://res.cloudinary.com/dqj2gwlpf/image/upload/v1770095878/index-slider-v2_y1toqv.jpg',
         ]}
       />
-
+     
       <ProjectBuilder
         images={[
           { src: 'https://res.cloudinary.com/dqj2gwlpf/image/upload/v1767486870/Cortel-Group-with-text_p5vbhf.png', alt: 'Cortel Group' },
-          { src: 'https://res.cloudinary.com/dqj2gwlpf/image/upload/v1768279495/AbejaDistrictCondos_logo_zv7baw.jpg', alt: 'Abeja District Condos' }
         ]}
       />
-
-      <Upbadge
-        title={project.title}
-        description={project.status}
-        url={project.coverImage}
-      />
+      
 
       <ProjectNavigation projectId="abeja" />
     </div>

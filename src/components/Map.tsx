@@ -9,7 +9,7 @@ const Map = ({ title, images }: MapProps) => {
   const { ref, isVisible } = useScrollAnimation(0.1)
 
   return (
-    <div ref={ref} className="mx-auto px-6 md:px-16 lg:px-24 py-16">
+    <div ref={ref} className="mx-auto px-6 md:px-16 lg:px-24 py-10 sm:py-16">
       {/* Gold accent line */}
       <div
         className={`h-px bg-(--color-primary) mb-8 transition-all duration-1000 ease-out ${
@@ -18,7 +18,7 @@ const Map = ({ title, images }: MapProps) => {
       />
 
       <p
-        className={`text-xs tracking-[0.2em] uppercase text-(--color-primary) mb-8 transition-all duration-700 ease-out ${
+        className={`text-xs tracking-[0.2em] uppercase text-(--color-primary) mb-6 sm:mb-8 transition-all duration-700 ease-out ${
           isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
         }`}
         style={{ fontFamily: 'var(--font-label)', transitionDelay: '200ms' }}

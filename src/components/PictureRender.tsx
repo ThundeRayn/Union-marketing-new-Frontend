@@ -78,12 +78,11 @@ const PictureRender = ({ title, pictures }: PictureRenderProps) => {
 
       {/* Parallax Background Image */}
       <div
-        className={`absolute inset-0 w-full h-full transition-opacity duration-700 ${currentImageLoaded ? 'opacity-100' : 'opacity-0'}`}
+        className={`absolute inset-0 w-full h-full parallax-bg transition-opacity duration-700 ${currentImageLoaded ? 'opacity-100' : 'opacity-0'}`}
         style={{
           backgroundImage: `url(${pictures[currentIndex]})`,
           backgroundSize: 'cover',
           backgroundPosition: 'center',
-          backgroundAttachment: 'fixed',
         }}
       />
 

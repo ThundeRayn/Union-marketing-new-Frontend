@@ -55,7 +55,7 @@ const ContactUs = () => {
             transitionDelay: '200ms',
           }}
         >
-          We&rsquo;d love to hear from you
+          We&rsquo;d love to connect with you
         </p>
 
         {/* Form */}

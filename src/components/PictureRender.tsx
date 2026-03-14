@@ -37,69 +37,95 @@ const PictureRender = ({ title, pictures }: PictureRenderProps) => {
 
   if (!pictures || pictures.length === 0) {
     return (
-      <div className="container mx-auto px-4 py-8">
-        <h2 className="text-3xl font-bold mb-6 text-center">{title}</h2>
-        <p className="text-center text-gray-500">No images available</p>
+      <div className="w-full h-screen flex items-center justify-center">
+        <div className="text-center">
+          <h2
+            className="text-xs tracking-[0.2em] uppercase text-(--color-primary) mb-4"
+            style={{ fontFamily: 'var(--font-label)' }}
+          >
+            {title}
+          </h2>
+          <p className="text-white/40">No images available</p>
+        </div>
       </div>
     );
   }
 
   return (
-    <div className="container mx-auto px-4 py-4 md:py-8">
-      <h2 className="text-2xl md:text-3xl font-bold mb-4 md:mb-6 text-center">{title}</h2>
-      
-      <div className="relative w-full max-w-4xl mx-auto">
-        {/* Main Image Display */}
-        <div className="relative w-full aspect-square md:aspect-video rounded-lg overflow-hidden shadow-lg bg-gray-100">
-          <img
-            src={pictures[currentIndex]}
-            alt={`${title} - Image ${currentIndex + 1}`}
-            className="w-full h-full object-cover"
-          />
-          
-          {/* Navigation Arrows */}
-          {pictures.length > 1 && (
-            <>
-              <button
-                onClick={goToPrevious}
-                className="absolute left-4 top-1/2 -translate-y-1/2 z-20 bg-black/50 hover:bg-black/70 text-white p-3 rounded-full transition"
-                aria-label="Previous image"
-              >
-                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
-                </svg>
-              </button>
+    <div className="relative w-full h-screen overflow-hidden">
+      {/* Parallax Background Image */}
+      <div
+        className="absolute inset-0 w-full h-full"
+        style={{
+          backgroundImage: `url(${pictures[currentIndex]})`,
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          backgroundAttachment: 'fixed',
+        }}
+      />
 
-              <button
-                onClick={goToNext}
-                className="absolute right-4 top-1/2 -translate-y-1/2 z-20 bg-black/50 hover:bg-black/70 text-white p-3 rounded-full transition"
-                aria-label="Next image"
-              >
-                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                </svg>
-              </button>
-            </>
-          )}
+      {/* Dark overlay */}
+      <div className="absolute inset-0 bg-black/30" />
 
-          {/* Image Counter */}
-          <div className="absolute bottom-4 right-4 bg-black/60 text-white px-3 py-1 rounded-full text-sm">
+      {/* Title */}
+      <div className="absolute top-8 left-0 right-0 z-10 px-6 md:px-16 lg:px-24">
+        <p
+          className="text-xs tracking-[0.2em] uppercase text-(--color-primary) drop-shadow-lg"
+          style={{ fontFamily: 'var(--font-label)' }}
+        >
+          {title}
+        </p>
+      </div>
+
+      {/* Navigation Arrows */}
+      {pictures.length > 1 && (
+        <>
+          <button
+            onClick={goToPrevious}
+            className="absolute left-4 md:left-8 top-1/2 -translate-y-1/2 z-20 bg-black/50 hover:bg-black/70 text-white p-3 rounded-full transition-all duration-300"
+            aria-label="Previous image"
+          >
+            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+            </svg>
+          </button>
+
+          <button
+            onClick={goToNext}
+            className="absolute right-4 md:right-8 top-1/2 -translate-y-1/2 z-20 bg-black/50 hover:bg-black/70 text-white p-3 rounded-full transition-all duration-300"
+            aria-label="Next image"
+          >
+            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+            </svg>
+          </button>
+        </>
+      )}
+
+      {/* Bottom Controls */}
+      <div className="absolute bottom-0 left-0 right-0 z-10 bg-linear-to-t from-black/70 to-transparent pt-16 pb-6 px-6 md:px-16 lg:px-24">
+        {/* Image Counter */}
+        <div className="flex items-center justify-between mb-4">
+          <div
+            className="text-xs tracking-[0.15em] text-white/60"
+            style={{ fontFamily: 'var(--font-label)' }}
+          >
             {currentIndex + 1} / {pictures.length}
           </div>
         </div>
 
         {/* Thumbnail Navigation */}
         {pictures.length > 1 && (
-          <div ref={thumbnailContainerRef} className="flex gap-1 md:gap-2 mt-3 md:mt-4 overflow-x-auto pb-2 scroll-smooth">
+          <div ref={thumbnailContainerRef} className="flex gap-1 md:gap-2 overflow-x-auto pb-2 scroll-smooth">
             {pictures.map((picture, index) => (
               <button
                 key={index}
                 data-active={index === currentIndex}
                 onClick={() => goToSlide(index)}
-                className={`flex-shrink-0 w-14 h-14 md:w-20 md:h-20 rounded-lg overflow-hidden border-2 transition-all ${
+                className={`shrink-0 w-14 h-14 md:w-20 md:h-20 overflow-hidden border-2 transition-all duration-300 ${
                   index === currentIndex
-                    ? 'border-yellow-400 scale-105'
-                    : 'border-gray-300 hover:border-gray-400 opacity-70 hover:opacity-100'
+                    ? 'border-(--color-primary) scale-105'
+                    : 'border-white/20 hover:border-white/40 opacity-60 hover:opacity-100'
                 }`}
               >
                 <img
@@ -108,22 +134,6 @@ const PictureRender = ({ title, pictures }: PictureRenderProps) => {
                   className="w-full h-full object-cover"
                 />
               </button>
-            ))}
-          </div>
-        )}
-
-        {/* Slide Indicators (Dots) */}
-        {pictures.length > 1 && (
-          <div className="flex justify-center gap-2 mt-4">
-            {pictures.map((_, index) => (
-              <button
-                key={index}
-                onClick={() => goToSlide(index)}
-                className={`h-2 rounded-full transition-all ${
-                  index === currentIndex ? 'w-8 bg-yellow-400' : 'w-2 bg-gray-300'
-                }`}
-                aria-label={`Go to slide ${index + 1}`}
-              />
             ))}
           </div>
         )}

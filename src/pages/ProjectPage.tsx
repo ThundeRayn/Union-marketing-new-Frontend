@@ -1,85 +1,22 @@
-import Fifth from '../projects/FifthPage';
 import ProjectCard from '../components/ProjectCard';
 import Upbadge from '@/blocks/Upbadge';
-import ElevenPage from '@/projects/ElevenPage';
-import EversleyPage from '@/projects/EversleyPage';
-import GeorginaPage from '@/projects/GeorginaPage';
-import CGTowerPage from '@/projects/CGTowerPage';
-import AbejaPage from '@/projects/AbejaPage';
+import BackToHome from '@/components/BackToHome';
 import { useScrollAnimation } from '@/hooks/useScrollAnimation';
 import { useRef, useState, useEffect } from 'react';
 import ContactUs from '@/blocks/ContactUs';
 import ScrollProgress from '@/components/ScrollProgress';
+import projectsData from '@/data/projects.json';
 
-// Project list configuration — ratio varies per card for masonry effect
-const projectList = [
-  {
-    id: 'fifth',
-    title: 'Fifth Avenue Homes King City',
-    type: 'TOWNHOMES',
-    address: 'King City, Ontario',
-    description: 'NOW SELLING',
-    coverImage: 'https://res.cloudinary.com/dqj2gwlpf/image/upload/v1773305589/img_2_clzm3k.jpg',
-    component: Fifth,
-    path: '/projects/fifth',
-    ratio: '4/3',
-  },
-  {
-    id: 'eleven',
-    title: '11 Altamont Rd.',
-    type: 'DETACHED',
-    address: 'Scarborough, Ontario',
-    description: 'NOW SELLING',
-    coverImage: 'https://res.cloudinary.com/dqj2gwlpf/image/upload/v1768275582/Untitled-design-5_xjqyo7.jpg',
-    component: ElevenPage,
-    path: '/projects/eleven',
-    ratio: '3/4',
-  },
-  {
-    id: 'eversley',
-    title: 'Eversley Project',
-    type: 'SEMI-DETACHED',
-    address: 'King, Ontario',
-    description: 'NOW SELLING',
-    coverImage: 'https://res.cloudinary.com/dqj2gwlpf/image/upload/v1768277530/2021_09_28_12_28_44_thomson-c-1024x682-1_wonxfk.jpg',
-    component: EversleyPage,
-    path: '/projects/eversley',
-    ratio: '1/1',
-  },
-  {
-    id: 'georgina',
-    title: 'Georgina Project',
-    type: 'DETACHED',
-    address: 'Keswick, Ontario',
-    description: 'NOW SELLING',
-    coverImage: 'https://res.cloudinary.com/dqj2gwlpf/image/upload/v1768278560/Georgina-Heights-in-Keswick_ideq3b.jpg',
-    component: GeorginaPage,
-    path: '/projects/georgina',
-    ratio: '3/4',
-  },
-  {
-    id: 'cgtower',
-    title: 'CG Tower',
-    type: 'CONDO',
-    address: 'Vaughan, Ontario',
-    description: 'NOW SELLING',
-    coverImage: 'https://res.cloudinary.com/dqj2gwlpf/image/upload/v1768279079/project-part-2_vompfo.jpg',
-    component: CGTowerPage,
-    path: '/projects/cgtower',
-    ratio: '4/3',
-  },
-  {
-    id: 'abeja',
-    title: 'Abeja Project',
-    type: 'CONDO',
-    address: 'Hamilton, Ontario',
-    description: 'NOW SELLING',
-    coverImage: 'https://res.cloudinary.com/dqj2gwlpf/image/upload/v1768279500/index-slider-v1_kamq7j.jpg',
-    component: AbejaPage,
-    path: '/projects/abeja',
-    ratio: '1/1',
-  },
-];
+const projectList = projectsData.map(p => ({
+  id: p.id,
+  title: p.title,
+  type: p.type,
+  address: p.address,
+  description: p.status,
+  coverImage: p.coverImage,
+  path: p.path,
+  ratio: p.ratio,
+}));
 
 const ProjectPage = () => {
   const { ref, isVisible } = useScrollAnimation(0.05)
@@ -105,6 +42,7 @@ const ProjectPage = () => {
 
   return (
     <>
+    <BackToHome />
     <Upbadge title='PROJECTS' description='View our on selling' fullScreen={false} />
     <div ref={sectionRef} className="relative px-4 md:px-5 lg:px-24 py-4 bg-black">
       <ScrollProgress progress={scrollProgress} />

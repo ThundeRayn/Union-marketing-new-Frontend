@@ -1,4 +1,11 @@
 import Upbadge from "@/blocks/Upbadge"
+import ProjectBuilder from "@/blocks/ProjectBuilder"
+import ProjectNavigation from "@/blocks/ProjectNavigation"
+import BackToHome from "@/components/BackToHome"
+import ProjectInfo from "@/components/ProjectInfo"
+import projectsData from '@/data/projects.json'
+
+const project = projectsData.find(p => p.id === 'georgina')!
 
 const GeorginaPage = () => {
   const images = [
@@ -6,39 +13,27 @@ const GeorginaPage = () => {
   ];
 
   return (
-    <div>
-     
-      
+    <div className="bg-(--color-secondary) text-white min-h-screen">
+      <BackToHome to="/project" label="PROJECTS" />
+
       {/* Video Section */}
       <div className="w-full">
         <div className="w-full aspect-video">
-          <iframe 
+          <iframe
             src="https://www.youtube.com/embed/9BYZTIMmJPA?autoplay=1&loop=1&mute=1&controls=1&modestbranding=1"
             className="w-full h-full"
-            frameBorder="0" 
-            allow="autoplay; fullscreen; picture-in-picture" 
+            frameBorder="0"
+            allow="autoplay; fullscreen; picture-in-picture"
             allowFullScreen
             title="Project Video"
           />
         </div>
       </div>
 
-      {/* Project Info Section */}
-      <div className="container mx-auto px-4 py-6">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-2xl mx-auto">
-          <div className="bg-gray-50 p-6 rounded-lg border-l-4 border-yellow-400">
-            <h3 className="text-lg font-bold text-gray-700 mb-2">Project Type</h3>
-            <p className="text-2xl font-semibold text-black">SINGLES</p>
-          </div>
-          <div className="bg-gray-50 p-6 rounded-lg border-l-4 border-yellow-400">
-            <h3 className="text-lg font-bold text-gray-700 mb-2">Location</h3>
-            <p className="text-2xl font-semibold text-black">CHURCH STREET.& WOODBINE AVENUE.</p>
-          </div>
-        </div>
-      </div>
-      
+      <ProjectInfo projectId="georgina" />
+
       {/* Main Content Area */}
-      <div className="container mx-auto px-4 py-8">
+      <div className="mx-auto px-6 md:px-16 lg:px-24 py-8">
         <div className="flex flex-col space-y-4">
           {images.map((image, index) => (
             <div key={index} className="w-full overflow-hidden rounded-lg">
@@ -52,23 +47,19 @@ const GeorginaPage = () => {
         </div>
       </div>
 
-      {/* The Builder Section */}
-      <div className="container mx-auto px-4 py-8 pb-14">
-        <h2 className="text-3xl font-bold mb-6 text-center">The Builder</h2>
-        <div className="flex items-center justify-center gap-4">
-          <img 
-            src="https://res.cloudinary.com/dqj2gwlpf/image/upload/v1767486888/Treasure-Hill-1_hp69af.webp" 
-            alt="Builder icon"
-            className="w-102 object-cover rounded-lg" 
-          />
-        </div>
-      </div>
-
-       <Upbadge 
-        title='Georgina Project' 
-        description='NOW SELLING'
-        url="https://res.cloudinary.com/dqj2gwlpf/image/upload/v1768278560/Georgina-Heights-in-Keswick_ideq3b.jpg"
+      <ProjectBuilder
+        images={[
+          { src: 'https://res.cloudinary.com/dqj2gwlpf/image/upload/v1767486888/Treasure-Hill-1_hp69af.webp', alt: 'Treasure Hill' }
+        ]}
       />
+
+      <Upbadge
+        title={project.title}
+        description={project.status}
+        url={project.coverImage}
+      />
+
+      <ProjectNavigation projectId="georgina" />
     </div>
   )
 }

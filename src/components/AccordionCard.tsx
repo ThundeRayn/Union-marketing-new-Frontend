@@ -27,16 +27,16 @@ const AccordionCard = ({
   }
 
   return (
-    <div className="bg-white rounded-lg shadow-lg overflow-hidden">
+    <div className="bg-(--color-secondary) rounded-lg overflow-hidden">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-18 p-8 px-12">
         {/* Left Section */}
         <div className="flex flex-col justify-between">
           {/* Header */}
           <div className="mb-8">
-            <h2 className="text-3xl md:text-5xl font-normal text-gray-900 mb-6">
+            <h2 className="font-(family-name:--font-heading) text-3xl md:text-5xl font-normal text-white mb-6">
               {title}
             </h2>
-            <p className="text-gray-600 text-sm leading-relaxed">
+            <p className="font-(family-name:--font-body) text-white/50 text-sm leading-relaxed">
               {shortDescription}
             </p>
           </div>
@@ -48,10 +48,10 @@ const AccordionCard = ({
                 <button
                   onClick={() => toggleAccordion(index)}
                   onMouseEnter={() => window.innerWidth >= 768 && setActiveIndex(index)}
-                  className={`w-full text-left px-6 py-4 rounded-lg transition-all duration-300 ${
+                  className={`font-(family-name:--font-body) w-full text-left px-6 py-4 rounded-lg transition-all duration-300 ${
                     activeIndex === index
-                      ? 'bg-yellow-400 text-black font-semibold'
-                      : 'bg-gray-100 text-gray-800 hover:bg-gray-200'
+                      ? 'bg-(--color-primary) text-black font-semibold'
+                      : 'bg-white/10 text-white/80 hover:bg-white/15'
                   }`}
                 >
                   {item.subtitle}
@@ -59,8 +59,8 @@ const AccordionCard = ({
 
                 {/* Expanded Description */}
                 {activeIndex === index && (
-                  <div className="mt-2 p-4 bg-gray-50 rounded-lg border border-gray-200 animate-in fade-in slide-in-from-top-2 duration-300">
-                    <p className="text-gray-700 leading-relaxed">
+                  <div className="mt-2 p-4 bg-white/5 rounded-lg border border-white/10 animate-in fade-in slide-in-from-top-2 duration-300">
+                    <p className="font-(family-name:--font-body) text-white/60 leading-relaxed">
                       {item.description}
                     </p>
                   </div>

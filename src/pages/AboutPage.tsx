@@ -3,10 +3,12 @@ import Customer from "@/blocks/Customer"
 import ClientCards from "@/blocks/ClientCards"
 import SubHero from "@/blocks/SubHero"
 import YTVideo from "@/components/YTVideo"
+import BackToHome from "@/components/BackToHome"
 
 const AboutPage = () => {
   return (
     <div>
+        <BackToHome />
         <SubHero titleShadow descriptionShadow />
         <ClientCards />
         

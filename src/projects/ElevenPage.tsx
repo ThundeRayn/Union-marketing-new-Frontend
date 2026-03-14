@@ -1,29 +1,29 @@
-//import Upbadge from "@/blocks/Upbadge"
+import Upbadge from "@/blocks/Upbadge"
+import ProjectBuilder from "@/blocks/ProjectBuilder"
+import ProjectNavigation from "@/blocks/ProjectNavigation"
+import BackToHome from "@/components/BackToHome"
 import { Button } from "@/components/ui/button"
 import ProjectInfo from "@/components/ProjectInfo"
-import { useRef, useEffect } from "react"
+import { useRef, useEffect, useState } from 'react'
+import projectsData from '@/data/projects.json'
+
+const project = projectsData.find(p => p.id === 'eleven')!
 
 const ElevenPage = () => {
-  const videoContainerRef = useRef<HTMLDivElement>(null);
+  const videoSectionRef = useRef<HTMLDivElement>(null);
   const iframeRef = useRef<HTMLIFrameElement>(null);
-  const cloudinaryVideoRef = useRef<HTMLVideoElement>(null);
-
-  const scrollToVideo = () => {
-    videoContainerRef.current?.scrollIntoView({ behavior: 'smooth', block: 'center' });
-  };
+  const [showVideo, setShowVideo] = useState(false);
 
   useEffect(() => {
-    const container = videoContainerRef.current;
+    const container = videoSectionRef.current;
     const iframe = iframeRef.current;
-    
+
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting && iframe) {
-            // Post message to Vimeo iframe to play
             iframe.contentWindow?.postMessage('{"method":"play"}', '*');
           } else if (iframe) {
-            // Post message to Vimeo iframe to pause
             iframe.contentWindow?.postMessage('{"method":"pause"}', '*');
           }
         });
@@ -42,40 +42,10 @@ const ElevenPage = () => {
     };
   }, []);
 
-  useEffect(() => {
-    const video = cloudinaryVideoRef.current;
-    
-    if (!video) return;
-
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            const playPromise = video.play();
-            if (playPromise !== undefined) {
-              playPromise.catch((error) => {
-                console.log("Autoplay was prevented:", error);
-              });
-            }
-          } else {
-            video.pause();
-          }
-        });
-      },
-      { threshold: 0.25 }
-    );
-
-    observer.observe(video);
-
-    return () => {
-      observer.unobserve(video);
-    };
-  }, []);
-
   const buttons = [
     { id: 1, label: 'UPDATED FEATURES', link: 'https://drive.google.com/file/d/11_gy9k9TARqFPdngmr-AQuLCKgOnSqr9/view?usp=sharing', target: '_blank' },
     { id: 2, label: 'INCENTIVES', link: 'https://drive.google.com/file/d/10l6QPOvw3X0c82pNHib72BfuP5hWIemL/view?usp=sharing', target: '_blank' },
-    { id: 3, label: 'VIDEO', link: '#video', onClick: scrollToVideo },
+    { id: 3, label: 'VIDEO', link: '#video', onClick: () => setShowVideo(true) },
     { id: 4, label: 'PRICE LIST1', link: 'https://drive.google.com/file/d/1V-xDRk9pZBShms4wJ12V4bNd2Dd7J_fO/view?usp=sharing', target: '_blank' },
     { id: 5, label: 'PRICE LIST2', link: 'https://drive.google.com/file/d/1q9K3qvhpnOyacU9fVsBvNoba1IBnC7EW/view?usp=sharing', target: '_blank' },
     { id: 6, label: 'BROCHURE', link: 'https://drive.google.com/file/d/19KeAblPYTYaWRWnX2wzWcwLDsVOi_lx5/view?usp=sharing', target: '_blank' }
@@ -87,44 +57,43 @@ const ElevenPage = () => {
   ];
 
   return (
-    <div>
-      {/* <Upbadge 
-        title='11 Altamont Rd.' 
-        description='NOW SELLING'
-        url="https://res.cloudinary.com/dqj2gwlpf/image/upload/v1768275582/Untitled-design-5_xjqyo7.jpg"
-      /> */}
+    <div className="bg-(--color-secondary) text-white min-h-screen">
+      <BackToHome to="/project" label="PROJECTS" />
 
+      <Upbadge
+        title={project.title}
+        description={project.status}
+        url={project.coverImage}
+      />
+
+      <ProjectInfo projectId="eleven" />
+      
       {/* Video Section */}
-      <div ref={videoContainerRef} className="w-full">
+      <div ref={videoSectionRef} className="w-full">
         <div className="w-full aspect-video overflow-hidden">
-          <iframe 
+          <iframe
             ref={iframeRef}
-            src="https://player.vimeo.com/video/340649441?loop=1&autoplay=1&title=0&byline=0&portrait=0" 
+            src="https://player.vimeo.com/video/340649441?loop=1&autoplay=1&title=0&byline=0&portrait=0"
             className="w-full h-full"
-            frameBorder="0" 
-            allow="autoplay; fullscreen; picture-in-picture" 
+            frameBorder="0"
+            allow="autoplay; fullscreen; picture-in-picture"
             allowFullScreen
           />
         </div>
       </div>
-      <ProjectInfo 
-        type="CONDO TOWNS"
-        location="Near Finch Station"
-      />
       
+
       {/* Main Content Area */}
-      <div className="container mx-auto px-4 py-8 flex flex-col items-center">
-          
+      <div className="mx-auto px-6 md:px-16 lg:px-24 py-10 flex flex-col items-center">
+
         <div className="w-full max-w-2xl">
-          {/* Left Container - Button List */}
-          
+
           <div className="flex flex-col space-y-4">
-            <img 
-              src="https://res.cloudinary.com/dqj2gwlpf/image/upload/v1768275579/logo-11altamont-boxed_n3bqur.png" 
+            <img
+              src="https://res.cloudinary.com/dqj2gwlpf/image/upload/v1768275579/logo-11altamont-boxed_n3bqur.png"
               alt="Main project"
-              className="w-full p-6 h-auto object-cover rounded-lg mb-4" 
+              className="w-full p-6 h-auto object-cover rounded-lg mb-4"
             />
-            {/* eslint-disable-next-line react-hooks/refs */}
             {buttons.map((button) => (
               <Button
                 key={button.id}
@@ -144,7 +113,7 @@ const ElevenPage = () => {
             ))}
           </div>
 
-          {/* Right Container - Image List */}
+          {/* Image List */}
           <div className="flex flex-col space-y-4 mt-8">
             {images.map((image, index) => (
               <div key={index} className="w-full overflow-hidden rounded-lg">
@@ -159,37 +128,37 @@ const ElevenPage = () => {
         </div>
       </div>
 
-      {/* The Builder Section */}
-      <div className="container mx-auto px-4 py-8">
-        <h2 className="text-3xl font-bold mb-6 text-center">The Builder</h2>
-        <div className="flex items-center justify-center gap-4">
-          <img 
-            src="https://res.cloudinary.com/dqj2gwlpf/image/upload/v1768276135/logo-7_mph9ln.png" 
-            alt="Builder icon"
-            className="h-32 object-cover rounded-lg" 
-          />
-        </div>
-      </div>
+      <ProjectBuilder
+        images={[
+          { src: 'https://res.cloudinary.com/dqj2gwlpf/image/upload/v1768276135/logo-7_mph9ln.png', alt: 'Builder logo' }
+        ]}
+        noFilter
+      />
 
-      
+      <ProjectNavigation projectId="eleven" />
 
-      {/* Cloudinary Video Section */}
-      <div className="w-full">
-        <video 
-          ref={cloudinaryVideoRef}
-          className="w-full"
-          loop
-          playsInline
-          autoPlay
-          muted
+      {showVideo && (
+        <div
+          className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-sm"
+          onClick={() => setShowVideo(false)}
         >
-          <source 
-            src="https://res.cloudinary.com/dqj2gwlpf/video/upload/v1768276273/1387_1728769250Video-in-Original-Quality_ssok0v.mov" 
-            type="video/mp4" 
-          />
-          Your browser does not support the video tag.
-        </video>
-      </div>
+          <div className="relative w-full max-w-4xl mx-4" onClick={(e) => e.stopPropagation()}>
+            <button
+              onClick={() => setShowVideo(false)}
+              className="absolute -top-10 right-0 text-white text-3xl hover:opacity-70 transition-opacity cursor-pointer"
+            >
+              &times;
+            </button>
+            <video
+              src="https://res.cloudinary.com/dqj2gwlpf/video/upload/v1768276273/1387_1728769250Video-in-Original-Quality_ssok0v.mov"
+              controls
+              autoPlay
+              loop
+              className="w-full max-h-[80vh] rounded-lg"
+            />
+          </div>
+        </div>
+      )}
     </div>
   )
 }

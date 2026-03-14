@@ -3,6 +3,7 @@ import ProjectBuilder from "@/blocks/ProjectBuilder"
 import ProjectNavigation from "@/blocks/ProjectNavigation"
 import ProjectButtonList from "@/blocks/ProjectButtonList"
 import BackToHome from "@/components/BackToHome"
+import ProjectInfo from "@/components/ProjectInfo"
 import NativeVideo from "@/components/NativeVideo"
 import Map from "@/components/Map"
 import PictureRender from "@/components/PictureRender"
@@ -33,8 +34,16 @@ const Fifth = () => {
         title={project.title}
         description={project.status}
         url={project.coverImage}
+        iconImage="https://res.cloudinary.com/dqj2gwlpf/image/upload/v1768269691/king_city-1_ici26g.png"
       />
+      <ProjectInfo projectId="fifth" />
 
+      <PictureRender
+        title="Rendering"
+        pictures={[
+          'https://res.cloudinary.com/dqj2gwlpf/image/upload/v1773470772/Fifth-rendering_yir4d0.jpg'
+        ]}
+      />
       {/* Main Content Area */}
       <div className="mx-auto flex flex-col items-center px-8 md:px-16 lg:px-24">
 
@@ -52,12 +61,7 @@ const Fifth = () => {
       </div>
 
       <Map title="Amenity Map" images={images} />
-      <PictureRender
-        title="Rendering"
-        pictures={[
-          'https://res.cloudinary.com/dqj2gwlpf/image/upload/v1773470772/Fifth-rendering_yir4d0.jpg'
-        ]}
-      />
+      
       {/* Video Section */}
       <NativeVideo
         src="https://res.cloudinary.com/dqj2gwlpf/video/upload/v1768270984/Snapinst.app_video_AQNZAZ3s3Pcv0l5g3n8Haw4eZyc_pmc3C1XCmc44toevbCAhJPM9QR5WxYJkN8icoZLijXcj3S7sIdK_Q-ntdHkP85kNlEvXJGL9UJM-1_byxrhs.mp4"

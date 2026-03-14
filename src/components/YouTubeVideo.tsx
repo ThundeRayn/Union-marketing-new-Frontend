@@ -8,7 +8,7 @@ const YouTubeVideo = ({ videoId, title = "Video" }: YouTubeVideoProps) => {
     <div className="w-full">
       <div className="w-full aspect-video">
         <iframe 
-          src={`https://www.youtube.com/embed/${videoId}?autoplay=1&loop=1&mute=1&controls=1&modestbranding=1`}
+          src={`https://www.youtube.com/embed/${videoId}?autoplay=1&loop=1&playlist=${videoId}&mute=1&controls=1&modestbranding=1&rel=0`}
           className="w-full h-full"
           frameBorder="0" 
           allow="autoplay; fullscreen; picture-in-picture" 

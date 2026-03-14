@@ -21,13 +21,15 @@ const SubHero = ({ title, description, url, fullScreen = true, iconImage }: SubH
       <div className="absolute inset-0 bg-black/50"></div>
 
       {iconImage ? (
-        <div className="relative z-10 flex items-center justify-center px-4">
-          <img
-            src={iconImage}
-            alt={title}
-            className="max-h-[40vh] max-w-full object-contain drop-shadow-2xl animate-[iconReveal_1.5s_ease-out_forwards]"
-            style={{ filter: 'brightness(0) invert(1)' }}
-          />
+        <div className="relative z-10 flex items-center justify-center px-4 w-full">
+          <div className="max-w-[240px] sm:max-w-sm md:max-w-md w-full mx-auto">
+            <img
+              src={iconImage}
+              alt={title}
+              className="max-h-[40vh] max-w-full object-contain drop-shadow-2xl animate-[iconReveal_1.5s_ease-out_forwards] mx-auto"
+              style={{ filter: 'brightness(0) invert(1)' }}
+            />
+          </div>
         </div>
       ) : (
         <div className="relative z-10 text-center space-y-4 px-4">

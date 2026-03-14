@@ -3,9 +3,10 @@ import { useScrollAnimation } from '@/hooks/useScrollAnimation'
 
 interface ProjectBuilderProps {
   images: { src: string; alt: string }[]
+  noFilter?: boolean
 }
 
-const ProjectBuilder = ({ images }: ProjectBuilderProps) => {
+const ProjectBuilder = ({ images, noFilter = false }: ProjectBuilderProps) => {
   const { ref, isVisible } = useScrollAnimation(0.05)
   const cardRefs = useRef<(HTMLDivElement | null)[]>([])
 
@@ -82,7 +83,7 @@ const ProjectBuilder = ({ images }: ProjectBuilderProps) => {
               src={image.src}
               alt={image.alt}
               className="max-w-48 max-h-32 object-contain transition-[opacity,transform] duration-500"
-              style={{ filter: 'brightness(0) invert(1)', opacity: 0.3 }}
+              style={noFilter ? undefined : { filter: 'brightness(0) invert(1)', opacity: 0.3 }}
             />
           </div>
         ))}

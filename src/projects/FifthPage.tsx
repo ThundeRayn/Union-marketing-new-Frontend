@@ -41,7 +41,7 @@ const Fifth = () => {
       />
 
       {/* Main Content Area */}
-      <div className="mx-auto flex flex-col items-center px-6 md:px-16 lg:px-24">
+      <div className="mx-auto flex flex-col items-center px-8 md:px-16 lg:px-24">
 
         <div className="w-full max-w-2xl py-10 md:py-20">
 
@@ -67,8 +67,6 @@ const Fifth = () => {
         </div>
       </div>
 
-      
-
       {/* Video Section */}
       <NativeVideo
         src="https://res.cloudinary.com/dqj2gwlpf/video/upload/v1768270984/Snapinst.app_video_AQNZAZ3s3Pcv0l5g3n8Haw4eZyc_pmc3C1XCmc44toevbCAhJPM9QR5WxYJkN8icoZLijXcj3S7sIdK_Q-ntdHkP85kNlEvXJGL9UJM-1_byxrhs.mp4"
@@ -76,7 +74,7 @@ const Fifth = () => {
         controls={true}
         loop={true}
       />
-      
+
       <ProjectBuilder
         images={[
           { src: 'https://res.cloudinary.com/dqj2gwlpf/image/upload/v1767486776/logo-removebg-preview_t0imsb.png', alt: 'Builder logo' }

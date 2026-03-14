@@ -1,32 +1,33 @@
-//import Upbadge from "@/blocks/Upbadge"
+import Upbadge from "@/blocks/Upbadge"
 import ProjectBuilder from "@/blocks/ProjectBuilder"
 import ProjectNavigation from "@/blocks/ProjectNavigation"
 import BackToHome from "@/components/BackToHome"
+import NativeVideo from "@/components/NativeVideo"
 import { Button } from "@/components/ui/button"
 import ProjectInfo from "@/components/ProjectInfo"
-import { useRef, useEffect } from "react"
+import { useRef, useEffect } from 'react'
+import projectsData from '@/data/projects.json'
+
+const project = projectsData.find(p => p.id === 'eleven')!
 
 const ElevenPage = () => {
-  const videoContainerRef = useRef<HTMLDivElement>(null);
+  const videoSectionRef = useRef<HTMLDivElement>(null);
   const iframeRef = useRef<HTMLIFrameElement>(null);
-  const cloudinaryVideoRef = useRef<HTMLVideoElement>(null);
 
   const scrollToVideo = () => {
-    videoContainerRef.current?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    videoSectionRef.current?.scrollIntoView({ behavior: 'smooth', block: 'center' });
   };
 
   useEffect(() => {
-    const container = videoContainerRef.current;
+    const container = videoSectionRef.current;
     const iframe = iframeRef.current;
-    
+
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting && iframe) {
-            // Post message to Vimeo iframe to play
             iframe.contentWindow?.postMessage('{"method":"play"}', '*');
           } else if (iframe) {
-            // Post message to Vimeo iframe to pause
             iframe.contentWindow?.postMessage('{"method":"pause"}', '*');
           }
         });
@@ -42,36 +43,6 @@ const ElevenPage = () => {
       if (container) {
         observer.unobserve(container);
       }
-    };
-  }, []);
-
-  useEffect(() => {
-    const video = cloudinaryVideoRef.current;
-    
-    if (!video) return;
-
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            const playPromise = video.play();
-            if (playPromise !== undefined) {
-              playPromise.catch((error) => {
-                console.log("Autoplay was prevented:", error);
-              });
-            }
-          } else {
-            video.pause();
-          }
-        });
-      },
-      { threshold: 0.25 }
-    );
-
-    observer.observe(video);
-
-    return () => {
-      observer.unobserve(video);
     };
   }, []);
 
@@ -93,8 +64,16 @@ const ElevenPage = () => {
     <div className="bg-(--color-secondary) text-white min-h-screen">
       <BackToHome to="/project" label="PROJECTS" />
 
+      <Upbadge
+        title={project.title}
+        description={project.status}
+        url={project.coverImage}
+      />
+
+      <ProjectInfo projectId="eleven" />
+      
       {/* Video Section */}
-      <div ref={videoContainerRef} className="w-full">
+      <div ref={videoSectionRef} className="w-full">
         <div className="w-full aspect-video overflow-hidden">
           <iframe
             ref={iframeRef}
@@ -106,7 +85,7 @@ const ElevenPage = () => {
           />
         </div>
       </div>
-      <ProjectInfo projectId="eleven" />
+      
 
       {/* Main Content Area */}
       <div className="mx-auto px-6 md:px-16 lg:px-24 py-10 flex flex-col items-center">
@@ -157,25 +136,14 @@ const ElevenPage = () => {
         images={[
           { src: 'https://res.cloudinary.com/dqj2gwlpf/image/upload/v1768276135/logo-7_mph9ln.png', alt: 'Builder logo' }
         ]}
+        noFilter
       />
 
-      {/* Cloudinary Video Section */}
-      <div className="w-full">
-        <video
-          ref={cloudinaryVideoRef}
-          className="w-full"
-          loop
-          playsInline
-          autoPlay
-          muted
-        >
-          <source
-            src="https://res.cloudinary.com/dqj2gwlpf/video/upload/v1768276273/1387_1728769250Video-in-Original-Quality_ssok0v.mov"
-            type="video/mp4"
-          />
-          Your browser does not support the video tag.
-        </video>
-      </div>
+      <NativeVideo
+        src="https://res.cloudinary.com/dqj2gwlpf/video/upload/v1768276273/1387_1728769250Video-in-Original-Quality_ssok0v.mov"
+        controls={true}
+        loop={true}
+      />
 
       <ProjectNavigation projectId="eleven" />
     </div>

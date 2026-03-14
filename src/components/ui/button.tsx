@@ -11,7 +11,7 @@ const buttonVariants = cva(
       variant: {
         default: "bg-primary text-primary-foreground hover:bg-primary/90 hover:cursor-pointer",
         union: "font-(family-name:--font-label) tracking-[0.1em] uppercase bg-(--color-secondary) text-white rounded-none hover:bg-(--color-primary) hover:text-black hover:-translate-y-0.5 hover:shadow-lg active:translate-y-0 active:shadow-md transition-all duration-300 ease-out",
-        price: "font-(family-name:--font-label) tracking-[0.1em] uppercase border border-white/60 border-2 text-white rounded-none hover:border-(--color-primary) hover:text-(--color-primary) hover:cursor-pointer transition-all duration-300 ease-in-out",
+        price: "font-(family-name:--font-label) tracking-[0.15em] uppercase border border-white/60 border-2 text-white rounded-none hover:border-(--color-primary) hover:text-(--color-primary) hover:cursor-pointer transition-all duration-300 ease-in-out",
         destructive:
           "bg-destructive text-white hover:bg-destructive/90 focus-visible:ring-destructive/20 dark:focus-visible:ring-destructive/40 dark:bg-destructive/60",
         outline:

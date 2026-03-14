@@ -3,7 +3,7 @@ import ProjectBuilder from "@/blocks/ProjectBuilder"
 import ProjectNavigation from "@/blocks/ProjectNavigation"
 import BackToHome from "@/components/BackToHome"
 import ProjectInfo from "@/components/ProjectInfo"
-import PictureRender from "@/components/PictureRender";
+import PictureRender from "@/components/PictureRender"
 import projectsData from '@/data/projects.json'
 
 const project = projectsData.find(p => p.id === 'eversley')!

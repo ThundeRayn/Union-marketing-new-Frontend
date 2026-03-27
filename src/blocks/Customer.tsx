@@ -1,31 +1,10 @@
-import { useEffect, useRef, useCallback, useState } from 'react'
+import { useEffect, useRef } from 'react'
 import { useScrollAnimation } from "@/hooks/useScrollAnimation"
-import { Skeleton } from '@/components/ui/skeleton'
 import MarqueeLogos from '@/components/MarqueeLogos'
-
-function CustomerLogo({ src, alt, className, style }: { src: string; alt: string; className?: string; style?: React.CSSProperties }) {
-  const [loaded, setLoaded] = useState(false)
-  return (
-    <div className="relative w-32 h-32">
-      {!loaded && <Skeleton className="absolute inset-0 rounded-md" />}
-      <img
-        src={src}
-        alt={alt}
-        onLoad={() => setLoaded(true)}
-        className={`w-32 h-32 object-contain transition-all duration-500 ${loaded ? '' : 'opacity-0'} ${className ?? ''}`}
-        style={style}
-      />
-    </div>
-  )
-}
 
 const Customer = () => {
   const { ref, isVisible } = useScrollAnimation(0.05)
   const mobileCardsRef = useRef<(HTMLDivElement | null)[]>([])
-
-  const setMobileCardRef = useCallback((el: HTMLDivElement | null, index: number) => {
-    mobileCardsRef.current[index] = el
-  }, [])
 
   // Spotlight scroll effect for iPad
   useEffect(() => {

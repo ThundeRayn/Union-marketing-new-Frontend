@@ -127,8 +127,9 @@ const BrandIntro = ({ backgroundImage }: BrandIntroProps) => {
             }`}
             style={{ transitionDelay: '700ms' }}
           >
-            <div className="w-8 h-px bg-[var(--color-primary)]/40 mb-6" />
-            <p className="text-white/70 text-sm md:text-base leading-relaxed max-w-md">
+            {/* small line */}
+            {/* <div className="w-8 h-px bg-[var(--color-primary)]/40 mb-6" /> */}
+            <p className="text-white/70 pt-4 text-sm md:text-base leading-relaxed max-w-md">
               We bridge visionary developers with prospective buyers,
               crafting bespoke strategies that transform pre-construction
               projects into sought-after communities.

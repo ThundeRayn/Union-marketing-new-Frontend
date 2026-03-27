@@ -19,6 +19,7 @@ const ProjectCard = ({ title, type, address, coverImage, path, ratio = '4/3' }: 
   return (
     <Link
       to={path}
+      onClick={() => window.scrollTo(0, 0)}
       className="block relative overflow-hidden bg-black hover:shadow-2xl hover:-translate-y-1 transition-all duration-500 group"
     >
       <div className="relative w-full overflow-hidden project-card-ratio" style={{ '--card-ratio': ratio } as React.CSSProperties}>

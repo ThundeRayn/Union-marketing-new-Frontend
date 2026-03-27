@@ -128,7 +128,7 @@ const ContactUs = () => {
               type="submit"
               variant="union"
               size="union"
-              className="bg-[var(--color-primary)] text-black hover:bg-(--color-secondary) hover:text-white"
+              className="bg-(--color-theme-light) text-black hover:bg-(--color-secondary) hover:text-white"
             >
               SEND MESSAGE
             </Button>

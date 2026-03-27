@@ -38,8 +38,9 @@ select:-webkit-autofill:focus {
   /* Primary colors */
   --color-primary: #fbc944;
 
+  --color-theme-brown: #fbb51e;
   --color-theme-brown: #d0961a;
-  --color-theme-light: #d1c084;
+  --color-theme-light: #e3b50f;
 
   --color-secondary: #070707;
   --color-secondary-light: #2f2f2f;

@@ -207,7 +207,7 @@ const BrokerPortalLogin = () => {
             type="submit"
             variant="union"
             size="union"
-            className="w-full mt-2 bg-(--color-primary) text-black hover:bg-white"
+            className="w-full mt-2 bg-(--color-theme-light) text-black hover:bg-(--color-secondary) hover:text-white"
           >
             {isLogin ? 'Sign In' : 'Create Account'}
           </Button>

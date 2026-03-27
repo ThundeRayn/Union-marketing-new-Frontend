@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect } from 'react';
+import { useState, useRef, useEffect, useLayoutEffect } from 'react';
 import { Skeleton } from '@/components/ui/skeleton';
 import { useMediaLoaded } from '@/hooks/useMediaLoaded';
 
@@ -11,6 +11,7 @@ const PictureRender = ({ title, pictures }: PictureRenderProps) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const thumbnailContainerRef = useRef<HTMLDivElement>(null);
   const currentImageLoaded = useMediaLoaded(pictures[currentIndex]);
+  const isMounted = useRef(false);
 
   const goToPrevious = () => {
     setCurrentIndex((prev) => (prev === 0 ? pictures.length - 1 : prev - 1));
@@ -24,8 +25,16 @@ const PictureRender = ({ title, pictures }: PictureRenderProps) => {
     setCurrentIndex(index);
   };
 
-  // Scroll active thumbnail into view on mobile
+  useLayoutEffect(() => {
+    isMounted.current = false;
+  }, []);
+
+  // Scroll active thumbnail into view on mobile — skip initial mount
   useEffect(() => {
+    if (!isMounted.current) {
+      isMounted.current = true;
+      return;
+    }
     if (thumbnailContainerRef.current) {
       const activeButton = thumbnailContainerRef.current.querySelector('button[data-active="true"]') as HTMLElement;
       if (activeButton) {

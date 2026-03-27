@@ -1,19 +1,19 @@
-import { useEffect, useLayoutEffect } from 'react'
+import { useLayoutEffect } from 'react'
 import { useLocation } from 'react-router-dom'
 
 const useScrollToTop = () => {
   const { pathname, search, hash } = useLocation()
 
-  // Disable browser's automatic scroll restoration
-  useEffect(() => {
+  // Disable browser's automatic scroll restoration before first paint
+  useLayoutEffect(() => {
     if ('scrollRestoration' in history) {
       history.scrollRestoration = 'manual'
     }
   }, [])
 
-  // Scroll before paint
+  // Scroll before paint on every route change
   useLayoutEffect(() => {
-    window.scrollTo({ top: 0, behavior: 'instant' })
+    window.scrollTo(0, 0)
   }, [pathname, search, hash])
 }
 
@@ -24,7 +24,7 @@ const useScrollToTop = () => {
  */
 export const ScrollToTopOnMount = () => {
   useLayoutEffect(() => {
-    window.scrollTo({ top: 0, behavior: 'instant' })
+    window.scrollTo(0, 0)
   }, [])
   return null
 }

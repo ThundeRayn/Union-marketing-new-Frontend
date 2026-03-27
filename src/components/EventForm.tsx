@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { Link } from 'react-router-dom'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 
@@ -44,11 +45,11 @@ const EventForm = () => {
             Are You an Agent?
           </p>
 
-          <a href="/login" className="mb-2 block text-center">
+          <Link to="/login" className="mb-2 block text-center">
             <Button className="bg-(--color-primary) text-black hover:bg-white hover:text-black transition-colors duration-300 rounded-none">
               YES
             </Button>
-          </a>
+          </Link>
 
           <div className="space-y-1">
             <p className="text-white/60 text-base leading-relaxed">

@@ -1,21 +1,32 @@
-import { useEffect } from 'react'
+import { useEffect, useLayoutEffect } from 'react'
 import { useLocation } from 'react-router-dom'
 
 const useScrollToTop = () => {
   const { pathname, search, hash } = useLocation()
 
+  // Disable browser's automatic scroll restoration
   useEffect(() => {
-    // Scroll to top immediately
-    window.scrollTo(0, 0)
-    
-    // Also try with a small delay to ensure DOM is fully rendered
-    const timeoutId = setTimeout(() => {
-      window.scrollTo(0, 0)
-      document.documentElement.scrollTop = 0
-    }, 0)
+    if ('scrollRestoration' in history) {
+      history.scrollRestoration = 'manual'
+    }
+  }, [])
 
-    return () => clearTimeout(timeoutId)
+  // Scroll before paint
+  useLayoutEffect(() => {
+    window.scrollTo({ top: 0, behavior: 'instant' })
   }, [pathname, search, hash])
+}
+
+/**
+ * Place this component inside <Suspense> alongside <Outlet>.
+ * It fires scroll-to-top when the lazy page actually mounts
+ * (after the chunk loads), not when the fallback shows.
+ */
+export const ScrollToTopOnMount = () => {
+  useLayoutEffect(() => {
+    window.scrollTo({ top: 0, behavior: 'instant' })
+  }, [])
+  return null
 }
 
 export default useScrollToTop

@@ -14,7 +14,7 @@ const project = projectsData.find(p => p.id === 'fifth')!
 const Fifth = () => {
 
   const buttons = [
-    { id: 1, label: 'AMENITY MAP', link: 'https://drive.google.com/file/d/1dA7KyqEZHfJbGqSIUCs67ZPAplIheGRR/view?usp=sharing',target: '_blank' },
+    //{ id: 1, label: 'AMENITY MAP', link: 'https://drive.google.com/file/d/1dA7KyqEZHfJbGqSIUCs67ZPAplIheGRR/view?usp=sharing',target: '_blank' },
     { id: 2, label: 'INCENTIVE', link: 'https://drive.google.com/file/d/11-iSgsejyMtEchqczBAp_I0asat2O28g/view?usp=sharing', target: '_blank' },
     { id: 3, label: 'SINGLE-GARAGE-FLOOR PLAN', link: 'https://drive.google.com/file/d/1XQ3KB1eIVwUDvSmLqkYzmongkDzMfDBa/view?usp=sharing', target: '_blank' },
     { id: 4, label: 'DOUBLE-GARAGE-FLOOR PLAN', link: 'https://drive.google.com/file/d/1RaBlR1yFYNYrZKSuzooYyYZxfczZrt3O/view?usp=sharing', target: '_blank' },

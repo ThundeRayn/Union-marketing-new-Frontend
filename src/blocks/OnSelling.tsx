@@ -7,7 +7,7 @@ import projectsData from '@/data/projects.json'
 const projects = projectsData.map(p => ({
   title: p.title,
   subtitle: p.subtitle,
-  type: p.type,
+  type: p.infoType,
   status: p.status,
   image: p.coverImage,
   path: p.path,

@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom'
+
 const Footer = () => {
   return (
     <footer className="bg-(--color-secondary) text-white border-t border-white/10">
@@ -5,13 +7,13 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {/* Company Info */}
           <div>
-            <a href="/" className="flex items-center gap-2 group transition-transform duration-300 ease-in-out hover:translate-x-1 w-fit">
+            <Link to="/" className="flex items-center gap-2 group transition-transform duration-300 ease-in-out hover:translate-x-1 w-fit">
               <img
                 src="/Union-icon.png"
                 alt="Union Logo"
                 className="h-16 md:h-22 w-auto max-w-full object-contain transition-transform duration-300 ease-in-out hover:translate-x-2"
               />
-            </a>
+            </Link>
           </div>
 
           {/* Contact Info */}

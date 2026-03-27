@@ -40,7 +40,7 @@ const PictureRender = ({ title, pictures }: PictureRenderProps) => {
 
   if (!pictures || pictures.length === 0) {
     return (
-      <div className="w-full h-screen flex items-center justify-center">
+      <div className="w-full h-[50vh] md:h-screen flex items-center justify-center">
         <div className="text-center">
           <h2
             className="text-xs tracking-[0.2em] uppercase text-(--color-primary) mb-4"
@@ -55,7 +55,7 @@ const PictureRender = ({ title, pictures }: PictureRenderProps) => {
   }
 
   return (
-    <div className="relative w-full h-screen overflow-hidden">
+    <div className="relative w-full h-[50vh] md:h-screen overflow-hidden">
       {/* Structural skeleton matching PictureRender layout */}
       {!currentImageLoaded && (
         <>

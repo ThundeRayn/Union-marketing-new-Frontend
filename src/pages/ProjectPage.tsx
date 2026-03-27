@@ -10,7 +10,7 @@ import projectsData from '@/data/projects.json';
 const projectList = projectsData.map(p => ({
   id: p.id,
   title: p.title,
-  type: p.type,
+  type: p.infoType,
   address: p.address,
   description: p.status,
   coverImage: p.coverImage,

@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+import { Link } from 'react-router-dom'
 
 const Navbar = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
@@ -27,46 +28,41 @@ const Navbar = () => {
         <div className="flex justify-between items-center h-16 lg:h-20 pr-8">
           {/* Logo */}
           <div className="flex-shrink-0">
-            <a href="/" className="pl-10 flex items-center gap-3 group transition-transform duration-300 ease-in-out hover:translate-x-1">
-              <img 
-                src="/favicon.ico" 
-                alt="Union Logo" 
+            <Link to="/" className="pl-10 flex items-center gap-3 group transition-transform duration-300 ease-in-out hover:translate-x-1">
+              <img
+                src="/favicon.ico"
+                alt="Union Logo"
                 className="h-8 w-8 lg:h-10 lg:w-10"
               />
-              <img 
-                src="/letter-transparent.png" 
-                alt="Union Text" 
+              <img
+                src="/letter-transparent.png"
+                alt="Union Text"
                 className="h-8 w-45 lg:h-9 lg:w-55"
               />
-            </a>
-             {/* <img 
-              src="/Union-icon.png" 
-              alt="Union Logo" 
-              className="h-15 transition-transform duration-300 ease-in-out hover:translate-x-2"
-            />  */}
+            </Link>
           </div>
 
           {/* Navigation Links & Sign In - Right Side (Desktop) */}
           <div className="hidden lg:flex items-center space-x-8">
-            <a href="/about" className="relative text-(--text-inverse) hover:text-(--color-primary) text-lg group">
+            <Link to="/about" className="relative text-(--text-inverse) hover:text-(--color-primary) text-lg group">
               ABOUT
               <span className="absolute left-0 bottom-0 w-0 h-0.5 bg-yellow-400 transition-all duration-300 ease-in-out group-hover:w-full"></span>
-            </a>
-            <a href="/service" className="relative text-(--text-inverse) hover:text-(--color-primary) text-lg group">
+            </Link>
+            <Link to="/service" className="relative text-(--text-inverse) hover:text-(--color-primary) text-lg group">
               SERVICES
               <span className="absolute left-0 bottom-0 w-0 h-0.5 bg-yellow-400 transition-all duration-300 ease-in-out group-hover:w-full"></span>
-            </a>
-            <a href="/event" className="relative text-(--text-inverse) hover:text-(--color-primary) text-lg group">
+            </Link>
+            <Link to="/event" className="relative text-(--text-inverse) hover:text-(--color-primary) text-lg group">
               EVENTS
               <span className="absolute left-0 bottom-0 w-0 h-0.5 bg-yellow-400 transition-all duration-300 ease-in-out group-hover:w-full"></span>
-            </a>
-            <a href="/project" className="relative text-(--text-inverse) hover:text-(--color-primary) text-lg group">
+            </Link>
+            <Link to="/project" className="relative text-(--text-inverse) hover:text-(--color-primary) text-lg group">
               PROJECTS
               <span className="absolute left-0 bottom-0 w-0 h-0.5 bg-yellow-400 transition-all duration-300 ease-in-out group-hover:w-full"></span>
-            </a>
+            </Link>
 
-            <a href="/login">
-            <button 
+            <Link to="/login">
+            <button
               className="relative border border-yellow-400 text-(--text-inverse) px-5 py-2 rounded-md overflow-hidden group">
               <span className="relative z-10 transition-all duration-300 ease-in-out group-hover:opacity-0">
                 BROKER PORTAL
@@ -75,12 +71,12 @@ const Navbar = () => {
                 LOGIN
               </span>
             </button>
-            </a>
+            </Link>
           </div>
 
           {/* Mobile Menu Button */}
           <div className="lg:hidden">
-            <button 
+            <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
               className="text-white hover:text-yellow-400 focus:outline-none"
             >
@@ -96,23 +92,22 @@ const Navbar = () => {
           <div className="lg:hidden absolute top-16 lg:top-20 left-0 right-0 bg-(--color-secondary) shadow-lg animate-in slide-in-from-top-2 duration-300 z-40">
             <div className="px-4 py-4 space-y-3">
               {navLinks.map((link) => (
-                <a
+                <Link
                   key={link.label}
-                  href={link.href}
+                  to={link.href}
                   onClick={() => setIsMobileMenuOpen(false)}
                   className="block px-4 py-3 text-(--text-inverse) hover:text-(--color-primary) rounded-lg transition-colors duration-200 font-medium"
                 >
                   {link.label}
-                </a>
+                </Link>
               ))}
-              <a href="/login" className="block w-full">
-                <button 
+              <Link to="/login" className="block w-full" onClick={() => setIsMobileMenuOpen(false)}>
+                <button
                   className="w-full px-4 py-3 border border-yellow-400 text-(--text-inverse) hover:text-(--color-primary) rounded-lg transition-colors duration-200 font-medium"
-                  onClick={() => setIsMobileMenuOpen(false)}
                 >
                   BROKER PORTAL
                 </button>
-              </a>
+              </Link>
             </div>
           </div>
         )}

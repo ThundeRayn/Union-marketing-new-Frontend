@@ -78,8 +78,8 @@ const BrandIntro = ({ backgroundImage }: BrandIntroProps) => {
 
       {/* Gold accent line — top left */}
       <div
-        className={`absolute top-12 left-8 md:left-16 h-px bg-[var(--color-primary)] transition-all duration-[1.5s] ease-out ${
-          visible ? 'w-16 md:w-24 opacity-100' : 'w-0 opacity-0'
+        className={`absolute top-12 left-16 h-px bg-[var(--color-primary)] transition-all duration-[1.5s] ease-out hidden md:block ${
+          visible ? 'w-24 opacity-100' : 'w-0 opacity-0'
         }`}
       />
 

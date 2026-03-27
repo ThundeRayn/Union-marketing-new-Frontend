@@ -26,7 +26,7 @@ const Customer = () => {
     mobileCardsRef.current[index] = el
   }, [])
 
-  // Spotlight scroll effect for mobile/iPad
+  // Spotlight scroll effect for iPad
   useEffect(() => {
     const cards = mobileCardsRef.current.filter(Boolean) as HTMLDivElement[]
     if (cards.length === 0) return
@@ -77,6 +77,16 @@ const Customer = () => {
       logo: "https://res.cloudinary.com/dqj2gwlpf/image/upload/v1767486870/Cortel-Group-with-text_p5vbhf.png"
     }
   ]
+
+  // Mobile carousel: 1 client per slide
+  const [currentSlide, setCurrentSlide] = useState(0)
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentSlide(prev => (prev + 1) % clients.length)
+    }, 3000)
+    return () => clearInterval(timer)
+  }, [clients.length])
 
   return (
     <div ref={ref} className="py-20 px-6 md:px-16 lg:px-24 bg-(--color-secondary)">
@@ -165,8 +175,42 @@ const Customer = () => {
           </div>
         </div>
 
-        {/* Mobile/iPad: logo grid with spotlight scroll */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-10 items-center lg:hidden">
+        {/* Mobile only: 2-per-slide infinite carousel */}
+        <div className="md:hidden mt-2">
+          <div className="overflow-hidden">
+            <div
+              className="flex transition-transform duration-700 ease-in-out"
+              style={{ transform: `translateX(-${currentSlide * 100}%)` }}
+            >
+              {clients.map((client, index) => (
+                <div key={index} className="flex-shrink-0 w-full flex items-center justify-center p-4 border border-white/10">
+                  <CustomerLogo
+                    src={client.logo}
+                    alt={client.name}
+                    className="opacity-70 transition-[opacity,transform] duration-500"
+                    style={{ filter: 'brightness(0) invert(1)' }}
+                  />
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Dot indicators */}
+          <div className="flex justify-center gap-2 mt-6">
+            {clients.map((_, i) => (
+              <button
+                key={i}
+                onClick={() => setCurrentSlide(i)}
+                className={`h-1 rounded-full transition-all duration-300 ${
+                  currentSlide === i ? 'w-8 bg-(--color-primary)' : 'w-2 bg-white/30'
+                }`}
+              />
+            ))}
+          </div>
+        </div>
+
+        {/* iPad: 4-col grid with spotlight scroll effect */}
+        <div className="hidden md:grid md:grid-cols-4 gap-10 items-center lg:hidden">
           {clients.map((client, index) => (
             <div
               key={index}

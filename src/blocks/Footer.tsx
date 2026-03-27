@@ -17,7 +17,7 @@ const Footer = () => {
           </div>*/}
 
           <div>
-            <Link to="/" className="flex items-center pl-5 gap-2 group transition-transform duration-300 ease-in-out hover:translate-x-1 w-fit">
+            <Link to="/" className="flex items-center px-2 gap-2 group transition-transform duration-300 ease-in-out hover:translate-x-1 w-fit">
               <img
                 src="/chat_trans_logo.png"
                 alt="Union Logo"

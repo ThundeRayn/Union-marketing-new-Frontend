@@ -1,6 +1,7 @@
 import { useEffect, useRef, useCallback, useState } from 'react'
 import { useScrollAnimation } from "@/hooks/useScrollAnimation"
 import { Skeleton } from '@/components/ui/skeleton'
+import MarqueeLogos from '@/components/MarqueeLogos'
 
 function CustomerLogo({ src, alt, className, style }: { src: string; alt: string; className?: string; style?: React.CSSProperties }) {
   const [loaded, setLoaded] = useState(false)
@@ -78,15 +79,6 @@ const Customer = () => {
     }
   ]
 
-  // Mobile carousel: 1 client per slide
-  const [currentSlide, setCurrentSlide] = useState(0)
-
-  useEffect(() => {
-    const timer = setInterval(() => {
-      setCurrentSlide(prev => (prev + 1) % clients.length)
-    }, 3000)
-    return () => clearInterval(timer)
-  }, [clients.length])
 
   return (
     <div ref={ref} className="py-20 px-6 md:px-16 lg:px-24 bg-(--color-secondary)">
@@ -159,71 +151,39 @@ const Customer = () => {
             </p>
           </div>
 
-          {/* Right: 2x2 logo grid */}
-          <div className="grid grid-cols-2 gap-6">
-            {clients.map((client, index) => (
-              <div
-                key={index}
-                className={`flex items-center justify-center p-4 border border-white/10 hover:border-(--color-primary)/30 transition-all duration-500 ease-out ${
-                  isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'
-                }`}
-                style={{ transitionDelay: isVisible ? `${(index + 2) * 150}ms` : '0ms' }}
-              >
-                <CustomerLogo src={client.logo} alt={client.name} className="brightness-0 invert opacity-50 hover:opacity-100 hover:scale-105" />
-              </div>
-            ))}
-          </div>
-        </div>
-
-        {/* Mobile only: 2-per-slide infinite carousel */}
-        <div className="md:hidden mt-2">
-          <div className="overflow-hidden">
+          {/* Right: two marquee rows, same speed, different starting position */}
+          <div className="flex flex-col gap-6">
             <div
-              className="flex transition-transform duration-700 ease-in-out"
-              style={{ transform: `translateX(-${currentSlide * 100}%)` }}
-            >
-              {clients.map((client, index) => (
-                <div key={index} className="flex-shrink-0 w-full flex items-center justify-center p-4 border border-white/10">
-                  <CustomerLogo
-                    src={client.logo}
-                    alt={client.name}
-                    className="opacity-70 transition-[opacity,transform] duration-500"
-                    style={{ filter: 'brightness(0) invert(1)' }}
-                  />
-                </div>
-              ))}
-            </div>
-          </div>
-
-          {/* Dot indicators */}
-          <div className="flex justify-center gap-2 mt-6">
-            {clients.map((_, i) => (
-              <button
-                key={i}
-                onClick={() => setCurrentSlide(i)}
-                className={`h-1 rounded-full transition-all duration-300 ${
-                  currentSlide === i ? 'w-8 bg-(--color-primary)' : 'w-2 bg-white/30'
-                }`}
-              />
-            ))}
-          </div>
-        </div>
-
-        {/* iPad: 4-col grid with spotlight scroll effect */}
-        <div className="hidden md:grid md:grid-cols-4 gap-10 items-center lg:hidden">
-          {clients.map((client, index) => (
-            <div
-              key={index}
-              ref={(el) => setMobileCardRef(el, index)}
-              className={`flex items-center justify-center p-4 border border-white/10 transition-all duration-500 ease-out ${
+              className={`border border-white/10 p-4 transition-all duration-500 ease-out ${
                 isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'
               }`}
-              style={{ transitionDelay: isVisible ? `${index * 150}ms` : '0ms' }}
+              style={{ transitionDelay: isVisible ? '300ms' : '0ms' }}
             >
-              <CustomerLogo src={client.logo} alt={client.name} className="opacity-30 transition-[opacity,transform] duration-500" style={{ filter: 'brightness(0) invert(1)' }} />
+              <MarqueeLogos clients={clients} duration={18} offset={0} />
             </div>
-          ))}
+
+            <div
+              className={`border border-white/10 p-4 transition-all duration-500 ease-out ${
+                isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'
+              }`}
+              style={{ transitionDelay: isVisible ? '500ms' : '0ms' }}
+            >
+              <MarqueeLogos clients={clients} duration={18} offset={2.5} />
+            </div>
+          </div>
         </div>
+
+        {/* Mobile & Ipad: single marquee rows */}
+        <div className="lg:hidden mt-2 flex flex-col gap-6">
+          <div className={`border border-white/10 p-4 transition-all duration-500 ease-out ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'}`} style={{ transitionDelay: isVisible ? '300ms' : '0ms' }}>
+            <MarqueeLogos clients={clients} duration={18} offset={0} />
+          </div>
+          {/* <div className={`border border-white/10 p-4 transition-all duration-500 ease-out ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'}`} style={{ transitionDelay: isVisible ? '500ms' : '0ms' }}>
+            <MarqueeLogos clients={clients} duration={18} offset={2.5} />
+          </div> */}
+        </div>
+
+
       </div>
     </div>
   )

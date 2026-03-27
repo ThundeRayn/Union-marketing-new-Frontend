@@ -6,7 +6,7 @@ const Footer = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {/* Company Info */}
-          <div>
+          {/* <div>
             <Link to="/" className="flex items-center gap-2 group transition-transform duration-300 ease-in-out hover:translate-x-1 w-fit">
               <img
                 src="/Union-icon.png"
@@ -14,7 +14,17 @@ const Footer = () => {
                 className="h-16 md:h-22 w-auto max-w-full object-contain transition-transform duration-300 ease-in-out hover:translate-x-2"
               />
             </Link>
-          </div>
+          </div>*/}
+
+          <div>
+            <Link to="/" className="flex items-center pl-5 gap-2 group transition-transform duration-300 ease-in-out hover:translate-x-1 w-fit">
+              <img
+                src="/chat_trans_logo.png"
+                alt="Union Logo"
+                className="h-16 md:h-22 w-auto max-w-full object-contain transition-transform duration-300 ease-in-out hover:translate-x-2"
+              />
+            </Link>
+          </div> 
 
           {/* Contact Info */}
           <div>

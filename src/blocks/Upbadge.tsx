@@ -14,15 +14,21 @@ const SubHero = ({ title, description, url, fullScreen = true, iconImage }: SubH
   const bgUrl = url || 'https://res.cloudinary.com/dqj2gwlpf/image/upload/v1767497882/RenderingA_nvcuji.png'
   const bgLoaded = useMediaLoaded(bgUrl)
   const [iconLoaded, setIconLoaded] = useState(false)
+  const [lockedHeight] = useState<number>(
+    () => document.documentElement.clientHeight
+  )
+
+  const heightStyle = fullScreen ? `${lockedHeight - 80}px` : `${Math.round(lockedHeight * 0.6)}px`
 
   return (
     <div
       className="relative flex items-center justify-center parallax-bg"
       style={{
-        height: fullScreen ? 'calc(100vh - 80px)' : '60vh',
+        height: heightStyle,
         backgroundImage: bgLoaded ? `url(${bgUrl})` : undefined,
         backgroundSize: 'cover',
-        backgroundPosition: 'center'
+        backgroundPosition: 'center',
+        backgroundAttachment: 'fixed'
       }}
     >
       {/* Structural skeleton matching SubHero layout */}

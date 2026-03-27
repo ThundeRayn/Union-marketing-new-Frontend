@@ -1,15 +1,26 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { Link } from 'react-router-dom'
 
 const Navbar = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
+  const navRef = useRef<HTMLElement>(null)
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 50)
     window.addEventListener('scroll', handleScroll)
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
+
+  useEffect(() => {
+    const handleClickOutside = (e: MouseEvent) => {
+      if (isMobileMenuOpen && navRef.current && !navRef.current.contains(e.target as Node)) {
+        setIsMobileMenuOpen(false)
+      }
+    }
+    document.addEventListener('mousedown', handleClickOutside)
+    return () => document.removeEventListener('mousedown', handleClickOutside)
+  }, [isMobileMenuOpen])
 
   const navLinks = [
     { label: 'ABOUT', href: '/about' },
@@ -19,7 +30,7 @@ const Navbar = () => {
   ]
 
   return (
-    <nav className={`fixed lg:sticky top-0 left-0 right-0 z-50 transition-all duration-500 ${
+    <nav ref={navRef} className={`fixed lg:sticky top-0 left-0 right-0 z-50 transition-all duration-500 ${
       scrolled
         ? 'bg-(--color-secondary)/95 backdrop-blur-md shadow-lg'
         : 'bg-(--color-secondary) shadow-none'

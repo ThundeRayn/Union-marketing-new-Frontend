@@ -1,5 +1,6 @@
 import Upbadge from "@/blocks/Upbadge"
 import ProjectBuilder from "@/blocks/ProjectBuilder"
+import ProjectButtonList from "@/blocks/ProjectButtonList"
 import ProjectNavigation from "@/blocks/ProjectNavigation"
 import BackToHome from "@/components/BackToHome"
 import ProjectInfo from "@/components/ProjectInfo"
@@ -10,6 +11,14 @@ import projectsData from '@/data/projects.json'
 const project = projectsData.find(p => p.id === 'abeja')!
 
 const AbejaPage = () => {
+
+  const buttons = [
+    { id: 1, label: 'PRICE LIST', link: 'https://res.cloudinary.com/dqj2gwlpf/image/upload/v1776874894/Abeja_District_Price_list_ebirsv.pdf', target: '_blank' },
+    //{ id: 2, label: 'FLOOR PLAN', link: '#', target: '_blank' },
+    //{ id: 3, label: 'PRICE LIST', link: '#', target: '_blank' },
+    //{ id: 4, label: 'INCENTIVES', link: '#', target: '_blank' },
+    //{ id: 5, label: 'SITE PLAN', link: '#', target: '_blank' },
+  ]
 
   return (
     <div className="bg-(--color-secondary) text-white min-h-screen">
@@ -22,12 +31,27 @@ const AbejaPage = () => {
       <ProjectInfo projectId="abeja" />
       <YouTubeVideo videoId="KX63R85lUOc" title="Project Video" />
 
-       <ProjectBuilder
+      {/* Main Content Area */}
+      <div className="mx-auto flex flex-col items-center px-8 md:px-16 lg:px-24">
+        <div className="w-full max-w-2xl py-10 md:py-20">
+          <img
+            src="https://res.cloudinary.com/dqj2gwlpf/image/upload/v1768279495/AbejaDistrictCondos_logo_zv7baw.jpg"
+            alt="Abeja District Condos"
+            className="w-full h-auto object-cover mb-14"
+          />
+          <ProjectButtonList buttons={buttons} />
+        </div>
+      </div>
+
+      {/* <ProjectBuilder
         images={[
-          { src: 'https://res.cloudinary.com/dqj2gwlpf/image/upload/v1768279495/AbejaDistrictCondos_logo_zv7baw.jpg', alt: 'Cortel Group' },
+          { src: 'https://res.cloudinary.com/dqj2gwlpf/image/upload/v1768279495/AbejaDistrictCondos_logo_zv7baw.jpg', alt: 'Abeja District Condos' },
         ]}
         noFilter
-      />
+        title="About"
+      /> */}
+
+
 
       {/* Picture Render Section */}
       <PictureRender

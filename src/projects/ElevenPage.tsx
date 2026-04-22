@@ -43,13 +43,22 @@ const ElevenPage = () => {
     };
   }, []);
 
-  const buttons = [
+  /*const buttons = [
     { id: 1, label: 'UPDATED FEATURES', link: 'https://drive.google.com/file/d/11_gy9k9TARqFPdngmr-AQuLCKgOnSqr9/view?usp=sharing', target: '_blank' },
     { id: 2, label: 'INCENTIVES', link: 'https://drive.google.com/file/d/10l6QPOvw3X0c82pNHib72BfuP5hWIemL/view?usp=sharing', target: '_blank' },
     { id: 3, label: 'VIDEO', link: '#video', onClick: () => setShowVideo(true) },
     { id: 4, label: 'PRICE LIST1', link: 'https://drive.google.com/file/d/1V-xDRk9pZBShms4wJ12V4bNd2Dd7J_fO/view?usp=sharing', target: '_blank' },
     { id: 5, label: 'PRICE LIST2', link: 'https://drive.google.com/file/d/1q9K3qvhpnOyacU9fVsBvNoba1IBnC7EW/view?usp=sharing', target: '_blank' },
     { id: 6, label: 'BROCHURE', link: 'https://drive.google.com/file/d/19KeAblPYTYaWRWnX2wzWcwLDsVOi_lx5/view?usp=sharing', target: '_blank' }
+  ];*/
+
+  const buttons = [
+    { id: 1, label: 'UPDATED FEATURES', link: 'https://res.cloudinary.com/dqj2gwlpf/image/upload/v1776872920/SUNR-ALT-P-Features_offwsr.pdf', target: '_blank' },
+    { id: 2, label: 'INCENTIVES', link: 'https://res.cloudinary.com/dqj2gwlpf/image/upload/v1776872990/11-Altamont-Incentives_y57ixm.pdf', target: '_blank' },
+    { id: 3, label: 'VIDEO', link: '#video', onClick: () => setShowVideo(true) },
+    { id: 4, label: 'PRICE LIST1', link: 'https://res.cloudinary.com/dqj2gwlpf/image/upload/v1776873069/11-Altamont-Price-List-1_ovh89f.pdf', target: '_blank' },
+    { id: 5, label: 'PRICE LIST2', link: 'https://res.cloudinary.com/dqj2gwlpf/image/upload/v1776873128/Phase-2_11-Altamont-Price-List_ozcmeq.pdf', target: '_blank' },
+    { id: 6, label: 'BROCHURE', link: 'https://res.cloudinary.com/dqj2gwlpf/image/upload/v1776873390/Altamont-Bochure-Updated-020524_compressed_zrxohm.pdf', target: '_blank' }
   ];
 
   const images = [

@@ -28,11 +28,13 @@ const Footer = () => {
 
           {/* Contact Info */}
           <div>
-            <h3 className="text-lg font-semibold mb-4">Follow Us</h3>
+            
             <ul className="space-y-2 text-gray-400 text-sm">
               <li>info@unionmarketingrealty.ca</li>
               <li>139 Main St. 206 Unionville Markham L3R 2G6</li>
             </ul>
+
+            <h3 className="text-lg font-semibold mt-4 mb-4">Follow Us</h3>
 
             <div className="flex space-x-4 mt-4">
               <a href="https://www.instagram.com/unionmarketingrealty/reels/" target="_blank" rel="noopener noreferrer" className="text-(--color-theme-brown) hover:text-pink-400 hover:scale-110 transition-all duration-300">

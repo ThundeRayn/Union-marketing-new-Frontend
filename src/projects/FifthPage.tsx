@@ -15,12 +15,16 @@ const Fifth = () => {
 
   const buttons = [
     //{ id: 1, label: 'AMENITY MAP', link: 'https://drive.google.com/file/d/1dA7KyqEZHfJbGqSIUCs67ZPAplIheGRR/view?usp=sharing',target: '_blank' },
-    { id: 1, label: 'INCENTIVE A', link: 'https://drive.google.com/file/d/11-iSgsejyMtEchqczBAp_I0asat2O28g/view?usp=sharing', target: '_blank' },
-    { id: 2, label: 'INCENTIVE B', link: 'https://res.cloudinary.com/dqj2gwlpf/image/upload/v1774608627/Incentive-2026_fbwjis.pdf', target: '_blank' },
-    { id: 3, label: 'SINGLE-GARAGE-FLOOR PLAN', link: 'https://drive.google.com/file/d/1XQ3KB1eIVwUDvSmLqkYzmongkDzMfDBa/view?usp=sharing', target: '_blank' },
-    { id: 4, label: 'DOUBLE-GARAGE-FLOOR PLAN', link: 'https://drive.google.com/file/d/1RaBlR1yFYNYrZKSuzooYyYZxfczZrt3O/view?usp=sharing', target: '_blank' },
-    { id: 5, label: 'SITE PLAN', link: 'https://drive.google.com/file/d/1QbwY5Y0vgypLbFr1KWYAzcH4rFRks9gk/view?usp=sharing', target: '_blank' },
-    { id: 6, label: 'PRICE LIST', link: 'https://drive.google.com/file/d/1IkN9GZX7j665fhWAVT07G2GJDWzNwOSn/view?usp=sharing', target: '_blank' }
+    //{ id: 2, label: 'INCENTIVE A', link: 'https://drive.google.com/file/d/11-iSgsejyMtEchqczBAp_I0asat2O28g/view?usp=sharing', target: '_blank' },
+    { id: 2, label: 'INCENTIVE', link: 'https://res.cloudinary.com/dqj2gwlpf/image/upload/v1774608627/Incentive-2026_fbwjis.pdf', target: '_blank' },
+    //{ id: 3, label: 'SINGLE-GARAGE-FLOOR PLAN', link: 'https://drive.google.com/file/d/1XQ3KB1eIVwUDvSmLqkYzmongkDzMfDBa/view?usp=sharing', target: '_blank' },
+    { id: 3, label: 'SINGLE-GARAGE-FLOOR PLAN', link: 'https://res.cloudinary.com/dqj2gwlpf/image/upload/v1776872236/single-garage-floor-plan_r0vtp4.pdf', target: '_blank' },
+    //{ id: 4, label: 'DOUBLE-GARAGE-FLOOR PLAN', link: 'https://drive.google.com/file/d/1RaBlR1yFYNYrZKSuzooYyYZxfczZrt3O/view?usp=sharing', target: '_blank' },
+    { id: 4, label: 'DOUBLE-GARAGE-FLOOR PLAN', link: 'https://res.cloudinary.com/dqj2gwlpf/image/upload/v1776872499/double-garage-floor-plan_yrjgmz.pdf', target: '_blank' },
+    //{ id: 5, label: 'SITE PLAN', link: 'https://drive.google.com/file/d/1QbwY5Y0vgypLbFr1KWYAzcH4rFRks9gk/view?usp=sharing', target: '_blank' },
+    { id: 5, label: 'SITE PLAN', link: 'https://res.cloudinary.com/dqj2gwlpf/image/upload/v1776872598/Site_Plan_rxuw4k.pdf', target: '_blank' },
+    //{ id: 6, label: 'PRICE LIST', link: 'https://drive.google.com/file/d/1IkN9GZX7j665fhWAVT07G2GJDWzNwOSn/view?usp=sharing', target: '_blank' },
+    { id: 6, label: 'PRICE LIST', link: 'https://res.cloudinary.com/dqj2gwlpf/image/upload/v1776872685/Price-List-v2-noCode_eizsj5.pdf', target: '_blank' }
   ];
 
   const images = [

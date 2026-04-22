@@ -5,6 +5,7 @@ import { Skeleton } from '@/components/ui/skeleton'
 interface ProjectBuilderProps {
   images: { src: string; alt: string }[]
   noFilter?: boolean
+  title?: string
 }
 
 function BuilderLogo({ src, alt, noFilter, style }: { src: string; alt: string; noFilter: boolean; style?: React.CSSProperties }) {
@@ -23,7 +24,7 @@ function BuilderLogo({ src, alt, noFilter, style }: { src: string; alt: string; 
   )
 }
 
-const ProjectBuilder = ({ images, noFilter = false }: ProjectBuilderProps) => {
+const ProjectBuilder = ({ images, noFilter = false, title = 'The Builder' }: ProjectBuilderProps) => {
   const { ref, isVisible } = useScrollAnimation(0.05)
   const cardRefs = useRef<(HTMLDivElement | null)[]>([])
 
@@ -78,7 +79,7 @@ const ProjectBuilder = ({ images, noFilter = false }: ProjectBuilderProps) => {
         }`}
         style={{ fontFamily: 'var(--font-label)', transitionDelay: '200ms' }}
       >
-        The Builder
+        {title}
       </p>
 
       <div

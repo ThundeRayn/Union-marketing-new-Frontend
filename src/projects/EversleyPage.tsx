@@ -1,5 +1,7 @@
 import Upbadge from "@/blocks/Upbadge"
 import ProjectBuilder from "@/blocks/ProjectBuilder"
+import ProjectButtonList from "@/blocks/ProjectButtonList"
+import type { ProjectButton } from "@/blocks/ProjectButtonList"
 import ProjectNavigation from "@/blocks/ProjectNavigation"
 import BackToHome from "@/components/BackToHome"
 import ProjectInfo from "@/components/ProjectInfo"
@@ -10,6 +12,17 @@ import projectsData from '@/data/projects.json'
 const project = projectsData.find(p => p.id === 'eversley')!
 
 const EversleyPage = () => {
+  const buttons: ProjectButton[] = [
+    { id: 1, label: 'PRICE LIST', link: 'https://res.cloudinary.com/dqj2gwlpf/image/upload/v1776957946/eversley-estates-price-list_ibdrtu.pdf', target: '_blank' },
+    { id: 2, label: 'BONUS INCENTIVES', link: 'https://res.cloudinary.com/dqj2gwlpf/image/upload/v1776958071/eversley-estates-eaton-bonus-incentives_wlmf3i.pdf', target: '_blank' },
+    { id: 3, label: 'BONUS FEATURES', link: 'https://res.cloudinary.com/dqj2gwlpf/image/upload/v1776958129/eversley-estates-bonus-features_aqamzg.pdf', target: '_blank' },
+    { id: 4, label: 'FAIRFIELD FLOOR PLANS', link: 'https://res.cloudinary.com/dqj2gwlpf/image/upload/v1776958201/eversley-estates-fairfield-floorplans_xw9cis.pdf', target: '_blank' },
+    { id: 5, label: 'EVALYN FLOOR PLANS', link: 'https://res.cloudinary.com/dqj2gwlpf/image/upload/v1776958283/eversley-estates-evalyn-floorplans_xzuiv8.pdf', target: '_blank' },
+    { id: 6, label: 'EATON FLOOR PLANS', link: 'https://res.cloudinary.com/dqj2gwlpf/image/upload/v1776958565/eversley-estates-eaton-floorplans_compressed_xuez6i.pdf', target: '_blank' },
+    { id: 7, label: 'SITE PLAN', link: 'https://res.cloudinary.com/dqj2gwlpf/image/upload/v1776958654/eversley-estates-siteplan_mgaqgl.pdf', target: '_blank' },
+    { id: 8, label: 'BROCHURE', link: 'https://res.cloudinary.com/dqj2gwlpf/image/upload/v1776958701/eversley-estates-brochure_qzu7ui.pdf', target: '_blank' },
+  ]
+
   const images = [
     'https://res.cloudinary.com/dqj2gwlpf/image/upload/v1768277534/Site-Map_clyzsu.jpg'
   ];
@@ -39,6 +52,13 @@ const EversleyPage = () => {
       />
 
       <Map title="Site Map" images={images} />
+
+      {/* Main Content Area */}
+      <div className="mx-auto flex flex-col items-center px-8 md:px-16 lg:px-24">
+        <div className="w-full max-w-2xl py-10 md:py-20">
+          <ProjectButtonList buttons={buttons} />
+        </div>
+      </div>
 
       <PictureRender
         title="Model Home Gallery"

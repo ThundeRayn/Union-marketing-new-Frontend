@@ -269,6 +269,17 @@ select:-webkit-autofill:focus {
   }
 }
 
+/* Parallax only on desktop — mobile always scrolls with the element */
+.parallax-bg-desktop {
+  background-attachment: scroll;
+}
+
+@media (min-width: 768px) {
+  .parallax-bg-desktop {
+    background-attachment: fixed;
+  }
+}
+
 
 /* Project card: portrait on mobile, varied ratio on tablet+ */
 .project-card-ratio {

@@ -1,5 +1,7 @@
 import Upbadge from "@/blocks/Upbadge"
 import ProjectBuilder from "@/blocks/ProjectBuilder"
+import ProjectButtonList from "@/blocks/ProjectButtonList"
+import type { ProjectButton } from "@/blocks/ProjectButtonList"
 import ProjectNavigation from "@/blocks/ProjectNavigation"
 import BackToHome from "@/components/BackToHome"
 import ProjectInfo from "@/components/ProjectInfo"
@@ -11,6 +13,15 @@ import projectsData from '@/data/projects.json'
 const project = projectsData.find(p => p.id === 'cgtower')!
 
 const CGTowerPage = () => {
+
+  const buttons: ProjectButton[] = [
+    { id: 1, label: 'FEATURES', link: 'https://res.cloudinary.com/dqj2gwlpf/image/upload/v1776955749/Features_Finishes_kpaims.pdf', target: '_blank' },
+    { id: 2, label: 'PRICE LIST', link: 'https://res.cloudinary.com/dqj2gwlpf/image/upload/v1776955824/CG_Tower_-_Price_List_to1wdh.pdf', target: '_blank' },
+    { id: 3, label: 'INCENTIVES', link: 'https://res.cloudinary.com/dqj2gwlpf/image/upload/v1776955869/CG_Tower-Incentive_zvz9kt.pdf', target: '_blank' },
+    { id: 4, label: 'FLOOR PLAN', link: 'https://res.cloudinary.com/dqj2gwlpf/image/upload/v1776956570/Floor_Plan_merge_b5ufjh.pdf', target: '_blank' },
+    //{ id: 5, label: 'SITE PLAN', link: '#', target: '_blank' },
+  ]
+
   return (
     <div className="bg-(--color-secondary) text-white min-h-screen">
       <BackToHome to="/project" label="PROJECTS" />
@@ -26,6 +37,25 @@ const CGTowerPage = () => {
 
       <YouTubeVideo videoId="G0atJezPcLk" title="Project Video" />
 
+      {/* Main Content Area */}
+      <div className="mx-auto flex flex-col items-center px-8 md:px-16 lg:px-24">
+        <div className="w-full max-w-2xl py-10 md:py-20">
+          <ProjectButtonList buttons={buttons} />
+        </div>
+      </div>
+
+      <PictureRender
+        title="Rendering"
+        pictures={[
+          'https://res.cloudinary.com/dqj2gwlpf/image/upload/v1776957058/_______1_bzayva.jpg',
+          'https://res.cloudinary.com/dqj2gwlpf/image/upload/v1776957038/_______3_e4i8uo.jpg',
+          'https://res.cloudinary.com/dqj2gwlpf/image/upload/v1776957009/_______4_yltsks.jpg',
+          'https://res.cloudinary.com/dqj2gwlpf/image/upload/v1776956967/__32A2_1_ekp6sk.jpg',
+          'https://res.cloudinary.com/dqj2gwlpf/image/upload/v1776956955/__B8B4_1_mulpku.jpg',
+          'https://res.cloudinary.com/dqj2gwlpf/image/upload/v1776956955/_______2_scq5ke.jpg'
+        ]}
+      />
+
       <ProjectBuilder
         images={[
           { src: 'https://res.cloudinary.com/dqj2gwlpf/image/upload/v1767486870/Cortel-Group-with-text_p5vbhf.png', alt: 'Cortel Group' }
@@ -33,6 +63,7 @@ const CGTowerPage = () => {
       />
 
       {/* Picture Render Section */}
+
       <PictureRender
         title="Rendering"
         pictures={[
@@ -52,7 +83,7 @@ const CGTowerPage = () => {
           'https://res.cloudinary.com/dqj2gwlpf/image/upload/v1768279287/Expo-5-Pool-Rendering_o0a46z.jpg',
           'https://res.cloudinary.com/dqj2gwlpf/image/upload/v1768279281/VMC-Aerial-View_yjam91.jpg'
         ]}
-      />
+      /> 
 
 
       <ModelsBlock

@@ -14,8 +14,8 @@ const AbejaPage = () => {
 
   const buttons = [
     { id: 1, label: 'PRICE LIST', link: 'https://res.cloudinary.com/dqj2gwlpf/image/upload/v1776874894/Abeja_District_Price_list_ebirsv.pdf', target: '_blank' },
-    //{ id: 2, label: 'FLOOR PLAN', link: '#', target: '_blank' },
-    //{ id: 3, label: 'PRICE LIST', link: '#', target: '_blank' },
+    { id: 2, label: 'BROCHURE', link: 'https://res.cloudinary.com/dqj2gwlpf/image/upload/v1776952441/abeja-district-brochure_biymsm.pdf', target: '_blank' },
+    { id: 3, label: 'FLOOR PLAN', link: 'https://res.cloudinary.com/dqj2gwlpf/image/upload/v1776953453/Abeja_District_floorplans_compressed_y0a1ie.pdf', target: '_blank' },
     //{ id: 4, label: 'INCENTIVES', link: '#', target: '_blank' },
     //{ id: 5, label: 'SITE PLAN', link: '#', target: '_blank' },
   ]

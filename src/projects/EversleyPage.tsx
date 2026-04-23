@@ -55,7 +55,7 @@ const EversleyPage = () => {
 
       {/* Main Content Area */}
       <div className="mx-auto flex flex-col items-center px-8 md:px-16 lg:px-24">
-        <div className="w-full max-w-2xl py-10 md:py-20">
+        <div className="w-full max-w-2xl pt-5 pb-15 md:pt-10 md:pb-20">
           <ProjectButtonList buttons={buttons} />
         </div>
       </div>

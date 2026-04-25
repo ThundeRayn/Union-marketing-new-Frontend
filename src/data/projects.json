@@ -1,16 +1,29 @@
 [
   {
-    "id": "fifth",
-    "title": "Fifth Avenue Homes King City",
-    "subtitle": "King City",
-    "infoType": "TOWNHOMES",
-    "infoLocation": "King City, Ontario",
-    "address": "King City, Ontario",
+    "id": "lakewilcox",
+    "title": "Lake Wilcox Towns",
+    "subtitle": "Lake Wilcox",
+    "infoType": "TOWNS",
+    "infoLocation": "Lake Wilcox, Ontario",
+    "address": "Lake Wilcox, Ontario",
     "status": "NOW SELLING",
-    "coverImage": "https://res.cloudinary.com/dqj2gwlpf/image/upload/v1773305589/img_2_clzm3k.jpg",
-    "mobileCoverImage": "https://res.cloudinary.com/dqj2gwlpf/image/upload/v1773305589/img_2_clzm3k.jpg",
-    "path": "/projects/fifth",
+    "coverImage": "https://res.cloudinary.com/dqj2gwlpf/image/upload/v1777118554/lake-wilcox-town-rendering_hwudcm.jpg",
+    "mobileCoverImage": "https://res.cloudinary.com/dqj2gwlpf/image/upload/v1777118554/lake-wilcox-town-rendering_hwudcm.jpg",
+    "path": "/projects/lakewilcox",
     "ratio": "4/3"
+  },
+  {
+    "id": "cgtower",
+    "title": "CG Tower",
+    "subtitle": "Jane & Rutherford",
+    "infoType": "RESIDENTIAL TOWER",
+    "infoLocation": "Jane Street & Rutherford Road",
+    "address": "Vaughan, Ontario",
+    "status": "NOW SELLING",
+    "coverImage": "https://res.cloudinary.com/dqj2gwlpf/image/upload/v1768279079/project-part-2_vompfo.jpg",
+    "mobileCoverImage": "https://res.cloudinary.com/dqj2gwlpf/image/upload/v1768279079/project-part-2_vompfo.jpg",
+    "path": "/projects/cgtower",
+    "ratio": "3/4"
   },
   {
     "id": "eleven",
@@ -26,19 +39,6 @@
     "ratio": "3/4"
   },
   {
-    "id": "eversley",
-    "title": "Eversley Estates",
-    "subtitle": "Dufferin & 15th Sideroad",
-    "infoType": "LUXURY SINGLES",
-    "infoLocation": "Dufferin Street & South of 15th Sideroad",
-    "address": "King, Ontario",
-    "status": "NOW SELLING",
-    "coverImage": "https://res.cloudinary.com/dqj2gwlpf/image/upload/v1768277530/2021_09_28_12_28_44_thomson-c-1024x682-1_wonxfk.jpg",
-    "mobileCoverImage": "https://res.cloudinary.com/dqj2gwlpf/image/upload/v1768277530/2021_09_28_12_28_44_thomson-c-1024x682-1_wonxfk.jpg",
-    "path": "/projects/eversley",
-    "ratio": "1/1"
-  },
-  {
     "id": "georgina",
     "title": "Georgina Heights",
     "subtitle": "Church St & Woodbine",
@@ -49,19 +49,19 @@
     "coverImage": "https://res.cloudinary.com/dqj2gwlpf/image/upload/v1768278560/Georgina-Heights-in-Keswick_ideq3b.jpg",
     "mobileCoverImage": "https://res.cloudinary.com/dqj2gwlpf/image/upload/v1768278560/Georgina-Heights-in-Keswick_ideq3b.jpg",
     "path": "/projects/georgina",
-    "ratio": "3/4"
+    "ratio": "1/1"
   },
   {
-    "id": "cgtower",
-    "title": "CG Tower",
-    "subtitle": "Jane & Rutherford",
-    "infoType": "RESIDENTIAL TOWER",
-    "infoLocation": "Jane Street & Rutherford Road",
-    "address": "Vaughan, Ontario",
+    "id": "fifth",
+    "title": "Fifth Avenue Homes King City",
+    "subtitle": "King City",
+    "infoType": "TOWNHOMES",
+    "infoLocation": "King City, Ontario",
+    "address": "King City, Ontario",
     "status": "NOW SELLING",
-    "coverImage": "https://res.cloudinary.com/dqj2gwlpf/image/upload/v1768279079/project-part-2_vompfo.jpg",
-    "mobileCoverImage": "https://res.cloudinary.com/dqj2gwlpf/image/upload/v1768279079/project-part-2_vompfo.jpg",
-    "path": "/projects/cgtower",
+    "coverImage": "https://res.cloudinary.com/dqj2gwlpf/image/upload/v1773305589/img_2_clzm3k.jpg",
+    "mobileCoverImage": "https://res.cloudinary.com/dqj2gwlpf/image/upload/v1773305589/img_2_clzm3k.jpg",
+    "path": "/projects/fifth",
     "ratio": "4/3"
   },
   {
@@ -76,5 +76,18 @@
     "mobileCoverImage": "https://res.cloudinary.com/dqj2gwlpf/image/upload/v1768279500/index-slider-v1_kamq7j.jpg",
     "path": "/projects/abeja",
     "ratio": "1/1"
+  },
+  {
+    "id": "eversley",
+    "title": "Eversley Estates",
+    "subtitle": "Dufferin & 15th Sideroad",
+    "infoType": "LUXURY SINGLES",
+    "infoLocation": "Dufferin Street & South of 15th Sideroad",
+    "address": "King, Ontario",
+    "status": "NOW SELLING",
+    "coverImage": "https://res.cloudinary.com/dqj2gwlpf/image/upload/v1768277530/2021_09_28_12_28_44_thomson-c-1024x682-1_wonxfk.jpg",
+    "mobileCoverImage": "https://res.cloudinary.com/dqj2gwlpf/image/upload/v1768277530/2021_09_28_12_28_44_thomson-c-1024x682-1_wonxfk.jpg",
+    "path": "/projects/eversley",
+    "ratio": "4/3"
   }
 ]

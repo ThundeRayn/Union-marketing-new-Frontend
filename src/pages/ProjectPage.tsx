@@ -14,6 +14,7 @@ const projectList = projectsData.map(p => ({
   address: p.address,
   description: p.status,
   coverImage: p.coverImage,
+  mobileCoverImage: p.mobileCoverImage,
   path: p.path,
   ratio: p.ratio,
 }));
@@ -63,6 +64,7 @@ const ProjectPage = () => {
               address={project.address}
               description={project.description}
               coverImage={project.coverImage}
+              mobileCoverImage={project.mobileCoverImage}
               path={project.path}
               ratio={project.ratio}
             />

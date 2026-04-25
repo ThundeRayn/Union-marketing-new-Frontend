@@ -31,6 +31,7 @@ const CGTowerPage = () => {
         title={project.title}
         description={project.status}
         url={project.coverImage}
+        mobileUrl={project.mobileCoverImage}
       />
       
       <ProjectInfo projectId="cgtower" />

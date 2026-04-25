@@ -1,9 +1,11 @@
 import { useState } from 'react'
 import { Input } from '@/components/ui/input'
 import { Button } from '@/components/ui/button'
+import useIsMobile from '@/hooks/useIsMobile'
 
 const BrokerPortalLogin = () => {
   const [isLogin, setIsLogin] = useState(true)
+  const isMobile = useIsMobile()
   const [formData, setFormData] = useState({
     email: '',
     password: '',
@@ -50,7 +52,10 @@ const BrokerPortalLogin = () => {
       {/* Image Background */}
       <div
         className="absolute inset-0 w-full h-full bg-cover bg-center"
-        style={{ backgroundImage: 'url(https://res.cloudinary.com/dqj2gwlpf/image/upload/v1768277530/2021_09_28_12_28_44_thomson-c-1024x682-1_wonxfk.jpg)' }}
+        style={{ backgroundImage: isMobile
+          ? 'url(https://res.cloudinary.com/dqj2gwlpf/image/upload/v1777108265/building_outside_street_q1ncta.png)'
+          : 'url(https://res.cloudinary.com/dqj2gwlpf/image/upload/v1768277530/2021_09_28_12_28_44_thomson-c-1024x682-1_wonxfk.jpg)'
+        }}
       />
       {/* Dark overlay */}
       <div className="absolute inset-0 bg-black/70"></div>

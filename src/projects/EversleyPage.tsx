@@ -34,6 +34,7 @@ const EversleyPage = () => {
         title={project.title}
         description={project.status}
         url={project.coverImage}
+        mobileUrl={project.mobileCoverImage}
         iconImage="https://res.cloudinary.com/dqj2gwlpf/image/upload/v1768277511/Eversley-Estate-King-City_kmpfyf.png"
       />
 

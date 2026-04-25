@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom'
 import { useScrollAnimation } from '@/hooks/useScrollAnimation'
+import useIsMobile from '@/hooks/useIsMobile'
 import projectsData from '@/data/projects.json'
 
 interface ProjectNavigationProps {
@@ -8,10 +9,13 @@ interface ProjectNavigationProps {
 
 const ProjectNavigation = ({ projectId }: ProjectNavigationProps) => {
   const { ref, isVisible } = useScrollAnimation(0.1)
+  const isMobile = useIsMobile()
 
   const currentIndex = projectsData.findIndex(p => p.id === projectId)
   const prevProject = projectsData[(currentIndex - 1 + projectsData.length) % projectsData.length]
   const nextProject = projectsData[(currentIndex + 1) % projectsData.length]
+
+  const bgImage = isMobile && nextProject.mobileCoverImage ? nextProject.mobileCoverImage : nextProject.coverImage
 
   return (
     <div
@@ -22,7 +26,7 @@ const ProjectNavigation = ({ projectId }: ProjectNavigationProps) => {
       <div
         className="absolute inset-0 w-full h-full parallax-bg"
         style={{
-          backgroundImage: `url(${nextProject.coverImage})`,
+          backgroundImage: `url(${bgImage})`,
           backgroundSize: 'cover',
           backgroundPosition: 'center',
         }}

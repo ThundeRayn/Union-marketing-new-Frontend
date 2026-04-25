@@ -5,6 +5,7 @@ import BackToHome from "@/components/BackToHome"
 import { Button } from "@/components/ui/button"
 import ProjectInfo from "@/components/ProjectInfo"
 import Map from "@/components/Map"
+import PictureRender from "@/components/PictureRender"
 import { useRef, useEffect, useState } from 'react'
 import projectsData from '@/data/projects.json'
 
@@ -127,6 +128,19 @@ const ElevenPage = () => {
       </div>
 
       <Map title="Site Plan" images={images} />
+
+      <PictureRender
+        title="Rendering"
+        pictures={[
+          'https://res.cloudinary.com/dqj2gwlpf/image/upload/v1777108265/building_outside_street_q1ncta.png',
+          'https://res.cloudinary.com/dqj2gwlpf/image/upload/v1777108264/building_outsite_twuiph.png',
+          'https://res.cloudinary.com/dqj2gwlpf/image/upload/v1777108263/building_roof_ocebdx.png',
+          'https://res.cloudinary.com/dqj2gwlpf/image/upload/v1777108265/building_inside_living_room_wyn10u.png',
+          'https://res.cloudinary.com/dqj2gwlpf/image/upload/v1777108264/building_inside_kitchen_zzbyl4.png',
+          'https://res.cloudinary.com/dqj2gwlpf/image/upload/v1777108264/building_inside_bathroom_etbuts.png',
+          'https://res.cloudinary.com/dqj2gwlpf/image/upload/v1777108265/region_cnyfi1.png'
+        ]}
+      />
 
       <ProjectBuilder
         images={[

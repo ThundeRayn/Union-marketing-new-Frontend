@@ -18,8 +18,8 @@ const CGTowerPage = () => {
     { id: 1, label: 'FEATURES', link: 'https://res.cloudinary.com/dqj2gwlpf/image/upload/v1776955749/Features_Finishes_kpaims.pdf', target: '_blank' },
     { id: 2, label: 'PRICE LIST', link: 'https://res.cloudinary.com/dqj2gwlpf/image/upload/v1776955824/CG_Tower_-_Price_List_to1wdh.pdf', target: '_blank' },
     { id: 3, label: 'INCENTIVES', link: 'https://res.cloudinary.com/dqj2gwlpf/image/upload/v1776955869/CG_Tower-Incentive_zvz9kt.pdf', target: '_blank' },
-    { id: 4, label: 'FLOOR PLAN', link: 'https://res.cloudinary.com/dqj2gwlpf/image/upload/v1776956570/Floor_Plan_merge_b5ufjh.pdf', target: '_blank' },
-    //{ id: 5, label: 'SITE PLAN', link: '#', target: '_blank' },
+    { id: 4, label: 'FLOOR PLAN 1', link: 'https://res.cloudinary.com/dqj2gwlpf/image/upload/v1776956570/Floor_Plan_merge_b5ufjh.pdf', target: '_blank' },
+    { id: 5, label: 'FLOOR PLAN 2', link: 'https://res.cloudinary.com/dqj2gwlpf/image/upload/v1777104966/CG_Tower_Floorplan_jnqbd8.pdf', target: '_blank' },
   ]
 
   return (

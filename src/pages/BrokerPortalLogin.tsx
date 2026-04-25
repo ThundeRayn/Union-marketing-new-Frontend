@@ -35,7 +35,7 @@ const BrokerPortalLogin = () => {
   return (
     <div className="min-h-screen relative flex items-center justify-center py-12 px-4">
       {/* Video Background */}
-      <video
+      {/* <video
         autoPlay
         muted
         loop
@@ -46,6 +46,11 @@ const BrokerPortalLogin = () => {
           // Fallback: hide video if it fails to load, solid bg shows through
           (e.target as HTMLVideoElement).style.display = 'none'
         }}
+      /> */}
+      {/* Image Background */}
+      <div
+        className="absolute inset-0 w-full h-full bg-cover bg-center"
+        style={{ backgroundImage: 'url(https://res.cloudinary.com/dqj2gwlpf/image/upload/v1768277530/2021_09_28_12_28_44_thomson-c-1024x682-1_wonxfk.jpg)' }}
       />
       {/* Dark overlay */}
       <div className="absolute inset-0 bg-black/70"></div>

@@ -9,11 +9,12 @@ interface ProjectCardProps {
   address: string;
   description: string;
   coverImage: string;
+  mobileCoverImage?: string;
   path: string;
   ratio?: string;
 }
 
-const ProjectCard = ({ title, type, address, coverImage, path, ratio = '4/3' }: ProjectCardProps) => {
+const ProjectCard = ({ title, type, address, coverImage, mobileCoverImage, path, ratio = '4/3' }: ProjectCardProps) => {
   const [loaded, setLoaded] = useState(false)
 
   return (
@@ -34,12 +35,15 @@ const ProjectCard = ({ title, type, address, coverImage, path, ratio = '4/3' }: 
           </>
         )}
         <div className="absolute inset-0 group-hover:scale-105 transition-transform duration-700">
-          <img
-            src={coverImage}
-            alt={title}
-            onLoad={() => setLoaded(true)}
-            className={`w-full h-full object-cover group-hover:brightness-110 transition-all duration-700 ${loaded ? 'opacity-100' : 'opacity-0'}`}
-          />
+          <picture>
+            {mobileCoverImage && <source media="(max-width: 767px)" srcSet={mobileCoverImage} />}
+            <img
+              src={coverImage}
+              alt={title}
+              onLoad={() => setLoaded(true)}
+              className={`w-full h-full object-cover group-hover:brightness-110 transition-all duration-700 ${loaded ? 'opacity-100' : 'opacity-0'}`}
+            />
+          </picture>
           <div className="absolute inset-0 bg-linear-to-t from-black/70 via-black/20 to-transparent" />
         </div>
         <div className="absolute bottom-0 left-0 right-0 p-5 z-10">

@@ -27,6 +27,7 @@ const AbejaPage = () => {
         title={project.title}
         description={project.status}
         url={project.coverImage}
+        mobileUrl={project.mobileCoverImage}
       />
       <ProjectInfo projectId="abeja" />
       <YouTubeVideo videoId="KX63R85lUOc" title="Project Video" />

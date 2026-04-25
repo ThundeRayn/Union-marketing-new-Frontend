@@ -39,6 +39,7 @@ const Fifth = () => {
         title={project.title}
         description={project.status}
         url={project.coverImage}
+        mobileUrl={project.mobileCoverImage}
         iconImage="https://res.cloudinary.com/dqj2gwlpf/image/upload/v1768269691/king_city-1_ici26g.png"
       />
       <ProjectInfo projectId="fifth" />

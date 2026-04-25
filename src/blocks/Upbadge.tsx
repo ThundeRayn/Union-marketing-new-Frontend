@@ -1,17 +1,20 @@
 import { useState } from 'react'
 import { Skeleton } from '@/components/ui/skeleton'
 import { useMediaLoaded } from '@/hooks/useMediaLoaded'
+import useIsMobile from '@/hooks/useIsMobile'
 
 interface SubHeroProps {
   title: string;
   description?: string;
   url?: string;
+  mobileUrl?: string;
   fullScreen?: boolean;
   iconImage?: string;
 }
 
-const SubHero = ({ title, description, url, fullScreen = true, iconImage }: SubHeroProps) => {
-  const bgUrl = url || 'https://res.cloudinary.com/dqj2gwlpf/image/upload/v1767497882/RenderingA_nvcuji.png'
+const SubHero = ({ title, description, url, mobileUrl, fullScreen = true, iconImage }: SubHeroProps) => {
+  const isMobile = useIsMobile()
+  const bgUrl = (isMobile && mobileUrl) ? mobileUrl : (url || 'https://res.cloudinary.com/dqj2gwlpf/image/upload/v1767497882/RenderingA_nvcuji.png')
   const bgLoaded = useMediaLoaded(bgUrl)
   const [iconLoaded, setIconLoaded] = useState(false)
   const [lockedHeight] = useState<number>(

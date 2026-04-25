@@ -10,6 +10,7 @@ const projects = projectsData.map(p => ({
   type: p.infoType,
   status: p.status,
   image: p.coverImage,
+  mobileImage: p.mobileCoverImage,
   path: p.path,
 }))
 
@@ -151,7 +152,7 @@ const OnSelling = () => {
           >
             {/* Image + overlay scale together */}
             <div className="absolute inset-0 group-hover:scale-105 transition-transform duration-700 ease-out">
-              <OnSellingImage src={project.image} alt={project.title} />
+              <OnSellingImage src={project.image} mobileSrc={project.mobileImage} alt={project.title} />
               <div className="absolute inset-0 bg-linear-to-t from-black/60 to-transparent" />
             </div>
 
@@ -204,7 +205,7 @@ const OnSelling = () => {
   )
 }
 
-function OnSellingImage({ src, alt }: { src: string; alt: string }) {
+function OnSellingImage({ src, mobileSrc, alt }: { src: string; mobileSrc?: string; alt: string }) {
   const [loaded, setLoaded] = useState(false)
   return (
     <>
@@ -217,12 +218,15 @@ function OnSellingImage({ src, alt }: { src: string; alt: string }) {
           </div>
         </>
       )}
-      <img
-        src={src}
-        alt={alt}
-        onLoad={() => setLoaded(true)}
-        className={`w-full h-full object-cover transition-opacity duration-500 ${loaded ? 'opacity-100' : 'opacity-0'}`}
-      />
+      <picture>
+        {mobileSrc && <source media="(max-width: 767px)" srcSet={mobileSrc} />}
+        <img
+          src={src}
+          alt={alt}
+          onLoad={() => setLoaded(true)}
+          className={`w-full h-full object-cover transition-opacity duration-500 ${loaded ? 'opacity-100' : 'opacity-0'}`}
+        />
+      </picture>
     </>
   )
 }

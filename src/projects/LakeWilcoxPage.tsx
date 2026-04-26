@@ -49,7 +49,9 @@ const LakeWilcoxPage = () => {
       />
 
       <ProjectBuilder
-        images={[]}
+        images={[
+          { src: 'https://res.cloudinary.com/dqj2gwlpf/image/upload/v1777218549/centralpark-logo-footer_xrbf9o.png', alt: 'Builder logo' }
+        ]}
         noFilter
       />
 

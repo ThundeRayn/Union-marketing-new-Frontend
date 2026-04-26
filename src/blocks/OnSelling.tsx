@@ -209,15 +209,7 @@ function OnSellingImage({ src, mobileSrc, alt }: { src: string; mobileSrc?: stri
   const [loaded, setLoaded] = useState(false)
   return (
     <>
-      {!loaded && (
-        <>
-          <Skeleton className="absolute inset-0 rounded-none" />
-          <div className="absolute bottom-0 left-0 right-0 p-6 z-1 pointer-events-none">
-            <Skeleton className="h-3 w-16 mb-2" />
-            <Skeleton className="h-6 w-3/4" />
-          </div>
-        </>
-      )}
+      {!loaded && <Skeleton className="absolute inset-0 rounded-none" />}
       <picture>
         {mobileSrc && <source media="(max-width: 767px)" srcSet={mobileSrc} />}
         <img

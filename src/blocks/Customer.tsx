@@ -41,21 +41,25 @@ const Customer = () => {
 
   const clients = [
     {
-      name: "Client 1 Conder Developments",
+      name: "Conder Developments",
       logo: "https://res.cloudinary.com/dqj2gwlpf/image/upload/v1767486806/logo-9_cylws1.png"
     },
     {
-      name: "Client 2 treasure hill",
+      name: "Treasure hill",
       logo: "https://res.cloudinary.com/dqj2gwlpf/image/upload/v1767486888/Treasure-Hill-1_hp69af.webp"
     },
     {
-      name: "Client 3",
+      name: "5th Avenue",
       logo: "https://res.cloudinary.com/dqj2gwlpf/image/upload/v1767486776/logo-removebg-preview_t0imsb.png"
     },
     {
-      name: "Client 4",
+      name: "Cortel Group",
       logo: "https://res.cloudinary.com/dqj2gwlpf/image/upload/v1767486870/Cortel-Group-with-text_p5vbhf.png"
-    }
+    },
+    {
+      name: "Central Park",
+      logo: "https://res.cloudinary.com/dqj2gwlpf/image/upload/v1777218549/centralpark-logo-footer_xrbf9o.png" 
+    },
   ]
 
 

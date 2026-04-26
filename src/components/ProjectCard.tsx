@@ -46,7 +46,7 @@ const ProjectCard = ({ title, type, address, coverImage, mobileCoverImage, path,
           </picture>
           <div className="absolute inset-0 bg-linear-to-t from-black/70 via-black/20 to-transparent" />
         </div>
-        <div className="absolute bottom-0 left-0 right-0 p-5 z-10">
+        <div className={`absolute bottom-0 left-0 right-0 p-5 z-10 transition-opacity duration-500 ${loaded ? 'opacity-100' : 'opacity-0'}`}>
           <p
             className="text-[10px] tracking-[0.15em] uppercase text-(--color-primary) mb-1"
             style={{ fontFamily: 'var(--font-label)' }}

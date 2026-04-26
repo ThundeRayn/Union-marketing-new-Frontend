@@ -27,45 +27,8 @@ const BrandIntro = ({ backgroundImage }: BrandIntroProps) => {
         backgroundColor: 'var(--color-secondary)',
       }}
     >
-      {/* Structural skeleton matching BrandIntro layout */}
-      {backgroundImage && !bgLoaded && (
-        <>
-          <Skeleton className="absolute inset-0 rounded-none" />
-          <div className="absolute inset-0 z-1 flex flex-col justify-between px-6 md:px-16 lg:px-24 pt-[15dvh] pb-12 lg:py-16 pointer-events-none">
-            <div>
-              <Skeleton className="h-3 w-48 mb-6 md:mb-8" />
-              <Skeleton className="h-12 md:h-16 lg:h-20 w-48 md:w-64 lg:w-80 mb-2" />
-              <Skeleton className="h-12 md:h-16 lg:h-20 w-56 md:w-72 lg:w-96" />
-            </div>
-            <div className="flex flex-col lg:flex-row lg:items-end gap-8 lg:gap-0">
-              <div className="lg:w-1/2">
-                <Skeleton className="w-8 h-px mb-6" />
-                <div className="space-y-2 max-w-md">
-                  <Skeleton className="h-4 w-full" />
-                  <Skeleton className="h-4 w-4/5" />
-                  <Skeleton className="h-4 w-3/5" />
-                </div>
-              </div>
-              <div className="lg:w-1/2 lg:pl-20 xl:pl-32">
-                <div className="flex items-end gap-10 md:gap-16">
-                  {[1, 2, 3].map((i) => (
-                    <div key={i}>
-                      <Skeleton className="h-10 md:h-12 w-16 md:w-20 mb-2" />
-                      <Skeleton className="h-3 w-14" />
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </div>
-            <div className="flex items-end justify-between">
-              <Skeleton className="h-3 w-48" />
-              <Skeleton className="h-8 w-px" />
-            </div>
-          </div>
-        </>
-      )}
-
-      {/* Background image */}
+      {/* Background image — shimmer while loading, fade in once ready */}
+      {backgroundImage && !bgLoaded && <Skeleton className="absolute inset-0 rounded-none" />}
       {backgroundImage && (
         <div
           className={`absolute inset-0 bg-cover bg-center parallax-bg transition-opacity duration-700 ${bgLoaded ? 'opacity-100' : 'opacity-0'}`}

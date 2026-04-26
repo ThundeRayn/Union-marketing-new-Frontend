@@ -65,25 +65,7 @@ const PictureRender = ({ title, pictures }: PictureRenderProps) => {
 
   return (
     <div className="relative w-full h-[50vh] md:h-screen overflow-hidden">
-      {/* Structural skeleton matching PictureRender layout */}
-      {!currentImageLoaded && (
-        <>
-          <Skeleton className="absolute inset-0 rounded-none z-0" />
-          {/* Title position */}
-          <div className="absolute top-8 left-0 right-0 z-1 px-6 md:px-16 lg:px-24 pointer-events-none">
-            <Skeleton className="h-3 w-24" />
-          </div>
-          {/* Bottom controls: counter + thumbnails */}
-          <div className="absolute bottom-0 left-0 right-0 z-1 px-6 md:px-16 lg:px-24 pb-6 pointer-events-none">
-            <Skeleton className="h-3 w-12 mb-4" />
-            <div className="flex gap-1 md:gap-2">
-              {pictures.slice(0, 5).map((_, i) => (
-                <Skeleton key={i} className="shrink-0 w-14 h-14 md:w-20 md:h-20 rounded-none" />
-              ))}
-            </div>
-          </div>
-        </>
-      )}
+      {!currentImageLoaded && <Skeleton className="absolute inset-0 rounded-none z-0" />}
 
       {/* Parallax Background Image */}
       <div

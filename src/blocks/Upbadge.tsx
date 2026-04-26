@@ -25,34 +25,22 @@ const SubHero = ({ title, description, url, mobileUrl, fullScreen = true, iconIm
 
   return (
     <div
-      className="relative flex items-center justify-center parallax-bg"
-      style={{
-        height: heightStyle,
-        backgroundImage: bgLoaded ? `url(${bgUrl})` : undefined,
-        backgroundSize: 'cover',
-        backgroundPosition: 'center',
-        backgroundAttachment: 'fixed'
-      }}
+      className="relative flex items-center justify-center bg-black"
+      style={{ height: heightStyle }}
     >
-      {/* Structural skeleton matching SubHero layout */}
-      {!bgLoaded && (
-        <>
-          <Skeleton className="absolute inset-0 rounded-none" />
-          <div className="absolute inset-0 z-1 flex items-center justify-center pointer-events-none">
-            {iconImage ? (
-              <Skeleton className="w-48 md:w-64 h-[30vh] rounded-md" />
-            ) : (
-              <div className="flex flex-col items-center gap-4">
-                <Skeleton className="h-6 md:h-12 w-64 md:w-96" />
-                <Skeleton className="h-4 w-32" />
-              </div>
-            )}
-          </div>
-        </>
-      )}
+      {/* Background image fades in once loaded — no skeleton shimmer fighting with text */}
+      <div
+        className={`absolute inset-0 parallax-bg transition-opacity duration-700 ${bgLoaded ? 'opacity-100' : 'opacity-0'}`}
+        style={{
+          backgroundImage: `url(${bgUrl})`,
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          backgroundAttachment: 'fixed'
+        }}
+      />
 
       {/* Dark overlay */}
-      <div className="absolute inset-0 bg-black/50"></div>
+      <div className="absolute inset-0 bg-black/50" />
 
       {iconImage ? (
         <div className="relative z-10 flex items-center justify-center px-4 w-full">

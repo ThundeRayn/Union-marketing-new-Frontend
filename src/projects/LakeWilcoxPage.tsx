@@ -16,6 +16,7 @@ const LakeWilcoxPage = () => {
     { id: 1, label: 'PRICE LIST', link: 'https://res.cloudinary.com/dqj2gwlpf/image/upload/v1777118500/Lake_Wilcox_Towns-Price_List_j8bb5q.pdf', target: '_blank' },
     { id: 2, label: 'INCENTIVES', link: 'https://res.cloudinary.com/dqj2gwlpf/image/upload/v1777118524/Lake_Wilcox_Towns-Incentive_ji0bma.pdf', target: '_blank' },
     { id: 3, label: 'SITE PLAN', link: 'https://res.cloudinary.com/dqj2gwlpf/image/upload/v1777118534/site-plan_zeb04h.pdf', target: '_blank' },
+    { id: 4, label: 'BROCHURE', link: 'https://res.cloudinary.com/dqj2gwlpf/image/upload/v1777396767/Brochure_Lake_Wilcox_1__compressed_compressed_1_z5hgho.pdf', target: '_blank' },
   ]
 
   return (

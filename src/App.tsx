@@ -17,6 +17,7 @@ const GeorginaPage = lazy(() => import('./projects/GeorginaPage'))
 const CGTowerPage = lazy(() => import('./projects/CGTowerPage'))
 const AbejaPage = lazy(() => import('./projects/AbejaPage'))
 const LakeWilcoxPage = lazy(() => import('./projects/LakeWilcoxPage'))
+const WoodbridgePage = lazy(() => import('./projects/WoodbridgePage'))
 
 function App() {
   useEffect(() => {
@@ -45,6 +46,7 @@ function App() {
               <Route path='projects/cgtower' element={<CGTowerPage />} ></Route>
               <Route path='projects/abeja' element={<AbejaPage />} ></Route>
               <Route path='projects/lakewilcox' element={<LakeWilcoxPage />} ></Route>
+              <Route path='projects/woodbridge' element={<WoodbridgePage />} ></Route>
             <Route path='*' element={<div>404 Not Found</div>} />
             
             

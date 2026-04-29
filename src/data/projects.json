@@ -1,5 +1,18 @@
 [
   {
+    "id": "woodbridge",
+    "title": "Fifth Avenue Woodbridge",
+    "subtitle": "Woodbridge",
+    "infoType": "TOWNHOMES",
+    "infoLocation": "Vaughan, Ontario",
+    "address": "Woodbridge, Ontario",
+    "status": "NOW SELLING",
+    "coverImage": "https://res.cloudinary.com/dqj2gwlpf/image/upload/v1777470048/Rendering_zocgjn.jpg",
+    "mobileCoverImage": "https://res.cloudinary.com/dqj2gwlpf/image/upload/v1777470048/Rendering_zocgjn.jpg",
+    "path": "/projects/woodbridge",
+    "ratio": "4/3"
+  },
+  {
     "id": "lakewilcox",
     "title": "Lake Wilcox Towns",
     "subtitle": "Lake Wilcox",

@@ -34,7 +34,7 @@ const Woodbridge = () => {
       />
       <ProjectInfo projectId="woodbridge" />
 
-      <YTVideo videoId="xNBaRW1Z1fg" title="Fifth Avenue Woodbridge" />
+      <YTVideo videoId="MfX2pYPNVW4" title="Promotional Video" />
 
       <div className="mx-auto flex flex-col items-center px-8 md:px-16 lg:px-24">
         <div className="w-full max-w-2xl py-10 md:py-20">
@@ -42,7 +42,7 @@ const Woodbridge = () => {
         </div>
       </div>
 
-      <YTVideo videoId="ZJj6vUGnDOo" title="Fifth Avenue Woodbridge" />
+      <YTVideo videoId="gkkty_qPbO8" title="Interactive Video" />
 
       <ProjectBuilder
         images={[

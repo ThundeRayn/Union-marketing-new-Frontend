@@ -1,11 +1,16 @@
 import { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 import { Input } from '@/components/ui/input'
 import { Button } from '@/components/ui/button'
 import useIsMobile from '@/hooks/useIsMobile'
+import { api } from '@/lib/api'
+import { useAuth } from '@/context/AuthContext'
 
 const BrokerPortalLogin = () => {
   const [isLogin, setIsLogin] = useState(true)
   const isMobile = useIsMobile()
+  const navigate = useNavigate()
+  const { login } = useAuth()
   const [formData, setFormData] = useState({
     email: '',
     password: '',
@@ -13,42 +18,46 @@ const BrokerPortalLogin = () => {
     fullName: '',
     brokerName: ''
   })
+  const [message, setMessage] = useState<{ type: 'success' | 'error'; text: string } | null>(null)
+  const [loading, setLoading] = useState(false)
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target
-    setFormData(prev => ({
-      ...prev,
-      [name]: value
-    }))
+    setFormData(prev => ({ ...prev, [name]: value }))
   }
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    console.log('Form submitted:', formData)
-    setFormData({
-      email: '',
-      password: '',
-      confirmPassword: '',
-      fullName: '',
-      brokerName: ''
-    })
+    setMessage(null)
+    setLoading(true)
+
+    try {
+      if (!isLogin) {
+        if (formData.password !== formData.confirmPassword) {
+          setMessage({ type: 'error', text: 'Passwords do not match.' })
+          return
+        }
+        await api.signup({
+          email: formData.email,
+          password: formData.password,
+          fullName: formData.fullName,
+          brokerName: formData.brokerName,
+        })
+        setMessage({ type: 'success', text: 'Account created! Check your email to verify your account.' })
+        setFormData({ email: '', password: '', confirmPassword: '', fullName: '', brokerName: '' })
+      } else {
+        await login(formData.email, formData.password)
+        navigate('/broker-portal', { replace: true })
+      }
+    } catch (err: any) {
+      setMessage({ type: 'error', text: err.message ?? 'Something went wrong.' })
+    } finally {
+      setLoading(false)
+    }
   }
 
   return (
     <div className="min-h-screen relative flex items-center justify-center py-12 px-4">
-      {/* Video Background */}
-      {/* <video
-        autoPlay
-        muted
-        loop
-        playsInline
-        className="absolute inset-0 w-full h-full object-cover"
-        src="https://res.cloudinary.com/dqj2gwlpf/video/upload/v1773338113/union-login-video_zoqfff.mp4"
-        onError={(e) => {
-          // Fallback: hide video if it fails to load, solid bg shows through
-          (e.target as HTMLVideoElement).style.display = 'none'
-        }}
-      /> */}
       {/* Image Background */}
       <div
         className="absolute inset-0 w-full h-full bg-cover bg-center"
@@ -213,13 +222,23 @@ const BrokerPortalLogin = () => {
             </div>
           )}
 
+          {message && (
+            <p
+              className={`text-sm text-center ${message.type === 'success' ? 'text-green-400' : 'text-red-400'}`}
+              style={{ fontFamily: 'var(--font-body)' }}
+            >
+              {message.text}
+            </p>
+          )}
+
           <Button
             type="submit"
             variant="union"
             size="union"
-            className="w-full mt-2 bg-(--color-theme-light) text-black hover:bg-(--color-secondary) hover:text-white"
+            disabled={loading}
+            className="w-full mt-2 bg-(--color-theme-light) text-black hover:bg-(--color-secondary) hover:text-white disabled:opacity-50"
           >
-            {isLogin ? 'Sign In' : 'Create Account'}
+            {loading ? 'Please wait…' : isLogin ? 'Sign In' : 'Create Account'}
           </Button>
         </form>
 

@@ -15,9 +15,10 @@ const BrokerPortalLogin = () => {
     email: '',
     password: '',
     confirmPassword: '',
-    fullName: '',
-    brokerName: ''
+    firstName: '',
+    lastName: '',
   })
+  const [isRealtor, setIsRealtor] = useState<boolean | null>(null)
   const [message, setMessage] = useState<{ type: 'success' | 'error'; text: string } | null>(null)
   const [loading, setLoading] = useState(false)
 
@@ -37,20 +38,35 @@ const BrokerPortalLogin = () => {
           setMessage({ type: 'error', text: 'Passwords do not match.' })
           return
         }
+        if (isRealtor === null) {
+          setMessage({ type: 'error', text: 'Please select whether you are a Realtor.' })
+          return
+        }
         await api.signup({
           email: formData.email,
           password: formData.password,
-          fullName: formData.fullName,
-          brokerName: formData.brokerName,
+          firstName: formData.firstName,
+          lastName: formData.lastName,
+          isRealtor,
         })
         setMessage({ type: 'success', text: 'Account created! Check your email to verify your account.' })
-        setFormData({ email: '', password: '', confirmPassword: '', fullName: '', brokerName: '' })
+        setFormData({ email: '', password: '', confirmPassword: '', firstName: '', lastName: '' })
+        setIsRealtor(null)
       } else {
         await login(formData.email, formData.password)
         navigate('/broker-portal', { replace: true })
       }
     } catch (err: any) {
-      setMessage({ type: 'error', text: err.message ?? 'Something went wrong.' })
+      const raw: string = err.message ?? ''
+      let text = raw || 'Something went wrong. Please try again.'
+      if (raw.toLowerCase().includes('database error')) {
+        text = 'Registration failed: a server configuration error occurred. Please contact support.'
+      } else if (raw.toLowerCase().includes('already registered')) {
+        text = 'An account with this email already exists. Try signing in instead.'
+      } else if (raw.toLowerCase().includes('password')) {
+        text = 'Password must be at least 6 characters.'
+      }
+      setMessage({ type: 'error', text })
     } finally {
       setLoading(false)
     }
@@ -118,43 +134,79 @@ const BrokerPortalLogin = () => {
         <form onSubmit={handleSubmit} className="space-y-5">
           {!isLogin && (
             <>
-              <div>
-                <label
-                  className="block text-[10px] tracking-[0.15em] uppercase text-white/50 mb-2"
-                  style={{ fontFamily: 'var(--font-label)' }}
-                >
-                  Full Name
-                </label>
-                <div className="input-animated">
-                  <Input
-                    type="text"
-                    name="fullName"
-                    placeholder="Your full name"
-                    value={formData.fullName}
-                    onChange={handleInputChange}
-                    required={!isLogin}
-                    className="w-full shadow-none bg-transparent border-0 border-b border-white/30 rounded-none h-12 text-white placeholder:text-white/40 focus-visible:ring-0 focus-visible:border-(--color-primary)"
-                  />
+              <div className="flex gap-4">
+                <div className="flex-1">
+                  <label
+                    className="block text-[10px] tracking-[0.15em] uppercase text-white/50 mb-2"
+                    style={{ fontFamily: 'var(--font-label)' }}
+                  >
+                    First Name
+                  </label>
+                  <div className="input-animated">
+                    <Input
+                      type="text"
+                      name="firstName"
+                      placeholder="First name"
+                      value={formData.firstName}
+                      onChange={handleInputChange}
+                      required={!isLogin}
+                      className="w-full shadow-none bg-transparent border-0 border-b border-white/30 rounded-none h-12 text-white placeholder:text-white/40 focus-visible:ring-0 focus-visible:border-(--color-primary)"
+                    />
+                  </div>
+                </div>
+                <div className="flex-1">
+                  <label
+                    className="block text-[10px] tracking-[0.15em] uppercase text-white/50 mb-2"
+                    style={{ fontFamily: 'var(--font-label)' }}
+                  >
+                    Last Name
+                  </label>
+                  <div className="input-animated">
+                    <Input
+                      type="text"
+                      name="lastName"
+                      placeholder="Last name"
+                      value={formData.lastName}
+                      onChange={handleInputChange}
+                      required={!isLogin}
+                      className="w-full shadow-none bg-transparent border-0 border-b border-white/30 rounded-none h-12 text-white placeholder:text-white/40 focus-visible:ring-0 focus-visible:border-(--color-primary)"
+                    />
+                  </div>
                 </div>
               </div>
 
               <div>
                 <label
-                  className="block text-[10px] tracking-[0.15em] uppercase text-white/50 mb-2"
+                  className="block text-[10px] tracking-[0.15em] uppercase text-white/50 mb-3"
                   style={{ fontFamily: 'var(--font-label)' }}
                 >
-                  Broker Name
+                  Are you a Realtor?
                 </label>
-                <div className="input-animated">
-                  <Input
-                    type="text"
-                    name="brokerName"
-                    placeholder="Your broker/company name"
-                    value={formData.brokerName}
-                    onChange={handleInputChange}
-                    required={!isLogin}
-                    className="w-full shadow-none bg-transparent border-0 border-b border-white/30 rounded-none h-12 text-white placeholder:text-white/40 focus-visible:ring-0 focus-visible:border-(--color-primary)"
-                  />
+                <div className="flex gap-3">
+                  <button
+                    type="button"
+                    onClick={() => setIsRealtor(true)}
+                    className={`flex-1 py-2.5 text-xs tracking-[0.15em] uppercase border transition-colors duration-200 ${
+                      isRealtor === true
+                        ? 'border-(--color-primary) bg-(--color-primary) text-black'
+                        : 'border-white/30 text-white/50 hover:border-white/60 hover:text-white/80'
+                    }`}
+                    style={{ fontFamily: 'var(--font-label)' }}
+                  >
+                    Yes
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => setIsRealtor(false)}
+                    className={`flex-1 py-2.5 text-xs tracking-[0.15em] uppercase border transition-colors duration-200 ${
+                      isRealtor === false
+                        ? 'border-(--color-primary) bg-(--color-primary) text-black'
+                        : 'border-white/30 text-white/50 hover:border-white/60 hover:text-white/80'
+                    }`}
+                    style={{ fontFamily: 'var(--font-label)' }}
+                  >
+                    No
+                  </button>
                 </div>
               </div>
             </>

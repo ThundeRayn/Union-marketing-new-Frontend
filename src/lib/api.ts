@@ -33,11 +33,11 @@ async function request<T>(path: string, options: ApiOptions = {}): Promise<T> {
 }
 
 export const api = {
-  signup: (body: { email: string; password: string; fullName: string; brokerName: string }) =>
+  signup: (body: { email: string; password: string; firstName: string; lastName: string; isRealtor: boolean }) =>
     request<{ message: string }>('/auth/signup', { method: 'POST', body }),
 
   login: (body: { email: string; password: string }) =>
-    request<{ access_token: string; user: { id: string; email: string; fullName: string; brokerName: string } }>(
+    request<{ access_token: string; user: { id: string; email: string; firstName: string; lastName: string; isRealtor: boolean } }>(
       '/auth/login',
       { method: 'POST', body }
     ),
@@ -46,5 +46,5 @@ export const api = {
     request<{ message: string }>('/auth/logout', { method: 'POST', token }),
 
   me: (token: string) =>
-    request<{ user: { id: string; email: string; fullName: string; brokerName: string } }>('/auth/me', { token }),
+    request<{ user: { id: string; email: string; firstName: string; lastName: string; isRealtor: boolean } }>('/auth/me', { token }),
 };

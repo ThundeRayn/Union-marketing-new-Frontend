@@ -31,8 +31,9 @@ const AuthCallback = () => {
       setSession(data.session.access_token, {
         id: user.id,
         email: user.email!,
-        fullName: user.user_metadata?.full_name ?? '',
-        brokerName: user.user_metadata?.broker_name ?? '',
+        firstName: user.user_metadata?.first_name ?? '',
+        lastName: user.user_metadata?.last_name ?? '',
+        isRealtor: user.user_metadata?.is_realtor ?? false,
       });
 
       navigate('/broker-portal', { replace: true });

@@ -4,8 +4,9 @@ import { api } from '@/lib/api';
 interface User {
   id: string;
   email: string;
-  fullName: string;
-  brokerName: string;
+  firstName: string;
+  lastName: string;
+  isRealtor: boolean;
 }
 
 interface AuthContextValue {

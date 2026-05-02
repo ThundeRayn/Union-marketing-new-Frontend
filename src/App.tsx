@@ -37,18 +37,18 @@ function App() {
         <Routes>
           {/* Routes without navbar/footer */}
           <Route path="auth/callback" element={<AuthCallback />} />
-          <Route
-            path="broker-portal"
-            element={
-              <ProtectedRoute>
-                <BrokerPortal />
-              </ProtectedRoute>
-            }
-          />
 
           {/* Routes with navbar/footer */}
           <Route path="/" element={<Layout />}>
             <Route index element={<HomePage />} />
+            <Route
+              path="broker-portal"
+              element={
+                <ProtectedRoute>
+                  <BrokerPortal />
+                </ProtectedRoute>
+              }
+            />
             <Route path="service" element={<ServicePage />} />
             <Route path="about" element={<AboutPage />} />
             <Route path="event" element={<EventPage />} />

@@ -42,6 +42,9 @@ export const api = {
       { method: 'POST', body }
     ),
 
+  forgotPassword: (email: string) =>
+    request<{ message: string }>('/auth/forgot-password', { method: 'POST', body: { email } }),
+
   logout: (token: string) =>
     request<{ message: string }>('/auth/logout', { method: 'POST', token }),
 

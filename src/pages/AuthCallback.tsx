@@ -12,14 +12,10 @@ const AuthCallback = () => {
   const navigate = useNavigate();
   const { setSession } = useAuth();
   const [error, setError] = useState<string | null>(null);
+  const code = new URLSearchParams(window.location.search).get('code');
 
   useEffect(() => {
-    const code = new URLSearchParams(window.location.search).get('code');
-
-    if (!code) {
-      setError('Invalid verification link.');
-      return;
-    }
+    if (!code) return;
 
     supabase.auth.exchangeCodeForSession(code).then(({ data, error }) => {
       if (error || !data.session) {
@@ -38,13 +34,13 @@ const AuthCallback = () => {
 
       navigate('/broker-portal', { replace: true });
     });
-  }, []);
+  }, [code, navigate, setSession]);
 
-  if (error) {
+  if (!code || error) {
     return (
       <div className="min-h-screen flex items-center justify-center bg-black text-white">
         <div className="text-center">
-          <p className="text-red-400 mb-4">{error}</p>
+          <p className="text-red-400 mb-4">{!code ? 'Invalid verification link.' : error}</p>
           <a href="/login" className="text-(--color-primary) underline">Back to login</a>
         </div>
       </div>

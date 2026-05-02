@@ -60,8 +60,8 @@ const BrokerPortalLogin = () => {
         await login(formData.email, formData.password)
         navigate('/broker-portal', { replace: true })
       }
-    } catch (err: any) {
-      const raw: string = err.message ?? ''
+    } catch (err: unknown) {
+      const raw: string = err instanceof Error ? err.message : ''
       const r = raw.toLowerCase()
       let text = 'Something went wrong. Please try again.'
 

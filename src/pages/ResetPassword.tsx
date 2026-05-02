@@ -22,12 +22,10 @@ const ResetPassword = () => {
   const [message, setMessage] = useState<{ type: 'success' | 'error'; text: string } | null>(null)
   const [codeError, setCodeError] = useState<string | null>(null)
 
+  const code = new URLSearchParams(window.location.search).get('code')
+
   useEffect(() => {
-    const code = new URLSearchParams(window.location.search).get('code')
-    if (!code) {
-      setCodeError('Invalid or expired reset link. Please request a new one.')
-      return
-    }
+    if (!code) return
     supabase.auth.exchangeCodeForSession(code).then(({ error }) => {
       if (error) {
         setCodeError('This reset link has expired. Please request a new one.')
@@ -35,7 +33,7 @@ const ResetPassword = () => {
       }
       setSessionReady(true)
     })
-  }, [])
+  }, [code])
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
@@ -89,10 +87,10 @@ const ResetPassword = () => {
           </p>
         </div>
 
-        {codeError ? (
+        {(!code || codeError) ? (
           <div className="text-center space-y-6">
             <p className="text-red-400 text-sm" style={{ fontFamily: 'var(--font-body)' }}>
-              {codeError}
+              {!code ? 'Invalid or expired reset link. Please request a new one.' : codeError}
             </p>
             <button
               onClick={() => navigate('/login')}

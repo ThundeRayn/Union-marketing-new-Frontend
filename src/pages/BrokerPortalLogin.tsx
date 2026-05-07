@@ -8,11 +8,6 @@ import { useAuth } from '@/context/AuthContext'
 
 const BrokerPortalLogin = () => {
   const [isLogin, setIsLogin] = useState(true)
-  const isMobile = useIsMobile()
-  const navigate = useNavigate()
-  const { login, user } = useAuth()
-
-  if (user) return <Navigate to="/broker-portal" replace />
   const [formData, setFormData] = useState({
     email: '',
     password: '',
@@ -27,6 +22,11 @@ const BrokerPortalLogin = () => {
   const [showConfirmPassword, setShowConfirmPassword] = useState(false)
   const [message, setMessage] = useState<{ type: 'success' | 'error'; text: string } | null>(null)
   const [loading, setLoading] = useState(false)
+  const isMobile = useIsMobile()
+  const navigate = useNavigate()
+  const { login, user } = useAuth()
+
+  if (user) return <Navigate to="/broker-portal" replace />
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target

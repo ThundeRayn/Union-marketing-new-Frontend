@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, Navigate } from 'react-router-dom'
 import { Input } from '@/components/ui/input'
 import { Button } from '@/components/ui/button'
 import useIsMobile from '@/hooks/useIsMobile'
@@ -10,7 +10,9 @@ const BrokerPortalLogin = () => {
   const [isLogin, setIsLogin] = useState(true)
   const isMobile = useIsMobile()
   const navigate = useNavigate()
-  const { login } = useAuth()
+  const { login, user } = useAuth()
+
+  if (user) return <Navigate to="/broker-portal" replace />
   const [formData, setFormData] = useState({
     email: '',
     password: '',
@@ -46,14 +48,14 @@ const BrokerPortalLogin = () => {
           setMessage({ type: 'error', text: 'Please select whether you are a Realtor.' })
           return
         }
-        await api.signup({
+        const result = await api.signup({
           email: formData.email,
           password: formData.password,
           firstName: formData.firstName,
           lastName: formData.lastName,
           isRealtor,
         })
-        setMessage({ type: 'success', text: 'Account created! Check your email to verify your account.' })
+        setMessage({ type: 'success', text: result.message })
         setFormData({ email: '', password: '', confirmPassword: '', firstName: '', lastName: '' })
         setIsRealtor(null)
       } else {

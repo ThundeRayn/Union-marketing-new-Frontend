@@ -1,7 +1,9 @@
 import { useState, useEffect, useRef } from 'react'
 import { Link } from 'react-router-dom'
+import { useAuth } from '@/context/AuthContext'
 
 const Navbar = () => {
+  const { user } = useAuth()
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
   const navRef = useRef<HTMLElement>(null)
@@ -72,14 +74,14 @@ const Navbar = () => {
               <span className="absolute left-0 bottom-0 w-0 h-0.5 bg-yellow-400 transition-all duration-300 ease-in-out group-hover:w-full"></span>
             </Link>
 
-            <Link to="/login">
+            <Link to={user ? '/broker-portal' : '/login'}>
             <button
               className="relative border border-yellow-400 text-(--text-inverse) px-5 py-2 rounded-md overflow-hidden group">
               <span className="relative z-10 transition-all duration-300 ease-in-out group-hover:opacity-0">
-                BROKER PORTAL
+                {user ? `Hi, ${user.firstName}` : 'BROKER PORTAL'}
               </span>
               <span className="absolute inset-0 flex items-center justify-center translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-in-out text-(--text-inverse)">
-                LOGIN
+                {user ? 'MY PORTAL' : 'LOGIN'}
               </span>
             </button>
             </Link>
@@ -112,11 +114,11 @@ const Navbar = () => {
                   {link.label}
                 </Link>
               ))}
-              <Link to="/login" className="block w-full" onClick={() => setIsMobileMenuOpen(false)}>
+              <Link to={user ? '/broker-portal' : '/login'} className="block w-full" onClick={() => setIsMobileMenuOpen(false)}>
                 <button
                   className="w-full px-4 py-3 border border-yellow-400 text-(--text-inverse) hover:text-(--color-primary) rounded-lg transition-colors duration-200 font-medium"
                 >
-                  BROKER PORTAL
+                  {user ? `Hi, ${user.firstName}` : 'BROKER PORTAL'}
                 </button>
               </Link>
             </div>

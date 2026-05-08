@@ -29,7 +29,7 @@ const ResetPassword = () => {
 
   useEffect(() => {
     if (tokenHash) {
-      supabase.auth.verifyOtp({ token_hash: tokenHash, type: type as any }).then(({ error }) => {
+      supabase.auth.verifyOtp({ token_hash: tokenHash, type: type as 'recovery' }).then(({ error }) => {
         if (error) { setCodeError('This reset link has expired. Please request a new one.'); return }
         setSessionReady(true)
       })

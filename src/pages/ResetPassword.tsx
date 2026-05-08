@@ -22,18 +22,24 @@ const ResetPassword = () => {
   const [message, setMessage] = useState<{ type: 'success' | 'error'; text: string } | null>(null)
   const [codeError, setCodeError] = useState<string | null>(null)
 
-  const code = new URLSearchParams(window.location.search).get('code')
+  const params = new URLSearchParams(window.location.search)
+  const code = params.get('code')
+  const tokenHash = params.get('token_hash')
+  const type = params.get('type')
 
   useEffect(() => {
-    if (!code) return
-    supabase.auth.exchangeCodeForSession(code).then(({ error }) => {
-      if (error) {
-        setCodeError('This reset link has expired. Please request a new one.')
-        return
-      }
-      setSessionReady(true)
-    })
-  }, [code])
+    if (tokenHash) {
+      supabase.auth.verifyOtp({ token_hash: tokenHash, type: type as 'recovery' }).then(({ error }) => {
+        if (error) { setCodeError('This reset link has expired. Please request a new one.'); return }
+        setSessionReady(true)
+      })
+    } else if (code) {
+      supabase.auth.exchangeCodeForSession(code).then(({ error }) => {
+        if (error) { setCodeError('This reset link has expired. Please request a new one.'); return }
+        setSessionReady(true)
+      })
+    }
+  }, [code, tokenHash, type])
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
@@ -87,7 +93,7 @@ const ResetPassword = () => {
           </p>
         </div>
 
-        {(!code || codeError) ? (
+        {(!code && !tokenHash || codeError) ? (
           <div className="text-center space-y-6">
             <p className="text-red-400 text-sm" style={{ fontFamily: 'var(--font-body)' }}>
               {!code ? 'Invalid or expired reset link. Please request a new one.' : codeError}

@@ -12,19 +12,29 @@ const AuthCallback = () => {
   const navigate = useNavigate();
   const { setSession } = useAuth();
   const [error, setError] = useState<string | null>(null);
-  const code = new URLSearchParams(window.location.search).get('code');
+  const params = new URLSearchParams(window.location.search);
+  const code = params.get('code');
+  const tokenHash = params.get('token_hash');
+  const type = params.get('type');
 
   useEffect(() => {
-    if (!code) return;
+    const handle = async () => {
+      let session = null;
 
-    supabase.auth.exchangeCodeForSession(code).then(({ data, error }) => {
-      if (error || !data.session) {
-        setError('Verification failed. The link may have expired.');
-        return;
+      if (tokenHash) {
+        const { data, error } = await supabase.auth.verifyOtp({ token_hash: tokenHash, type: type as 'signup' });
+        if (error || !data.session) { setError('Verification failed. The link may have expired.'); return; }
+        session = data.session;
+      } else if (code) {
+        const { data, error } = await supabase.auth.exchangeCodeForSession(code);
+        if (error || !data.session) { setError('Verification failed. The link may have expired.'); return; }
+        session = data.session;
       }
 
-      const user = data.session.user;
-      setSession(data.session.access_token, {
+      if (!session) return;
+
+      const user = session.user;
+      setSession(session.access_token, {
         id: user.id,
         email: user.email!,
         firstName: user.user_metadata?.first_name ?? '',
@@ -33,10 +43,12 @@ const AuthCallback = () => {
       });
 
       navigate('/broker-portal', { replace: true });
-    });
-  }, [code, navigate, setSession]);
+    };
 
-  if (!code || error) {
+    handle();
+  }, [code, tokenHash, type, navigate, setSession]);
+
+  if (!code && !tokenHash || error) {
     return (
       <div className="min-h-screen flex items-center justify-center bg-black text-white">
         <div className="text-center">

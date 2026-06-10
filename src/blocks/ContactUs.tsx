@@ -27,8 +27,8 @@ const ContactUs = () => {
       setStatus('success')
       form.reset()
       setTimeout(() => setStatus('idle'), 4000)
-    } catch (err: any) {
-      setErrorMessage(err.message ?? 'Something went wrong. Please try again.')
+    } catch (err) {
+      setErrorMessage(err instanceof Error ? err.message : 'Something went wrong. Please try again.')
       setStatus('error')
       setTimeout(() => setStatus('idle'), 4000)
     }

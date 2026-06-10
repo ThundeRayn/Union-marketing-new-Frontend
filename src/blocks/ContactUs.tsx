@@ -6,14 +6,32 @@ import { useState } from "react"
 import { useScrollAnimation } from "@/hooks/useScrollAnimation"
 
 const ContactUs = () => {
-  const [showNotification, setShowNotification] = useState(false)
+  const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle')
+  const [errorMessage, setErrorMessage] = useState('')
   const { ref, isVisible } = useScrollAnimation(0.05)
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
-    setShowNotification(true)
-    setTimeout(() => setShowNotification(false), 3000)
-    e.currentTarget.reset()
+    const form = e.currentTarget
+    const data = Object.fromEntries(new FormData(form).entries())
+
+    setStatus('loading')
+    try {
+      const res = await fetch(`${import.meta.env.VITE_API_URL}/contact`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data),
+      })
+      const json = await res.json()
+      if (!res.ok) throw new Error(json.error ?? 'Failed to send')
+      setStatus('success')
+      form.reset()
+      setTimeout(() => setStatus('idle'), 4000)
+    } catch (err: any) {
+      setErrorMessage(err.message ?? 'Something went wrong. Please try again.')
+      setStatus('error')
+      setTimeout(() => setStatus('idle'), 4000)
+    }
   }
 
   return (
@@ -23,10 +41,14 @@ const ContactUs = () => {
       style={{ backgroundImage: 'url(https://images.unsplash.com/photo-1435575653489-b0873ec954e2?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D)' }}
     >
       <div className="absolute inset-0 bg-black/40" />
-      {/* Notification */}
-      {showNotification && (
+      {status === 'success' && (
         <div className="fixed top-8 left-1/2 -translate-x-1/2 z-50 bg-green-500 text-white px-6 py-3 rounded-lg shadow-lg animate-[slideDownFadeIn_0.3s_ease-out]">
-          Message sent successfully!
+          Message sent! Check your inbox for a confirmation.
+        </div>
+      )}
+      {status === 'error' && (
+        <div className="fixed top-8 left-1/2 -translate-x-1/2 z-50 bg-red-500 text-white px-6 py-3 rounded-lg shadow-lg animate-[slideDownFadeIn_0.3s_ease-out]">
+          {errorMessage}
         </div>
       )}
 
@@ -128,9 +150,10 @@ const ContactUs = () => {
               type="submit"
               variant="union"
               size="union"
-              className="bg-(--color-theme-light) text-black hover:bg-(--color-secondary) hover:text-white"
+              disabled={status === 'loading'}
+              className="bg-(--color-theme-light) text-black hover:bg-(--color-secondary) hover:text-white disabled:opacity-60"
             >
-              SEND MESSAGE
+              {status === 'loading' ? 'SENDING...' : 'SEND MESSAGE'}
             </Button>
           </div>
         </form>

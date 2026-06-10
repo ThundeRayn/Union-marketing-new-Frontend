@@ -50,4 +50,7 @@ export const api = {
 
   me: (token: string) =>
     request<{ user: { id: string; email: string; firstName: string; lastName: string; isRealtor: boolean } }>('/auth/me', { token }),
+
+  contact: (body: { fullName: string; phone: string; email: string; realtor: string; message: string }) =>
+    request<{ message: string }>('/contact', { method: 'POST', body }),
 };

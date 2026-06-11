@@ -1,4 +1,5 @@
 import ProjectCard from '../components/ProjectCard';
+import ComingSoonCard from '../components/ComingSoonCard';
 import Upbadge from '@/blocks/Upbadge';
 import BackToHome from '@/components/BackToHome';
 import { useScrollAnimation } from '@/hooks/useScrollAnimation';
@@ -6,6 +7,7 @@ import { useRef, useState, useEffect } from 'react';
 import ContactUs from '@/blocks/ContactUs';
 import ScrollProgress from '@/components/ScrollProgress';
 import projectsData from '@/data/projects.json';
+import comingSoonData from '@/data/coming-soon.json';
 
 const projectList = projectsData.map(p => ({
   id: p.id,
@@ -17,7 +19,23 @@ const projectList = projectsData.map(p => ({
   mobileCoverImage: p.mobileCoverImage,
   path: p.path,
   ratio: p.ratio,
+  isComingSoon: false,
 }));
+
+const comingSoonList = comingSoonData.map(p => ({
+  id: p.id,
+  title: p.title,
+  type: p.infoType,
+  address: '',
+  description: 'COMING SOON',
+  coverImage: p.coverImage,
+  mobileCoverImage: p.mobileCoverImage,
+  path: '',
+  ratio: p.ratio,
+  isComingSoon: true,
+}));
+
+const allProjects = [...projectList, ...comingSoonList];
 
 const ProjectPage = () => {
   const { ref, isVisible } = useScrollAnimation(0.05)
@@ -49,7 +67,7 @@ const ProjectPage = () => {
       <ScrollProgress progress={scrollProgress} />
 
       <div ref={ref} className="pt-4 columns-1 md:columns-2 md:gap-3 lg:columns-3 lg:gap-3">
-        {projectList.map((project, index) => (
+        {allProjects.map((project, index) => (
           <div
             key={project.id}
             className={`mb-3 break-inside-avoid transition-all duration-700 ease-out ${
@@ -57,17 +75,27 @@ const ProjectPage = () => {
             }`}
             style={{ transitionDelay: isVisible ? `${index * 120}ms` : '0ms' }}
           >
-            <ProjectCard
-              id={project.id}
-              title={project.title}
-              type={project.type}
-              address={project.address}
-              description={project.description}
-              coverImage={project.coverImage}
-              mobileCoverImage={project.mobileCoverImage}
-              path={project.path}
-              ratio={project.ratio}
-            />
+            {project.isComingSoon ? (
+              <ComingSoonCard
+                title={project.title}
+                type={project.type}
+                coverImage={project.coverImage}
+                mobileCoverImage={project.mobileCoverImage}
+                ratio={project.ratio}
+              />
+            ) : (
+              <ProjectCard
+                id={project.id}
+                title={project.title}
+                type={project.type}
+                address={project.address}
+                description={project.description}
+                coverImage={project.coverImage}
+                mobileCoverImage={project.mobileCoverImage}
+                path={project.path}
+                ratio={project.ratio}
+              />
+            )}
           </div>
         ))}
       </div>

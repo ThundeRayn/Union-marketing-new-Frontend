@@ -3,16 +3,26 @@ import { Link } from 'react-router-dom'
 import { useScrollAnimation } from '@/hooks/useScrollAnimation'
 import { Skeleton } from '@/components/ui/skeleton'
 import projectsData from '@/data/projects.json'
+import comingSoonData from '@/data/coming-soon.json'
 
-const projects = projectsData.map(p => ({
-  title: p.title,
-  subtitle: p.subtitle,
-  type: p.infoType,
-  status: p.status,
-  image: p.coverImage,
-  mobileImage: p.mobileCoverImage,
-  path: p.path,
-}))
+const projects = [
+  ...projectsData.map(p => ({
+    title: p.title,
+    type: p.infoType,
+    status: p.status,
+    image: p.coverImage,
+    mobileImage: p.mobileCoverImage,
+    path: p.path,
+  })),
+  ...comingSoonData.map(p => ({
+    title: p.title,
+    type: p.infoType,
+    status: 'COMING SOON',
+    image: p.coverImage,
+    mobileImage: p.mobileCoverImage,
+    path: '',
+  })),
+]
 
 const OnSelling = () => {
   const { ref, isVisible } = useScrollAnimation(0.05)
@@ -55,7 +65,7 @@ const OnSelling = () => {
   const scroll = (direction: 'left' | 'right') => {
     const el = scrollRef.current
     if (!el) return
-    const cardWidth = el.querySelector('a')?.offsetWidth ?? 400
+    const cardWidth = (el.firstElementChild as HTMLElement)?.offsetWidth ?? 400
     const delta = direction === 'right' ? cardWidth + 24 : -(cardWidth + 24)
     smoothScrollTo(el, el.scrollLeft + delta)
   }
@@ -141,38 +151,61 @@ const OnSelling = () => {
           msOverflowStyle: 'none',
         }}
       >
-        {projects.filter(p => p.status === 'NOW SELLING').map((project, index) => (
-          <Link
-            key={project.title}
-            to={project.path}
-            className="group shrink-0 w-[75vw] md:w-[40vw] lg:w-[28vw] relative overflow-hidden"
-            style={{
-              animationDelay: `${index * 100}ms`,
-            }}
-          >
-            {/* Image + overlay scale together */}
-            <div className="absolute inset-0 group-hover:scale-105 transition-transform duration-700 ease-out">
-              <OnSellingImage src={project.image} mobileSrc={project.mobileImage} alt={project.title} />
-              <div className="absolute inset-0 bg-linear-to-t from-black/60 to-transparent" />
-            </div>
+        {projects.filter(p => p.status === 'NOW SELLING' || p.status === 'COMING SOON').map((project, index) => {
+          const isComingSoon = project.status === 'COMING SOON'
+          const cardContent = (
+            <>
+              <div className={`absolute inset-0 transition-transform duration-700 ease-out ${!isComingSoon ? 'group-hover:scale-105' : ''}`}>
+                <OnSellingImage src={project.image} mobileSrc={project.mobileImage} alt={project.title} />
+                <div className={`absolute inset-0 bg-linear-to-t ${isComingSoon ? 'from-black/80 via-black/50 to-black/20' : 'from-black/60 to-transparent'}`} />
+              </div>
 
-            {/* Content overlay */}
-            <div className="absolute bottom-0 left-0 right-0 p-6 z-10">
-              <p
-                className="text-[10px] tracking-[0.2em] uppercase text-white/40 mb-2"
-                style={{ fontFamily: 'var(--font-label)' }}
-              >
-                {project.type}
-              </p>
-              <h3
-                className="text-xl md:text-2xl text-white group-hover:text-(--color-primary) transition-colors duration-300 leading-tight"
-                style={{ fontFamily: 'var(--font-heading)' }}
-              >
-                {project.title}
-              </h3>
+              {isComingSoon && (
+                <div className="absolute top-5 left-5 z-10">
+                  <span
+                    className="inline-block px-4 py-1.5 text-[11px] tracking-[0.25em] uppercase border border-(--color-primary) text-(--color-primary)"
+                    style={{ fontFamily: 'var(--font-label)' }}
+                  >
+                    Coming Soon
+                  </span>
+                </div>
+              )}
+
+              <div className="absolute bottom-0 left-0 right-0 p-6 z-10">
+                <p
+                  className="text-[10px] tracking-[0.2em] uppercase text-white/40 mb-2"
+                  style={{ fontFamily: 'var(--font-label)' }}
+                >
+                  {project.type}
+                </p>
+                <h3
+                  className={`text-xl md:text-2xl text-white leading-tight transition-colors duration-300 ${!isComingSoon ? 'group-hover:text-(--color-primary)' : ''}`}
+                  style={{ fontFamily: 'var(--font-heading)' }}
+                >
+                  {project.title}
+                </h3>
+              </div>
+            </>
+          )
+
+          return isComingSoon ? (
+            <div
+              key={project.title}
+              className="group shrink-0 w-[75vw] md:w-[40vw] lg:w-[28vw] relative overflow-hidden cursor-default"
+            >
+              {cardContent}
             </div>
-          </Link>
-        ))}
+          ) : (
+            <Link
+              key={project.title}
+              to={project.path}
+              className="group shrink-0 w-[75vw] md:w-[40vw] lg:w-[28vw] relative overflow-hidden"
+              style={{ animationDelay: `${index * 100}ms` }}
+            >
+              {cardContent}
+            </Link>
+          )
+        })}
 
         {/* End spacer */}
         <div className="shrink-0 w-6 md:w-16 lg:w-24" />

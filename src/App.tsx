@@ -4,6 +4,7 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import './App.css'
 import Layout from './layout/Layout'
 import { ProtectedRoute } from './components/ProtectedRoute'
+import { ToastProvider } from './components/Toast'
 
 const HomePage = lazy(() => import('./pages/HomePage'))
 const ServicePage = lazy(() => import('./pages/ServicePage'))
@@ -33,6 +34,7 @@ function App() {
   }, [])
 
   return (
+    <ToastProvider>
     <BrowserRouter>
       <Suspense fallback={null}>
         <Routes>
@@ -69,6 +71,7 @@ function App() {
         </Routes>
       </Suspense>
     </BrowserRouter>
+    </ToastProvider>
   )
 }
 

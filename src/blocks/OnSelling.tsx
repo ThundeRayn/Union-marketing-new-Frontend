@@ -2,6 +2,7 @@ import { useRef, useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { useScrollAnimation } from '@/hooks/useScrollAnimation'
 import { Skeleton } from '@/components/ui/skeleton'
+import { useToast } from '@/components/Toast'
 import projectsData from '@/data/projects.json'
 import comingSoonData from '@/data/coming-soon.json'
 
@@ -26,6 +27,7 @@ const projects = [
 
 const OnSelling = () => {
   const { ref, isVisible } = useScrollAnimation(0.05)
+  const { showToast } = useToast()
   const scrollRef = useRef<HTMLDivElement>(null)
   const [canScrollLeft, setCanScrollLeft] = useState(false)
   const [canScrollRight, setCanScrollRight] = useState(true)
@@ -191,7 +193,8 @@ const OnSelling = () => {
           return isComingSoon ? (
             <div
               key={project.title}
-              className="group shrink-0 w-[75vw] md:w-[40vw] lg:w-[28vw] relative overflow-hidden cursor-default"
+              className="group shrink-0 w-[75vw] md:w-[40vw] lg:w-[28vw] relative overflow-hidden cursor-pointer"
+              onClick={showToast}
             >
               {cardContent}
             </div>

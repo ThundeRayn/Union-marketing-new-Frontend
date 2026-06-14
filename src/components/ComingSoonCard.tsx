@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { Skeleton } from '@/components/ui/skeleton';
+import { useToast } from '@/components/Toast';
 
 interface ComingSoonCardProps {
   title: string;
@@ -11,9 +12,10 @@ interface ComingSoonCardProps {
 
 const ComingSoonCard = ({ title, type, coverImage, mobileCoverImage, ratio = '4/3' }: ComingSoonCardProps) => {
   const [loaded, setLoaded] = useState(false);
+  const { showToast } = useToast();
 
   return (
-    <div className="block relative overflow-hidden bg-black">
+    <div className="block relative overflow-hidden bg-black cursor-pointer" onClick={showToast}>
       <div className="relative w-full overflow-hidden project-card-ratio" style={{ '--card-ratio': ratio } as React.CSSProperties}>
         {!loaded && <Skeleton className="absolute inset-0 rounded-none z-1" />}
         <div className="absolute inset-0">

@@ -2,7 +2,7 @@ import { useRef, useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { useScrollAnimation } from '@/hooks/useScrollAnimation'
 import { Skeleton } from '@/components/ui/skeleton'
-import { useToast } from '@/components/Toast'
+import { useToast } from '@/context/ToastContext'
 import projectsData from '@/data/projects.json'
 import comingSoonData from '@/data/coming-soon.json'
 

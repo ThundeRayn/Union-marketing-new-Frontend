@@ -1,13 +1,7 @@
-import { createContext, useContext, useState, useCallback, useRef, ReactNode } from 'react'
+import { useState, useCallback, useRef } from 'react'
+import type { ReactNode } from 'react'
 import { createPortal } from 'react-dom'
-
-interface ToastContextType {
-  showToast: () => void
-}
-
-const ToastContext = createContext<ToastContextType>({ showToast: () => {} })
-
-export const useToast = () => useContext(ToastContext)
+import { ToastContext } from '@/context/ToastContext'
 
 export const ToastProvider = ({ children }: { children: ReactNode }) => {
   const [visible, setVisible] = useState(false)
@@ -28,9 +22,7 @@ export const ToastProvider = ({ children }: { children: ReactNode }) => {
             visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-3 pointer-events-none'
           }`}
         >
-          <div
-            className="bg-(--color-secondary) border-l-2 border-l-(--color-primary) border border-white/10 px-8 py-4 flex flex-col items-start gap-1 shadow-2xl min-w-[220px]"
-          >
+          <div className="bg-(--color-secondary) border-l-2 border-l-(--color-primary) border border-white/10 px-8 py-4 flex flex-col items-start gap-1 shadow-2xl min-w-[220px]">
             <p
               className="text-[11px] tracking-[0.25em] uppercase text-(--color-primary)"
               style={{ fontFamily: 'var(--font-label)' }}

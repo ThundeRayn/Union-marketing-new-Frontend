@@ -35,7 +35,15 @@ const comingSoonList = comingSoonData.map(p => ({
   isComingSoon: true,
 }));
 
-const allProjects = [...projectList, ...comingSoonList];
+const statusRank = (status: string) => {
+  if (status === 'COMING SOON') return 0
+  if (status === 'NOW SELLING') return 1
+  return 2
+}
+
+const allProjects = [...projectList, ...comingSoonList].sort(
+  (a, b) => statusRank(a.description) - statusRank(b.description)
+);
 
 const ProjectPage = () => {
   const { ref, isVisible } = useScrollAnimation(0.05)

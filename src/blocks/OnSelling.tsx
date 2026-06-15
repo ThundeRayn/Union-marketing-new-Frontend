@@ -153,7 +153,13 @@ const OnSelling = () => {
           msOverflowStyle: 'none',
         }}
       >
-        {projects.filter(p => p.status === 'NOW SELLING' || p.status === 'COMING SOON').map((project, index) => {
+        {projects
+          .filter(p => p.status === 'NOW SELLING' || p.status === 'COMING SOON')
+          .sort((a, b) => {
+            const rank = (s: string) => s === 'COMING SOON' ? 0 : s === 'NOW SELLING' ? 1 : 2
+            return rank(a.status) - rank(b.status)
+          })
+          .map((project, index) => {
           const isComingSoon = project.status === 'COMING SOON'
           const cardContent = (
             <>
@@ -219,7 +225,7 @@ const OnSelling = () => {
         {/* Progress bar */}
         <div className="flex-1 max-w-xs h-px bg-white/10 relative overflow-hidden">
           <div
-            className="absolute top-0 left-0 h-full bg-(--color-primary)/60 transition-all duration-300 ease-out"
+            className="absolute top-0 left-0 h-full bg-primary/60 transition-all duration-300 ease-out"
             style={{ width: `${Math.max(scrollProgress * 100, 5)}%` }}
           />
         </div>
@@ -232,7 +238,7 @@ const OnSelling = () => {
           >
             Drag to explore
           </span>
-          <div className="h-6 w-px bg-(--color-primary)/30 relative overflow-hidden">
+          <div className="h-6 w-px bg-primary/30 relative overflow-hidden">
             <div className="absolute top-0 left-0 w-full h-3 bg-(--color-primary) animate-[scrollPulse_2s_ease-in-out_infinite]" />
           </div>
         </div>

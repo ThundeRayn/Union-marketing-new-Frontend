@@ -6,6 +6,7 @@ import ProjectNavigation from "@/blocks/ProjectNavigation"
 import BackToHome from "@/components/BackToHome"
 import ProjectInfo from "@/components/ProjectInfo"
 import PictureRender from "@/components/PictureRender"
+import VimeoVideo from "@/components/VimeoVideo"
 import projectsData from '@/data/projects.json'
 
 const project = projectsData.find(p => p.id === 'lakewilcox')!
@@ -31,6 +32,9 @@ const LakeWilcoxPage = () => {
       />
 
       <ProjectInfo projectId="lakewilcox" />
+
+      {/* Video Section */}
+      <VimeoVideo videoId="1203591168" hash="cffc6eb892" title="Lake Wilcox Towns" aspectRatio="9/16" />
 
       {/* Main Content Area */}
       <div className="mx-auto px-6 md:px-16 lg:px-24 pt-5 pb-15 flex flex-col items-center">

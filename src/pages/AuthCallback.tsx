@@ -39,6 +39,7 @@ const AuthCallback = () => {
         email: user.email!,
         firstName: user.user_metadata?.first_name ?? '',
         lastName: user.user_metadata?.last_name ?? '',
+        phone: user.user_metadata?.phone ?? '',
         isRealtor: user.user_metadata?.is_realtor ?? false,
       });
 

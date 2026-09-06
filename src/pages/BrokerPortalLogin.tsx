@@ -14,6 +14,7 @@ const BrokerPortalLogin = () => {
     confirmPassword: '',
     firstName: '',
     lastName: '',
+    phone: '',
   })
   const [isRealtor, setIsRealtor] = useState<boolean | null>(null)
   const [agreedToTerms, setAgreedToTerms] = useState(false)
@@ -58,10 +59,11 @@ const BrokerPortalLogin = () => {
           password: formData.password,
           firstName: formData.firstName,
           lastName: formData.lastName,
+          phone: formData.phone,
           isRealtor,
         })
         setMessage({ type: 'success', text: result.message })
-        setFormData({ email: '', password: '', confirmPassword: '', firstName: '', lastName: '' })
+        setFormData({ email: '', password: '', confirmPassword: '', firstName: '', lastName: '', phone: '' })
         setIsRealtor(null)
         setAgreedToTerms(false)
       } else {
@@ -259,6 +261,26 @@ const BrokerPortalLogin = () => {
                       className="w-full shadow-none bg-transparent border-0 border-b border-white/30 rounded-none h-12 text-white placeholder:text-white/40 focus-visible:ring-0 focus-visible:border-(--color-primary)"
                     />
                   </div>
+                </div>
+              </div>
+
+              <div>
+                <label
+                  className="block text-[10px] tracking-[0.15em] uppercase text-white/50 mb-2"
+                  style={{ fontFamily: 'var(--font-label)' }}
+                >
+                  Phone Number
+                </label>
+                <div className="input-animated">
+                  <Input
+                    type="tel"
+                    name="phone"
+                    placeholder="(555) 555-5555"
+                    value={formData.phone}
+                    onChange={handleInputChange}
+                    required={!isLogin}
+                    className="w-full shadow-none bg-transparent border-0 border-b border-white/30 rounded-none h-12 text-white placeholder:text-white/40 focus-visible:ring-0 focus-visible:border-(--color-primary)"
+                  />
                 </div>
               </div>
 

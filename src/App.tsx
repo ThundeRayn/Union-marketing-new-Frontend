@@ -15,6 +15,7 @@ const BrokerPortalLogin = lazy(() => import('./pages/BrokerPortalLogin'))
 const AuthCallback = lazy(() => import('./pages/AuthCallback'))
 const BrokerPortal = lazy(() => import('./pages/BrokerPortal'))
 const ResetPassword = lazy(() => import('./pages/ResetPassword'))
+const TermsOfService = lazy(() => import('./pages/TermsOfService'))
 const FifthPage = lazy(() => import('./projects/FifthPage'))
 const ElevenPage = lazy(() => import('./projects/ElevenPage'))
 const EversleyPage = lazy(() => import('./projects/EversleyPage'))
@@ -58,6 +59,7 @@ function App() {
             <Route path="project" element={<ProjectPage />} />
             <Route path="login" element={<BrokerPortalLogin />} />
             <Route path="reset-password" element={<ResetPassword />} />
+            <Route path="terms" element={<TermsOfService />} />
             <Route path="projects/fifth" element={<FifthPage />} />
             <Route path="projects/eleven" element={<ElevenPage />} />
             <Route path="projects/eversley" element={<EversleyPage />} />

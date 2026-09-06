@@ -5,7 +5,6 @@ interface EventRichProps {
   title: string
   description: string
   date: string
-  time: string
   address: string
   backgroundImage: string
 }
@@ -15,7 +14,6 @@ const EventRich = ({
   title,
   description,
   date,
-  time,
   address,
   backgroundImage
 }: EventRichProps) => {
@@ -59,18 +57,18 @@ const EventRich = ({
           </p>
 
           <div className="flex justify-center items-center">
-            <button 
+            <button
               key={`button-${id}`}
               onClick={() => handleCopyAddress(address)}
               className="relative border border-yellow-400 text-white px-6 py-3 rounded-lg font-semibold overflow-hidden group inline-block cursor-pointer transition-all duration-300 animate-[slideDownFadeIn_0.8s_ease-out]"
             >
-              <span className="relative z-10 transition-all duration-300 ease-in-out group-hover:opacity-0">
-                {date}, {time}
+              <span className={`relative z-10 transition-opacity duration-300 ease-in-out ${copied ? 'opacity-0' : 'opacity-100'}`}>
+                {date}, {address}
               </span>
-              <span className="absolute inset-0 flex items-center justify-center translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-in-out text-white ">
-                {copied ? '✓ Copied!' : address}
+              <span className={`absolute inset-0 flex items-center justify-center transition-opacity duration-300 ease-in-out text-white ${copied ? 'opacity-100' : 'opacity-0'}`}>
+                ✓ Copied!
               </span>
-            </button> 
+            </button>
           </div>
 
 

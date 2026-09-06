@@ -34,7 +34,7 @@ const ComingSoonCard = ({ title, type, coverImage, mobileCoverImage, ratio = '4/
         {/* Coming Soon badge — top left */}
         <div className={`absolute top-5 left-5 z-10 transition-opacity duration-500 ${loaded ? 'opacity-100' : 'opacity-0'}`}>
           <span
-            className="inline-block px-4 py-1.5 text-[11px] tracking-[0.25em] uppercase border border-(--color-primary) text-(--color-primary)"
+            className="inline-block px-5 py-2 text-sm tracking-[0.25em] uppercase border border-(--color-primary) text-(--color-primary)"
             style={{ fontFamily: 'var(--font-label)' }}
           >
             Coming Soon

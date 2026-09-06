@@ -16,6 +16,7 @@ const BrokerPortalLogin = () => {
     lastName: '',
   })
   const [isRealtor, setIsRealtor] = useState<boolean | null>(null)
+  const [agreedToTerms, setAgreedToTerms] = useState(false)
   const [isForgot, setIsForgot] = useState(false)
   const [forgotEmail, setForgotEmail] = useState('')
   const [showPassword, setShowPassword] = useState(false)
@@ -48,6 +49,10 @@ const BrokerPortalLogin = () => {
           setMessage({ type: 'error', text: 'Please select whether you are a Realtor.' })
           return
         }
+        if (!agreedToTerms) {
+          setMessage({ type: 'error', text: 'You must agree to the Terms and Conditions.' })
+          return
+        }
         const result = await api.signup({
           email: formData.email,
           password: formData.password,
@@ -58,6 +63,7 @@ const BrokerPortalLogin = () => {
         setMessage({ type: 'success', text: result.message })
         setFormData({ email: '', password: '', confirmPassword: '', firstName: '', lastName: '' })
         setIsRealtor(null)
+        setAgreedToTerms(false)
       } else {
         await login(formData.email, formData.password)
         navigate('/broker-portal', { replace: true })
@@ -390,6 +396,29 @@ const BrokerPortalLogin = () => {
                 </button>
               </div>
             </div>
+          )}
+
+          {!isLogin && (
+            <label className="flex items-start gap-2.5 text-xs text-white/50 cursor-pointer">
+              <input
+                type="checkbox"
+                checked={agreedToTerms}
+                onChange={e => setAgreedToTerms(e.target.checked)}
+                required
+                className="mt-0.5 h-3.5 w-3.5 shrink-0 accent-(--color-primary)"
+              />
+              <span>
+                I agree to the{' '}
+                <a
+                  href="/terms"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-(--color-primary) hover:text-white transition-colors duration-300 underline"
+                >
+                  Terms and Conditions
+                </a>
+              </span>
+            </label>
           )}
 
           {message && (

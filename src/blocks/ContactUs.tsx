@@ -8,6 +8,7 @@ import { useScrollAnimation } from "@/hooks/useScrollAnimation"
 const ContactUs = () => {
   const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle')
   const [errorMessage, setErrorMessage] = useState('')
+  const [agreedToTerms, setAgreedToTerms] = useState(false)
   const { ref, isVisible } = useScrollAnimation(0.05)
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -26,6 +27,7 @@ const ContactUs = () => {
       if (!res.ok) throw new Error(json.error ?? 'Failed to send')
       setStatus('success')
       form.reset()
+      setAgreedToTerms(false)
       setTimeout(() => setStatus('idle'), 4000)
     } catch (err) {
       setErrorMessage(err instanceof Error ? err.message : 'Something went wrong. Please try again.')
@@ -143,6 +145,28 @@ const ContactUs = () => {
               required
             />
           </div>
+
+          {/* Terms */}
+          <label className="flex items-start gap-2.5 text-xs text-white/50 cursor-pointer">
+            <input
+              type="checkbox"
+              checked={agreedToTerms}
+              onChange={e => setAgreedToTerms(e.target.checked)}
+              required
+              className="mt-0.5 h-3.5 w-3.5 shrink-0 accent-(--color-primary)"
+            />
+            <span>
+              I agree to the{' '}
+              <a
+                href="/terms"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-(--color-primary) hover:text-white transition-colors duration-300 underline"
+              >
+                Terms and Conditions
+              </a>
+            </span>
+          </label>
 
           {/* Submit */}
           <div className="pt-2">

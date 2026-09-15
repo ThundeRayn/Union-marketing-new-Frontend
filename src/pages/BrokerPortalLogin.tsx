@@ -18,6 +18,7 @@ const BrokerPortalLogin = () => {
   })
   const [isRealtor, setIsRealtor] = useState<boolean | null>(null)
   const [agreedToTerms, setAgreedToTerms] = useState(false)
+  const [agreedToSms, setAgreedToSms] = useState(false)
   const [isForgot, setIsForgot] = useState(false)
   const [forgotEmail, setForgotEmail] = useState('')
   const [showPassword, setShowPassword] = useState(false)
@@ -54,6 +55,10 @@ const BrokerPortalLogin = () => {
           setMessage({ type: 'error', text: 'You must agree to the Terms and Conditions.' })
           return
         }
+        if (!agreedToSms) {
+          setMessage({ type: 'error', text: 'You must agree to receive SMS messages.' })
+          return
+        }
         const result = await api.signup({
           email: formData.email,
           password: formData.password,
@@ -66,6 +71,7 @@ const BrokerPortalLogin = () => {
         setFormData({ email: '', password: '', confirmPassword: '', firstName: '', lastName: '', phone: '' })
         setIsRealtor(null)
         setAgreedToTerms(false)
+        setAgreedToSms(false)
       } else {
         await login(formData.email, formData.password)
         navigate('/broker-portal', { replace: true })
@@ -439,6 +445,21 @@ const BrokerPortalLogin = () => {
                 >
                   Terms and Conditions
                 </a>
+              </span>
+            </label>
+          )}
+
+          {!isLogin && (
+            <label className="flex items-start gap-2.5 text-xs text-white/50 cursor-pointer">
+              <input
+                type="checkbox"
+                checked={agreedToSms}
+                onChange={e => setAgreedToSms(e.target.checked)}
+                required
+                className="mt-0.5 h-3.5 w-3.5 shrink-0 accent-(--color-primary)"
+              />
+              <span>
+                I agree to receive SMS messages from SMS Champion about my account, services, and promotional offers. Reply STOP to opt out. Reply HELP for help. Message and data rates may apply. Message frequency may vary.
               </span>
             </label>
           )}

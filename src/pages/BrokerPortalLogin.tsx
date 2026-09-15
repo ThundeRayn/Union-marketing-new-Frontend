@@ -459,7 +459,16 @@ const BrokerPortalLogin = () => {
                 className="mt-0.5 h-3.5 w-3.5 shrink-0 accent-(--color-primary)"
               />
               <span>
-                I agree to receive SMS messages from SMS Champion about my account, services, and promotional offers. Reply STOP to opt out. Reply HELP for help. Message and data rates may apply. Message frequency may vary.
+                I agree to receive SMS messages from SMS Champion about my account, services, and promotional offers. Reply STOP to opt out. Reply HELP for help. Message and data rates may apply. Message frequency may vary. See our{' '}
+                <a
+                  href="/privacy"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-(--color-primary) hover:text-white transition-colors duration-300 underline"
+                >
+                  Privacy Policy
+                </a>
+                .
               </span>
             </label>
           )}

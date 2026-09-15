@@ -63,8 +63,12 @@ const Footer = () => {
         </div>
 
         {/* Bottom Bar */}
-        <div className="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400 text-sm">
+        <div className="border-t border-gray-800 mt-8 pt-8 flex flex-col sm:flex-row items-center justify-center gap-2 sm:gap-4 text-center text-gray-400 text-sm">
           <p>&copy; {new Date().getFullYear()} Union Marketing. All rights reserved.</p>
+          <span className="hidden sm:inline">|</span>
+          <Link to="/privacy" className="hover:text-white transition-colors duration-300">Privacy Policy</Link>
+          <span className="hidden sm:inline">|</span>
+          <Link to="/terms" className="hover:text-white transition-colors duration-300">Terms and Conditions</Link>
         </div>
       </div>
     </footer>

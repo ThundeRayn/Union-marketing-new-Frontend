@@ -9,6 +9,7 @@ const ContactUs = () => {
   const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle')
   const [errorMessage, setErrorMessage] = useState('')
   const [agreedToTerms, setAgreedToTerms] = useState(false)
+  const [agreedToSms, setAgreedToSms] = useState(false)
   const { ref, isVisible } = useScrollAnimation(0.05)
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -28,6 +29,7 @@ const ContactUs = () => {
       setStatus('success')
       form.reset()
       setAgreedToTerms(false)
+      setAgreedToSms(false)
       setTimeout(() => setStatus('idle'), 4000)
     } catch (err) {
       setErrorMessage(err instanceof Error ? err.message : 'Something went wrong. Please try again.')
@@ -165,6 +167,20 @@ const ContactUs = () => {
               >
                 Terms and Conditions
               </a>
+            </span>
+          </label>
+
+          {/* SMS Consent */}
+          <label className="flex items-start gap-2.5 text-xs text-white/50 cursor-pointer">
+            <input
+              type="checkbox"
+              checked={agreedToSms}
+              onChange={e => setAgreedToSms(e.target.checked)}
+              required
+              className="mt-0.5 h-3.5 w-3.5 shrink-0 accent-(--color-primary)"
+            />
+            <span>
+              I agree to receive SMS messages from SMS Champion about my account, services, and promotional offers. Reply STOP to opt out. Reply HELP for help. Message and data rates may apply. Message frequency may vary.
             </span>
           </label>
 
